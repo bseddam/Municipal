@@ -1,0 +1,38 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        function showMacAddress() {
+            var obj = new ActiveXObject("WbemScripting.SWbemLocator");
+            var s = obj.ConnectServer(".");
+            var properties = s.ExecQuery("SELECT * FROM Win32_NetworkAdapterConfiguration");
+            var e = new Enumerator(properties);
+            var output;
+            output = '<table border="0" cellPadding="5px" cellSpacing="1px" bgColor="#CCCCCC">';
+            output = output + '<tr bgColor="#EAEAEA"><td>Caption</td><td>MACAddress</td></tr>';
+            while (!e.atEnd()) {
+                e.moveNext();
+                var p = e.item();
+                if (!p) continue;
+                output = output + '<tr bgColor="#FFFFFF">';
+                output = output + '<td>' + p.Caption; +'</td>';
+                output = output + '<td>' + p.MACAddress + '</td>';
+                output = output + '</tr>';
+            }
+            output = output + '</table>';
+            document.getElementById("box").innerHTML = output;
+        }
+</script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" /><asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    </div>
+    </form>
+</body>
+</html>

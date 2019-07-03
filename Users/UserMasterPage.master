@@ -1,0 +1,281 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="UserMasterPage.master.cs" Inherits="Users_UserMasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head runat="server">
+    <title></title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link href="../style_1/bootstrap.css" rel="stylesheet" />
+    <link href="../style_1/styles.css" rel="stylesheet" />
+    <script src="../javascripts/jq.js"></script>
+    <script src="../javascripts/script.js"></script>
+    <script src="../style_1/sjava.js"></script>
+    <link href="../style_1/style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    </asp:ContentPlaceHolder>
+
+    <style type="text/css">
+        .auto-style1ggg {
+            width: 50px;
+        }
+
+        .auto-style2ggg {
+            width: 920px;
+            font-size: 20px;
+            text-align: center;
+        }
+   /*
+        .auto-style6 {
+            width: 236px;
+        }
+
+        .auto-style9 {
+            width: 236px;
+            height: 58px;
+        }
+
+
+      
+        .auto-style1ggg8 {
+            width: 161px;
+            height: 58px;
+        }
+
+       .auto-style2ggg0 {
+            height: 58px;
+            font-size: 30px;
+            width: 35px;
+        }
+
+        p.MsoNormal {
+            margin-top: 0in;
+            margin-right: 0in;
+            margin-bottom: 10.0pt;
+            margin-left: 0in;
+            line-height: 115%;
+            font-size: 10.0pt;
+            font-family: Arial,"sans-serif";
+        }
+
+        .auto-style2ggg3 {
+            border-collapse: collapse;
+            line-height: 115%;
+            font-size: 10.0pt;
+            font-family: Arial, sans-serif;
+            border-style: none;
+            border-color: inherit;
+            border-width: medium;
+        }
+
+        .auto-style2ggg4 {
+            height: 28px;
+        }*/
+
+        .modalBackground {
+            background-color: Black;
+            filter: alpha(opacity=40);
+            opacity: 0.4;
+        }
+
+        .modalPopup {
+            background-color: #FFFFFF;
+            width: 300px;
+            border: 3px solid #0DA9D0;
+        }
+
+            .modalPopup .header {
+                background-color: #2FBDF1;
+                height: 30px;
+                color: White;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .modalPopup .body {
+                min-height: 50px;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .modalPopup .footer {
+                padding: 3px;
+            }
+
+            .modalPopup .yes, .modalPopup .no {
+                height: 23px;
+                color: White;
+                line-height: 23px;
+                text-align: center;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .modalPopup .yes {
+                background-color: #2FBDF1;
+                border: 1px solid #0DA9D0;
+            }
+
+            .modalPopup .no {
+                background-color: #9F9F9F;
+                border: 1px solid #5C5C5C;
+            }
+    </style>
+
+
+</head>
+
+
+<body style="font-family: Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; font-weight: 200; background-color: #D7EBFF;">
+    <form id="form1" runat="server" metod="post">
+        <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
+
+        <div style="width: 1024px; height: 100%; margin: auto; padding: 0;">
+            <div class="menu_parent sf-menu" style="width: 1024px; font-family: Arial; font-style: initial; color: white;">
+                <table class="nav-justified">
+                    <tr>
+                        <td class="auto-style1ggg">&nbsp;</td>
+                        <td class="auto-style2ggg">
+                            <asp:Label ID="lbladsoy" runat="server" ForeColor="White" Font-Bold="true" Font-Size="Large"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="btncixis" runat="server" Text="Çıxış" OnClick="btncixis_Click" ForeColor="White"></asp:LinkButton></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="background-color: Background; width: 1024px;">
+                <div class="menu_parent">
+                    <ul class="sf-menu">
+                        <%--   <li class="last"><a href="Homepage.aspx"><span>Ana səhifə</span></a></li>--%>
+                        <li class="menu-i">
+                            <a class="menu-i-link" href="Homepage.aspx">BAŞ SƏHİFƏ</a>
+                        </li>
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>VERGİ ÖDƏYİCİSİ</span></a>
+                            <ul class="submenu" style="width: auto">
+
+                                <li class="submenu-i"><a class="menu-i-link" href="IndividualUpdate.aspx?IndividualLegal=1"><span>FİZİKİ ŞƏXS</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="LegalUpdate.aspx?IndividualLegal=2"><span>HÜQUQİ ŞƏXS</span></a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <%--                        <li class="active has-sub"><a href="#"><span>Arayış</span></a>
+                            <ul>
+                                <li><a href="PaymentNotice.aspx"><span>Tədiyyə bildirişi</span></a>
+                                </li>
+                                <li class="last"><a href="Certificate.aspx"><span>Şəhadətnamə</span></a>
+                                </li>
+
+                            </ul>
+                        </li>--%>
+
+
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>XƏRCLƏR VƏ LAYİHƏLƏR</span></a>
+                            <ul class="submenu" style="width: 220px">
+                                <li class="submenu-i"><a class="menu-i-link" href="Expense.aspx"><span>XƏRCLƏR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Project.aspx"><span>LAYİHƏLƏR</span></a>
+                                </li>
+                                 <li class="submenu-i"><a class="menu-i-link" href="Dotation.aspx?DotationType=1"><span>DOTASİYA</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Dotation.aspx?DotationType=2"><span>İANƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Dotation.aspx?DotationType=3"><span>Digər gəlirlər</span></a>
+                                </li>
+                             <%--    <li class="submenu-i"><a class="menu-i-link" href="Municipincome.aspx"><span>BƏLƏDİYYƏNİN YIĞIMLARI</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="MembershipFees.aspx"><span>Üzvlük haqqları</span></a>
+                                </li>--%>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>Hesabatlar</span></a>
+                            <ul class="submenu" style="width: auto;">
+                                  <li class="submenu-i"><a class="menu-i-link" href="MunicipalIncome.aspx"><span>GƏLİRLƏR ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="MunicipalGeneralIncome.aspx"><span>ÖDƏMƏLƏR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="MunicipalGeneraldebt.aspx"><span>Borclar ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportExpense.aspx"><span>Xərclər ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportTaxpayer.aspx"><span>VERGİ ÖDƏYİCİLƏRİ ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportlivingArea.aspx"><span>YAŞAYIŞ SAHƏSİ ÜZRƏ ƏMLAKLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportNoLivingArea.aspx"><span>QEYRİ-YAŞAYIŞ SAHƏSİ ÜZRƏ ƏMLAKLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportTransport.aspx"><span>NƏQLİYYAT VASİTƏLƏRİ ÜZRƏ ƏMLAKLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportLivingLand.aspx"><span>YAŞAYIŞ SAHƏSİ ÜZRƏ TORPAQLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportNoLivingLand.aspx"><span>QEYRİ-YAŞAYIŞ SAHƏSİ ÜZRƏ TORPAQLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportVillageLand.aspx"><span>KƏND TƏSƏRRÜFATI TƏYİNATLI TORPAQ SAHƏLƏRİ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportMine.aspx"><span>MƏDƏN VERGİSİ ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportProfits.aspx"><span>MƏNFƏƏt VERGİSİ ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportPayments.aspx"><span>ÖDƏNİŞLƏR ÜZRƏ</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>BƏLƏDİYYƏ</span></a>
+                            <ul class="submenu" style="width: auto;">
+                                <li class="submenu-i"><a class="menu-i-link" href="Member.aspx"><span>TƏRKİB</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Information.aspx"><span>İSTİFADƏÇİ</span></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>ARXİV</span></a>
+                            <ul class="submenu" style="width: auto;">
+
+                                <li class="submenu-i"><a class="menu-i-link" href="IndividualArxiv.aspx?IndividualLegal=1"><span>FİZİKİ ŞƏXS</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="LegalArxiv.aspx?IndividualLegal=2"><span>HÜQUQİ ŞƏXS</span></a>
+                                </li>
+
+                            </ul>
+                        </li> 
+                        
+                         <li class="menu-i"><a class="menu-i-link"  href="#"><span>İLLİK HESABATLAR</span></a>
+                            <ul class="submenu" style="width: auto;">
+                                <li class="submenu-i"><a class="menu-i-link" href="Municipincome.aspx"><span>BƏLƏDİYYƏNİN YIĞIMLARI</span></a>
+                                </li>
+                               <li class="submenu-i"><a class="menu-i-link" href="ExpenseIllik.aspx"><span>BƏLƏDİYYƏNİN XƏRCLƏRİ</span></a>
+                                </li>
+<%--                                 <li class="submenu-i"><a class="menu-i-link" href="Municipincome.aspx"><span>ÜMUMİ HESABAT</span></a>
+                                </li>--%>
+                            </ul>
+                        </li>
+                        
+                        <%--      <li class="last"><a href="#"><span>Axtarış</span></a></li>--%>
+                    </ul>
+                </div>
+
+                
+            </div>
+            <div style="clear: both;"></div>
+            <div style="float: left; height: auto; width: 1024px; background-color: white;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

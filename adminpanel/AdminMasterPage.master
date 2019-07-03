@@ -1,0 +1,169 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterPage.master.cs" Inherits="adminpanel_AdminMasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link href="../style_1/bootstrap.css" rel="stylesheet" />
+    <link href="../style_1/styles.css" rel="stylesheet" />
+    <script src="../javascripts/jq.js"></script>
+    <script src="../javascripts/script.js"></script>
+    <script src="../style_1/sjava.js"></script>
+    <link href="../style_1/style.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    </asp:ContentPlaceHolder>
+
+    <style type="text/css">
+        .auto-style1 {
+            width: 50px;
+        }
+
+        .auto-style2 {
+            width: 920px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
+        <div style="width: 1024px; height: 100%; margin: auto; padding: 0;">
+            <div class="menu_parent sf-menu" style="width: 1024px; font-family: Arial; font-style: initial; color: white;">
+                <table class="nav-justified">
+                    <tr>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td class="auto-style2">
+                            <asp:Label ID="lbladsoy" Text="Nəzarət sistemi" runat="server" ForeColor="White" Font-Bold="true" Font-Size="Large"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="btncixis" runat="server" Text="Çıxış" OnClick="btncixis_Click" ForeColor="White"></asp:LinkButton></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="background-color: Background; width: 1024px;">
+                <div class="menu_parent">
+                    <ul class="sf-menu">
+                        <li class="menu-i">
+                            <a class="menu-i-link" href="Home.aspx">BAŞ SƏHİFƏ</a>
+                        </li>
+
+
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>Hesabatlar</span></a>
+                            <ul class="submenu">
+                                <li class="submenu-i"><a class="menu-i-link" href="Income.aspx"><span>GƏLİRLƏR ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Expencere.aspx"><span>Xərclər ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="MunicipalGeneraldebt.aspx"><span>Borclar ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Statistiks.aspx"><span>STATİSTİKA</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="RepPayment.aspx"><span>ÖDƏMƏLƏR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportTaxpayer.aspx"><span>VERGİ ÖDƏYİCİLƏRİ ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportlivingArea.aspx"><span>YAŞAYIŞ SAHƏLƏRİ ÜZRƏ ƏMLAKLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportNoLivingArea.aspx"><span>QEYRİ-YAŞAYIŞ SAHƏLƏRİ ÜZRƏ ƏMLAKLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportTransport.aspx"><span>NƏQLİYYAT VASİTƏLƏRİ ÜZRƏ ƏMLAKLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportLivingLand.aspx"><span>YAŞAYIŞ SAHƏLƏRİ ÜZRƏ TORPAQLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportNoLivingLand.aspx"><span>QEYRİ-YAŞAYIŞ SAHƏLƏRİ ÜZRƏ TORPAQLAR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportVillageLand.aspx"><span>Kənd təsərrüfatı təyİnatlı torpaq sahələrİ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportMine.aspx"><span>Mədən vergİsİ ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportProfits.aspx"><span>Mənfəət vergİsİ ÜZRƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportPayments.aspx"><span>Ödənİşlər üzrə</span></a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>Hesablamalar</span></a>
+                            <ul class="submenu">
+                                <li class="submenu-i"><a class="menu-i-link" href="Calclastyears.aspx"><span>İllər üzrə borcların hesablanması</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Calctodayadmin.aspx"><span>Bu il üçün hesablanma</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                             <li class="menu-i"><a class="menu-i-link" href="#"><span>SİSTEM</span></a>
+                            <ul class="submenu">
+                                <li class="submenu-i"><a class="menu-i-link" href="Passwords.aspx">ŞİFRƏLƏR</a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Users.aspx">QEYDİYYATA ALINANLAR</a>
+                                </li>
+                                 <li class="submenu-i"><a class="menu-i-link" href="UsedSystem.aspx">SİSTEMDƏ İŞLƏYƏNLƏR</a>
+                                </li>
+                                 <li class="submenu-i"><a class="menu-i-link" href="Icaze.aspx">ÖDƏNİŞ VƏ XƏRCLƏR BÖLMƏSİNƏ İCAZƏ</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-i">
+                            <a class="menu-i-link" href="Members.aspx">TƏRKİB</a>
+                        </li>
+
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>ARXİV</span></a>
+                            <ul class="submenu" style="width: auto;">
+
+                                <li class="submenu-i"><a class="menu-i-link" href="IndividualArxiv.aspx?IndividualLegal=1"><span>FİZİKİ ŞƏXS</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="LegalArxiv.aspx?IndividualLegal=2"><span>HÜQUQİ ŞƏXS</span></a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="menu-i"><a class="menu-i-link" href="#"><span>İLLİK HESABATLAR</span></a>
+                            <ul class="submenu" style="width: auto;">
+                                <li class="submenu-i"><a class="menu-i-link" href="Municipalinc.aspx"><span>BƏLƏDİYYƏNİN YIĞIMLARI</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ExpencereForyear.aspx"><span>BƏLƏDİYYƏNİN XƏRCLƏRİ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Reportyearsended.aspx"><span>MƏLUMAT GÖNDƏRMƏ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Hesabatxerc.aspx"><span>BƏLƏDİYYƏNİN GƏLİRLƏRi VƏ XƏRCLƏRİ</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportPaymentsMonth.aspx"><span>AYLIQ GƏLİRLƏR</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="ReportMuqayiseliDaxilOlma.aspx"><span>GƏLİRLƏRİN MÜQAYİSƏLİ TƏHLİLİ</span></a>
+                                </li>
+
+                                <li class="submenu-i"><a class="menu-i-link" href="hesabat2016.aspx"><span>Hesabat</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Ferqxerc.aspx"><span>Xərclərdə fərq</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Ferqqaliq.aspx"><span>Qalıqda fərq</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Illikdaxiletmeler.aspx"><span>Daxil etmələr</span></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+            <div style="clear: both;"></div>
+            <div style="float: left; height: auto; width: 1024px; background-color: white;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

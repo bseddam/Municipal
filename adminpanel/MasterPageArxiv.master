@@ -1,0 +1,277 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/adminpanel/AdminMasterPage.master" AutoEventWireup="true" CodeFile="MasterPageArxiv.master.cs" Inherits="adminpanel_MasterPageArxiv" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style type="text/css">
+        p.MsoNormals {
+            margin-top: 0in;
+            margin-right: 0in;
+            margin-left: 0in;
+            margin-bottom: 0in;
+            font-size: 10.0pt;
+            font-family: Arial,"sans-serif";
+        }
+
+        .modalBackground {
+            background-color: Black;
+            filter: alpha(opacity=40);
+            opacity: 0.4;
+        }
+
+        .modalPopup {
+            background-color: #FFFFFF;
+            width: 300px;
+            border: 3px solid #0DA9D0;
+        }
+
+            .modalPopup .header {
+                background-color: #2FBDF1;
+                height: 30px;
+                color: White;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .modalPopup .body {
+                min-height: 50px;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .modalPopup .footer {
+                padding: 3px;
+            }
+
+            .modalPopup .yes, .modalPopup .no {
+                height: 23px;
+                color: White;
+                line-height: 23px;
+                text-align: center;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .modalPopup .yes {
+                background-color: #2FBDF1;
+                border: 1px solid #0DA9D0;
+            }
+
+            .modalPopup .no {
+                background-color: #9F9F9F;
+                border: 1px solid #5C5C5C;
+            }
+
+        .auto-style23 {
+            font-size: 35px;
+            width: 251px;
+        }
+
+        p.MsoNormals {
+            margin-top: 0in;
+            margin-right: 0in;
+            margin-left: 0in;
+            margin-bottom: 0in;
+            font-size: 10.0pt;
+            font-family: Arial,"sans-serif";
+        }
+
+        .auto-style26s {
+            width: 43px;
+        }
+
+        .auto-style27s {
+            width: 173px;
+        }
+
+        .auto-style29s {
+            width: 142px;
+        }
+
+        .auto-style30s {
+            width: 34px;
+        }
+
+        .auto-style31s {
+            width: 150px;
+        }
+
+        .auto-style32s {
+            width: 153px;
+        }
+
+        .auto-style33s {
+            width: 54px;
+        }
+
+        .auto-style34
+        {
+            width: 105px;
+        }
+        .auto-style35
+        {
+            width: 348px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+     <script type="text/javascript">
+         function PrintPanel() {
+             var panel = document.getElementById("<%=pnlhtml.ClientID %>");
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title></title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(panel.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            setTimeout(function () {
+                printWindow.print();
+            }, 500);
+            return false;
+        }
+    </script>
+     <table style="width:100%">
+         <tr style="height:20px;">
+                <td class="auto-style35"></td>
+                <td class="auto-style34"></td>
+                <td class="auto-style13"></td>
+                <td class="auto-style14"></td>
+                <td class="auto-style13"></td>
+            </tr>
+                <tr>
+                <td class="auto-style35"></td>
+                <td class="auto-style34">Rayon:</td>
+                <td class="auto-style12">
+                    <asp:DropDownList ID="ddlrayon" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlrayon_SelectedIndexChanged" Width="200px" CssClass="col-xs-offset-0">
+                    </asp:DropDownList>
+                    </td>
+                <td class="auto-style13"></td>
+                <td class="auto-style14"></td>
+            </tr>
+            <tr style="height:20px;">
+                <td class="auto-style35"></td>
+                <td class="auto-style34"></td>
+                <td class="auto-style13"></td>
+                <td class="auto-style14"></td>
+                <td class="auto-style13"></td>
+            </tr>
+                <tr>
+                <td class="auto-style35"></td>
+                <td class="auto-style34">Bələdiyyə:</td>
+                <td class="auto-style12">
+                    <asp:DropDownList ID="ddlbelediyye" runat="server" Width="200px" AutoPostBack="True">
+                    </asp:DropDownList>
+                    </td>
+                <td class="auto-style13"></td>
+                <td class="auto-style14"></td>
+            </tr>
+            <tr style="height:20px;">
+                <td class="auto-style35"></td>
+                <td class="auto-style34"></td>
+                <td class="auto-style13"></td>
+                <td class="auto-style14"></td>
+                <td class="auto-style13"></td>
+            </tr>
+            </table>
+<%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>--%>
+
+    <div>
+       
+        <table cellpadding="0" cellspacing="0" class="auto-style23" style="mso-table-layout-alt: fixed; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0in 5.4pt 0in 5.4pt; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext; width: 1004px; height: 31px;">
+            <tr>
+                <td class="auto-style30s">&nbsp;</td>
+                <td class="auto-style26s"><b>YVÖK</b></td>
+                <td class="auto-style27s">
+                    <asp:TextBox ID="txtyvok" runat="server" Width="150px"></asp:TextBox>
+                </td>
+                <td><b>Soyadı</b></td>
+                <td class="auto-style31s">
+                    <asp:TextBox ID="txtsoyad" runat="server" Width="120px"></asp:TextBox></td>
+                <td><b>Adı</b></td>
+                <td class="auto-style32s">
+                    <asp:TextBox ID="txtad" runat="server" Width="120px"></asp:TextBox></td>
+                <td class="auto-style33s"><b>Ata adı</b></td>
+                <td class="auto-style29s">
+                    <asp:TextBox ID="txtataadi" runat="server" Width="120px"></asp:TextBox></td>
+
+                <td>
+                    <asp:Button ID="btnaxtar" runat="server" Text="Axtar" OnClick="btnaxtar_Click" Width="106px" />
+                </td>
+            </tr>
+        </table>
+        <div>&nbsp;</div>
+               <div align="center">
+        <asp:Button ID="btnprint" runat="server" OnClientClick="return PrintPanel();" Text="Print" Width="170px" />
+                   <br />
+                   <br />
+    </div>
+    
+    </div>
+    <div style="width: 100%;">
+            <div id="pnlhtml" runat="server" >
+        <asp:GridView ID="GridView1" Width="100%" CellPadding="4"  
+            AllowPaging="true" AutoGenerateColumns="False" DataKeyNames="Sn,Name,TaxesPaymentTypeName,unvan,YVOK"
+            runat="server" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="1000">
+            <Columns>
+
+                <asp:BoundField HeaderText="Sn" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-Width="50px" DataField="Sn" />
+                <asp:BoundField HeaderText="Bələdiyyə" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="MunicipalName" />
+                <asp:BoundField HeaderText="Vergi ödəyicisinin adı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="Name" />
+                <asp:BoundField HeaderText="Silinmiş obyektin adı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="TaxesPaymentTypeName" />
+                <asp:BoundField HeaderText="Ünvan" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="unvan" />
+                <asp:BoundField HeaderText="YVÖK" HeaderStyle-CssClass="headertextaligncenter" DataField="YVOK" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                                <asp:LinkButton ID="lnkDelete" runat="server" CommandArgument='<%#Eval("TaxpayerID")  
++ "Ё" +Eval("Taxesid") + "Ё" +Eval("LivingAreaID")+ "Ё" +Eval("TaxesPaymentTypeName")+ "Ё" +Eval("unvan")+ "Ё" +Eval("YVOK")+ "Ё" +Eval("MunicipalID")+ 
+"Ё" +Eval("Name")%>'  CommandName="deleteRow" OnClick="DeleteRecord" Text="Sil"></asp:LinkButton>
+                                <cc1:ConfirmButtonExtender ID="cbe" runat="server" DisplayModalPopupID="mpe" TargetControlID="lnkDelete">
+                                </cc1:ConfirmButtonExtender>
+                                <cc1:ModalPopupExtender ID="mpe" runat="server" BackgroundCssClass="modalBackground" CancelControlID="btnNo" OkControlID="btnYes" PopupControlID="pnlPopup" TargetControlID="lnkDelete">
+                                </cc1:ModalPopupExtender>
+                                                            
+                    <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Diqqətli olun.
+                        </div>
+                        <div class="body">
+                            Silməyə əminsinizmi?
+                        </div>
+                        <div class="footer" align="right">
+                            <asp:Button ID="btnYes" runat="server" Text="Bəli" CssClass="yes" />
+                            <asp:Button ID="btnNo" runat="server" Text="Xeyr" CssClass="no" />
+                        </div>
+                    </asp:Panel>
+                        </ItemTemplate>
+                        </asp:TemplateField>
+            </Columns>
+
+
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Left" CssClass="pagination" />
+
+            <PagerSettings NextPageText="Next" PreviousPageText="Back" Mode="NumericFirstLast"
+                PageButtonCount="3" />
+
+
+
+        </asp:GridView>
+</div>
+
+
+
+    </div>
+    <div style="height: auto; width: 1024px;">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div>
+        <asp:Label ID="lblsehife" runat="server" Visible="False"></asp:Label>
+        <asp:Label ID="lblindividuallegal" runat="server" Visible="False"></asp:Label>
+    </div>
+            
+ <%--       </ContentTemplate>
+    </asp:UpdatePanel>--%>
+</asp:Content>
+

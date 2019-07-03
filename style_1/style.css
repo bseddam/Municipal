@@ -1,0 +1,3450 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /*background: url(img/bodybg.jpg) repeat fixed 0 0 transparent;*/
+}
+
+body, table, td
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #444444;
+}
+
+#container
+{
+    background: url(g/header_bg.p.pngooo-no--repeat fixed center top;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+.maintable
+{
+    width: 1010px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+    .maintable td
+    {
+        padding: 0px;
+    }
+
+#bg_l
+{
+    width: 16px;
+}
+
+#bg_r
+{
+    width: 14px;
+    /*background: url(http://static.president.az/assets/layout/bg_r-d46689f87fbc97db50969cad0ddee863ec0aaddf8dc017e979428915298f0553.png);*/
+}
+
+#bg_b
+{
+    height: 15px;
+    /*background: url(http://static.president.az/assets/layout/bg_b-1295069fe40a0693f15b0d266fc2a07411e92733b07ca4f927832bbebce75609.png) repeat-x top;*/
+}
+
+#bg_bl
+{
+    /*background: url(http://static.president.az/assets/layout/bg_bl-0fccd4fb25bccbee61e67fa359872701830f32e1ebf765923222c6f2f58bb048.png) no-repeat;*/
+}
+
+#bg_br
+{
+    /*background: url(http://static.president.az/assets/layout/bg_br-e9cbe6db92da0a4bc7a6abacff2b56c048de0bbd365adbf6068ebd3785436c8f.png) no-repeat;*/
+}
+
+#main
+{
+    width: 980px;
+}
+
+#top
+{
+    width: 100%;
+    height: 150px;
+    text-align: left;
+    background-repeat: no-repeat;
+    background-position: 210px 85px;
+}
+
+#gerb
+{
+    padding-top: 10px;
+}
+
+    #gerb a
+    {
+        display: block;
+        width: 69px;
+        height: 74px;
+        margin: 0 auto;
+    }
+
+#top_links
+{
+    width: 300px;
+    float: right;
+    text-align: right;
+    padding-top: 10px;
+    padding-right: 5px;
+    color: #87abca;
+}
+
+    #top_links a
+    {
+        display: inline-block;
+        margin: 0 5px;
+        color: #87abca;
+        font-family: Georgia, serif;
+        font-size: 11px;
+        text-decoration: underline;
+    }
+
+#top_langs
+{
+    font-size: 10px;
+}
+
+.topline
+{
+    display: block;
+    width: 498px;
+    height: 4px;
+    margin: 0 auto;
+    /*background: url(http://static.president.az/assets/layout/top_line-10b3a4574df72c68f3189fe821fb6570363585fedfe33528cc1e270505b07739.png) no-repeat 0 0;*/
+}
+
+#menu
+{
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    vertical-align: middle;
+    /*background: url(http://static.president.az/assets/layout/menu_bg-ccf558f9572d4e4b9ab20cfab71a3841445fe75ed4632a6ffb5863938a9c07a6.jpg);*/
+}
+
+#menu_br
+{
+    vertical-align: middle;
+}
+
+#menu a
+{
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.main-bar-container
+{
+    margin-bottom: 12px;
+    padding-bottom: 18px;
+    /*background: url(http://static.president.az/assets/layout/mainbar_bottom_shadow-6a5aa0cf81ae064664f33d3c4259917ae237837f4d7f1de284647ce100f82ca4.png) no-repeat center bottom;*/
+    clear: both;
+}
+
+#main_bar
+{
+    position: relative;
+    width: 980px;
+    margin: 0 auto;
+    height: 370px;
+}
+
+#main_div_left
+{
+    position: absolute;
+    left: 25px;
+    bottom: 7px;
+    cursor: default;
+}
+
+.main_btn
+{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    margin-left: 5px;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 3px;
+    background-color: #a70000;
+    background-image: -webkit-linear-gradient(top, #ca0000, #7e0000);
+    background-image: -moz-linear-gradient(top, #ca0000, #7e0000);
+    background-image: -ms-linear-gradient(top, #ca0000, #7e0000);
+    background-image: -o-linear-gradient(top, #ca0000, #7e0000);
+    background-image: linear-gradient(top, #ca0000, #7e0000);
+    zoom: 1;
+    *display: inline;
+}
+
+    .main_btn:hover, .main_btn.hover
+    {
+        background-color: #FFF;
+        background-image: none;
+        color: #777;
+    }
+
+.main_btn-index
+{
+    position: relative;
+    font-family: "Times New Roman", serif;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+    .main_btn-index:after
+    {
+        display: none;
+        content: "";
+        position: absolute;
+        bottom: 21px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: 7px solid transparent;
+        border-top-color: #0c5c8d;
+        border-top-color: rgba(12,92,141,0.64);
+    }
+
+.main_btn:hover .main_btn-index:after, .main_btn.hover .main_btn-index:after
+{
+    display: block;
+}
+
+.main_btn:hover .caption, .main_btn.hover .caption
+{
+    display: block;
+}
+
+.main_btn .caption
+{
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 35px;
+    padding: 15px;
+    width: 360px;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    color: #fff;
+    text-align: left;
+    line-height: 1.25;
+    zoom: 1;
+    text-shadow: 0 1px #000;
+    background-color: #0c5c8d;
+    background-color: rgba(12,92,141,0.64);
+    *background-color: #0c5c8d;
+    border-radius: 3px;
+}
+
+    .main_btn .caption a
+    {
+        color: #fff;
+    }
+
+#main_div_right
+{
+    width: 980px;
+    padding-left: 0;
+    height: 370px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+    #main_div_right a
+    {
+        display: block;
+    }
+
+    #main_div_right img
+    {
+        border: none;
+        width: 100%;
+    }
+
+.slider-container
+{
+    position: relative;
+    overflow: hidden;
+    width: 980px;
+    margin: 0 auto;
+    height: 370px;
+}
+
+.slider
+{
+    position: relative;
+    height: 370px;
+    margin: 0;
+    padding: 0;
+}
+
+.slide
+{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 370px;
+    margin: 0;
+    padding: 0;
+}
+
+    .slide .slide-link
+    {
+        display: block;
+        height: 370px;
+        text-decoration: none;
+    }
+
+    .slide.current
+    {
+        display: block;
+        z-index: 1;
+    }
+
+    .slide .caption
+    {
+        position: absolute;
+        left: 25px;
+        bottom: 35px;
+        padding: 15px;
+        width: 360px;
+        font-family: Georgia, serif;
+        font-size: 19px;
+        color: #fff;
+        text-align: left;
+        line-height: 1.25;
+        zoom: 1;
+        text-shadow: 0 1px #000;
+        background-color: #0c5c8d;
+        background-color: rgba(12,92,141,0.64);
+        *background-color: #0c5c8d;
+        border-radius: 3px;
+    }
+
+.slider-status
+{
+    position: absolute;
+    z-index: 2;
+    left: 25px;
+    bottom: 7px;
+    cursor: default;
+}
+
+    .slider-status span
+    {
+        position: relative;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
+        text-align: center;
+        line-height: 15px;
+        border-radius: 3px;
+        color: #fff;
+        font-family: "Times New Roman", serif;
+        font-size: 11px;
+        cursor: pointer;
+        background-color: #a70000;
+        background-image: -webkit-linear-gradient(top, #ca0000, #7e0000);
+        background-image: -moz-linear-gradient(top, #ca0000, #7e0000);
+        background-image: -ms-linear-gradient(top, #ca0000, #7e0000);
+        background-image: -o-linear-gradient(top, #ca0000, #7e0000);
+        background-image: linear-gradient(top, #ca0000, #7e0000);
+        zoom: 1;
+        *display: inline;
+    }
+
+        .slider-status span:hover, .slider-status span.current
+        {
+            background-color: #FFF;
+            background-image: none;
+            color: #777;
+        }
+
+        .slider-status span:after
+        {
+            display: none;
+            content: ".";
+            position: absolute;
+            bottom: 14px;
+            left: 0;
+            width: 0;
+            height: 0;
+            border: 7px solid transparent;
+            border-top-color: #0c5c8d;
+            border-top-color: rgba(12,92,141,0.64);
+        }
+
+    .slider-status .current:after
+    {
+        display: block;
+    }
+
+a
+{
+    text-decoration: none;
+    color: #000;
+}
+
+    a:hover
+    {
+        text-decoration: underline;
+    }
+
+.block .title
+{
+    font-family: "Palatino Linotype";
+}
+
+.divtable0
+{
+    display: table;
+    float: left;
+    margin-left: 20px;
+    width: 170px;
+}
+
+.divtable1
+{
+    float: left;
+    width: 330px;
+}
+
+.divtable2
+{
+    float: left;
+    margin-left: 30px;
+    width: 330px;
+}
+
+.divtable3
+{
+    float: left;
+    margin-left: 6px;
+    width: 246px;
+    margin-bottom: 30px;
+}
+
+    .divtable3 object
+    {
+        max-width: 246px !important;
+    }
+
+#twitterAP_banner, #twitterAP_banner object
+{
+    max-height: 49px !important;
+}
+
+#school_296x130, #school_296x130 object
+{
+    max-height: 108px !important;
+}
+
+.divtable3 .block .no_title
+{
+    height: 14px;
+}
+
+.divtable3 .block.blue .title
+{
+    /*background: url(http://static.president.az/assets/layout/title2_blue-b707904fcc483b5d0f0c55632e71629284b0df2c42156ac09b230a5d17bf7caa.png) !important;*/
+}
+
+.divtable3 .block.blue .title_bot
+{
+    /*background: url(http://static.president.az/assets/layout/title2_bot_blue-a7ee3c0e584239e55001adc044d8f5037a4919590c4c00fe91c8d617da8e5b8c.png) !important;*/
+    height: 32px;
+}
+
+.divtable4
+{
+    display: table;
+    clear: both;
+    margin-left: 20px;
+    width: 640px;
+}
+
+.divtable5
+{
+    display: table;
+    float: left;
+    margin-left: 10px;
+    width: 460px;
+}
+
+.divtable6
+{
+    float: left;
+    width: 710px;
+    margin-bottom: 14px;
+}
+
+    .divtable6 img
+    {
+        max-width: 98%;
+    }
+
+    .divtable6 table
+    {
+        max-width: 100% !important;
+    }
+
+    .divtable6 .block-content
+    {
+        padding-top: 15px;
+        padding-left: 0;
+        padding-right: 0;
+        background-image: none;
+        position: relative;
+        z-index: 2;
+    }
+
+    .divtable6 .block-container
+    {
+        margin-bottom: 0;
+        padding-bottom: 16px;
+        /*background-image: url(http://static.president.az/assets/layout/content_shadow-a1c9dd5e04f6bf0e18a2eb203b8484f23877b945a03c9c0ece7398714b6e0037.png);*/
+    }
+
+    .divtable6 .block
+    {
+        /*background: #fff url(http://static.president.az/assets/layout/content_page_block_bg-61bf1b2ac4fb4dc785c82adbbe2c9ebdfbcb40b2e749b712636afb27e8fa85ac.png) repeat-x left bottom;*/
+    }
+
+.divtable7
+{
+    display: table;
+    float: left;
+    margin-left: 10px;
+    width: 980px;
+}
+
+.left
+{
+    float: left;
+    height: 100%;
+    padding-left: 8px;
+}
+
+#v_line
+{
+    margin-left: 720px;
+}
+
+.block
+{
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.block_content
+{
+    padding: 20px;
+    background-position: 20px 50px;
+}
+
+    .block_content .datetime
+    {
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+
+    .block_content .article_photo
+    {
+        margin-bottom: 18px;
+    }
+
+.no_title .block-content
+{
+    background-image: none !important;
+}
+
+.block_stay_connected .block-content
+{
+    padding: 0 !important;
+}
+
+.block_in_foreign_media .block-content, .block_stay_connected .block-content
+{
+    /*background: url(http://static.president.az/assets/layout/stay_connected_bg-3b2131794554f93c1a1c668e371ac0bb94b838cb2e6dbf7e1568408f3fbdb63d.png) repeat-x left bottom !important;*/
+}
+
+.block-container
+{
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    /*background: url(http://static.president.az/assets/layout/block_bottom_shadow-aa512e5b5dee841fb4ee754d666adcc6622e5952c16fc402f76d68d51c6bf602.png) no-repeat center bottom;*/
+}
+
+.rightside .block-container
+{
+    /*background-image: url(http://static.president.az/assets/layout/rightside_block_bottom_shadow-95666fb642ade44fa37cd9670431f01c84a595c95be79f295c0224c2516a736a.png);*/
+}
+
+.block_icon
+{
+    position: relative;
+}
+
+    .block_icon .block-content
+    {
+        position: relative;
+        z-index: 2;
+    }
+
+    .block_icon:after
+    {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: no-repeat right top;
+        z-index: 1;
+    }
+
+.block_news:after
+{
+    width: 74px;
+    height: 89px;
+    /*background-image: url(http://static.president.az/assets/layout/block_news-267aca165e50f68ba06beaa1fe2cc3bb1264bf6f42a5cccd38721ae99ec9c6c8.png);*/
+}
+
+.block_documents:after
+{
+    width: 84px;
+    height: 94px;
+    /*background-image: url(http://static.president.az/assets/layout/block_documents-4184aede421f74489587dd259b4c440bf3abd3f7c9105c851bfee478553bf852.png);*/
+}
+
+.block_photos_to_day:after
+{
+    width: 93px;
+    height: 98px;
+    /*background-image: url(http://static.president.az/assets/layout/block_photos-dbd3f1fc7f535071d32263419e548c31247e42fd609a499b87e94296098d559e.png);*/
+}
+
+.block_videos_to_day:after
+{
+    width: 101px;
+    height: 109px;
+    /*background-image: url(http://static.president.az/assets/layout/block_videos-f6b6d6727b5fab804d46f04e1b1327faf5104fb310a7da9ef9c590906156dc3a.png);*/
+}
+
+.block_content:after
+{
+    width: 243px;
+    height: 330px;
+    /*background-image: url(http://static.president.az/assets/layout/block_content-11eb6f4033c7b299d627dd2863a22c44d12dbaab14c16d61955499e393a30fe1.png);*/
+}
+
+.block_documents .list-i, .block_news .list-i
+{
+    font-size: 12px;
+}
+
+.block_potd .block-content, .block_in_foreign_media .block-content
+{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.block_in_foreign_media .list-i
+{
+    border-bottom: 0;
+    font-style: italic;
+    font-size: 11px;
+    padding-bottom: 10px;
+}
+
+.block.blue .title
+{
+    /*background: url(http://static.president.az/assets/layout/title1_blue-840f5baf9cfa6e1a5821b7e1c237f06cae3589b24ac3c0c55ee66fd16ff407e9.png);*/
+}
+
+.block.blue .title_bot
+{
+    /*background: url(http://static.president.az/assets/layout/title1_bot_blue-c3c527c7251e5f6ed4993a9143d28d0eb11d59032b2f9bd56a74b43a0d6b2f34.png);*/
+    height: 32px;
+}
+
+.block.blue #content
+{
+    background-color: #eff3f6;
+}
+
+.block.gray #content
+{
+    background-color: #eee;
+}
+
+.block.no_title .block-content
+{
+    background-image: none;
+}
+
+.block.no_bottom #content
+{
+    border-top: none;
+    border-bottom: 1px solid #DBE2E8;
+    margin-bottom: 15px;
+    padding: 0px;
+}
+
+.block .title, .block .title2, .block .title2_red, .block .title3, .block .title_sub, .block .title_sub780, .block .title_sub636
+{
+    height: 38px;
+    border-radius: 5px 5px 0 0;
+}
+
+.block .no_title
+{
+    height: 14px;
+}
+
+.block .title2
+{
+    /*background: url(http://static.president.az/assets/layout/title2-9e746eb94401eba10bc132300f3b93372b0b2bbd670622f65dcafd8715ed82de.jpg);*/
+}
+
+.block .title2_red
+{
+    /*background: url(http://static.president.az/assets/layout/title2_red-89ee416ba057dc9d7d350d4429862dc70eca9ab9a7daa2f7cfd219c39d4e3aee.jpg);*/
+}
+
+.block .title3
+{
+    /*background: url(http://static.president.az/assets/layout/title3-c2132355cf8234b1bcd81639ca8c8c26bfeab655357870f9db5a4fb841de5336.jpg);*/
+}
+
+.block .title_sub
+{
+    /*background: url(http://static.president.az/assets/layout/title_sub-eaaf4a2a42a2555ad9a0827df2a47e536bc639374ef1a4ad7327ff418efeb9ff.jpg);*/
+}
+
+.block .title_sub636
+{
+    height: 38px;
+    /*background: url(http://static.president.az/assets/layout/title_sub636-bf35634c65af10c62b70385ffc7dba6d7671d2132e789a3e43e2c30821a9db47.jpg);*/
+}
+
+.block.blue .title_sub636
+{
+    height: 38px;
+    /*background: url(http://static.president.az/assets/layout/title_sub636_blue-f6cfbe9fc82fc2f336999dde6ac797be4a2ffbe54aea9d7ced58a149e244dee3.jpg);*/
+}
+
+.block .title_sub780
+{
+    height: 38px;
+    /*background: url(http://static.president.az/assets/layout/title_sub780-8f678b87f45ed494cb34cab8ab687017544f497c6dd31fcda47383a3be687015.jpg);*/
+}
+
+.block .title_sub980
+{
+    height: 38px;
+    /*background: url(http://static.president.az/assets/layout/title_sub980-353003ddc4a1f921097da8650ebee56542eda8a6bbc997b477b29ac0c78da12c.jpg);*/
+}
+
+    .block .title div, .block .title2 div, .block .title2_red div, .block .title3 div, .block .title_sub, .block .title_sub780 div, .block .title_sub980 div, .block .title_sub636 div
+    {
+        color: #d31717;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: left;
+        padding-left: 18px;
+        line-height: 1;
+        font-family: Georgia, serif;
+        padding-top: 10px;
+    }
+
+.rightside .block .title div
+{
+    padding-left: 10px;
+    font-size: 12px;
+}
+
+.block .title2 div, .block .title3 div, .block .title_sub div, .block .title_sub780 div, .block .title_sub980 div
+{
+    color: #444444;
+}
+
+.block .title_bot, .block .title_bot2, .block .title_bot3, .block .title_sub_bot, .block .title_sub_bot780, .block .title_sub_bot980, .block .title_sub_bot636
+{
+    height: 31px;
+    margin-bottom: 10px;
+    /*background: url(http://static.president.az/assets/layout/title1_bot-0e43fc5deed8f35983f918e782973592d214184c534449f6ccc70a70ef01789f.jpg);*/
+}
+
+.block .title_bot2
+{
+    /*background: url(http://static.president.az/assets/layout/title2_bot-4d8901eb40bc28126314375a1370de1d84cf80be12db7c8eaf4d9c51d3556038.jpg);*/
+}
+
+.block .title_bot3
+{
+    /*background: url(http://static.president.az/assets/layout/title3_bot-f0028f6843dda8bb5c5f474e05c1b88d96c1760fabf92b484c6e2e6cddef461c.jpg);*/
+}
+
+.block .title_sub_bot
+{
+    /*background: url(http://static.president.az/assets/layout/title_sub_bot-f07d0d277c3e39d67e819ad7345473d2ea8641f0c141477e01e2c32133b3b789.jpg);*/
+}
+
+.block .title_sub_bot636
+{
+    /*background: url(http://static.president.az/assets/layout/title_sub_bot636-ac6a6d32ce0640591ab2c85d483cf71af029487c652c634e008791ab14c86ee2.jpg);*/
+}
+
+.block.blue .title_sub_bot636
+{
+    /*background: url(http://static.president.az/assets/layout/title_sub_bot636_blue-f9dd1d70c97bf6e2267e79494a603db3342e5f36942d712380031e7d71f9b363.jpg);*/
+}
+
+.block .title_sub_bot780
+{
+    /*background: url(http://static.president.az/assets/layout/title_sub_bot780-3691ca9358796c5e6ea4228343e7a92d2d6688aabc4af824dcd056c89ad0821d.jpg);*/
+}
+
+.block .title_sub_bot980
+{
+    /*background: url(http://static.president.az/assets/layout/title_sub_bot980-8a6bed7c7cf6db8d1eeb1576520009c0a1a6e0c2019e67556769997885117990.jpg);*/
+}
+
+#content, #content_red, #content_sub, #content_subpage, .block-content
+{
+    padding: 0 30px 20px 15px;
+    border-radius: 0 0 5px 5px;
+    text-align: left;
+    /*background: url(http://static.president.az/assets/layout/block_title_fade-eb350d9f056b4b065807a5d7555bf28b7f8c5fd865e5033768357d055e7dff40.png) no-repeat center 0;*/
+}
+
+.block_photos_to_day .block-content, .block_videos_to_day .block-content
+{
+    padding: 0 0 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.block_photos_to_day .more_link, .block_videos_to_day .more_link
+{
+    margin-left: 18px;
+}
+
+.block_actual .block-content
+{
+    padding: 0;
+    /*background: url(http://static.president.az/assets/layout/actual_bg-1f0060f2535af4637f4edeecba146232f068d4a5ecfafcb69117d97fbda6e2b4.png) repeat-x left bottom;*/
+}
+
+.block-content .article-sharing
+{
+    float: right;
+}
+
+.list-i
+{
+    padding: 14px 0 20px;
+    border-bottom: 1px dashed #e2e2e2;
+}
+
+    .list-i a
+    {
+        line-height: 1.4;
+    }
+
+#content_subpage img
+{
+    border: 0;
+}
+
+#content img
+{
+    border: 0;
+}
+
+#content_sub
+{
+    border-top: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
+    padding-bottom: 1px;
+}
+
+#content_subpage
+{
+    border-top: none;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+    #content_subpage .dotted_line
+    {
+        margin-top: 4px;
+    }
+
+    #content_subpage .description
+    {
+        font-style: italic;
+    }
+
+#content_red
+{
+    border-top: 1px solid #AE0200;
+}
+
+    #content a, #content_red a, #content_sub a, #content_subpage a, .block-content a
+    {
+        color: #336081;
+        font-family: Georgia, serif;
+    }
+
+        .block-content a:hover, #content a:hover
+        {
+            color: #e60406;
+            text-decoration: none;
+        }
+
+#content_sub a
+{
+    font-family: "Palatino Linotype";
+    font-size: 14px;
+}
+
+    #content_sub a:hover
+    {
+        color: #d31717;
+    }
+
+#bold_link
+{
+    color: #336081;
+    font-weight: bold;
+}
+
+#datetime, .datetime
+{
+    color: #939393;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 11px;
+    margin-bottom: 3px;
+}
+
+td.date
+{
+    font-style: oblique;
+}
+
+    td.date div
+    {
+        padding-top: 10px;
+    }
+
+#header
+{
+    color: #292929;
+    font-size: 22px;
+    margin-bottom: 18px;
+    font-weight: normal;
+    font-family: Georgia, serif;
+}
+
+.article_photo + #header
+{
+    margin-top: 18px;
+}
+
+.search
+{
+    width: 231px;
+    height: 88px;
+    margin-bottom: 33px;
+    margin-top: 3px;
+    padding: 10px 7px;
+    /*background: url(http://static.president.az/assets/layout/search_bg-3a3fc73ec13d92316fd53951f14def4d6b759b7f638b67e904c5934a52c1e56c.png) no-repeat;*/
+}
+
+.search-title
+{
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 0 1px #000;
+    margin-bottom: 7px;
+}
+
+.block .search div.links
+{
+    padding-left: 18px;
+}
+
+.block .search div.content
+{
+    color: #444444;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 18px;
+    padding-top: 12px;
+}
+
+div.radio_buttons
+{
+    font-weight: normal;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.search_inp
+{
+    color: #444444;
+    border: 0;
+    width: 206px;
+    height: 27px;
+    margin-bottom: 10px;
+    padding-right: 22px;
+    padding-left: 3px;
+    /*background: url(http://static.president.az/assets/layout/search_input-febe41d1fb91d8c2c49dd428b5d9c8dbd8ae4013caf782bb45300fe4d2f04c53.png) no-repeat 0 0;*/
+}
+
+.search_btn
+{
+    border: none;
+}
+
+.citat_quotes
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #AE0200;
+}
+
+ul.letters
+{
+    /*list-style-image: url(http://static.president.az/assets/layout/arrow-53249b8b94aac117b6521d750c8854d1a1ff4c0621a7c452e34db154b48e5b02.gif);*/
+    margin: 0px;
+    padding: 0px;
+    padding-left: 20px;
+}
+
+#letter
+{
+    padding-top: 6px;
+    margin-top: 6px;
+    border-top: 1px solid #DBE2E8;
+    text-align: left;
+    color: #444444;
+    font-size: 11px;
+}
+
+#hr
+{
+    width: 95%;
+    height: 1px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-top: 1px solid #DBE2E8;
+}
+
+div.list
+{
+    width: 95%;
+    border-bottom: 1px solid #DBE2E8;
+    padding: 5px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+    div.list:hover
+    {
+        background-color: #F2F7FA;
+    }
+
+#content #red_link
+{
+    margin-top: 5px;
+    padding: 5px;
+    text-align: left;
+}
+
+    #content #red_link a
+    {
+        color: #AE0202;
+        font-size: 12px;
+        margin-top: 5px;
+        text-decoration: underline;
+    }
+
+#bottom_hr
+{
+    clear: both;
+    width: 940px;
+    height: 1px;
+    margin: 30px auto 0;
+    /*background: url(http://static.president.az/assets/layout/bottom_hr-b24bc3ab2d8088b1763631acbc3f344641557a6b680cc9893cac9576bdf78e87.png) no-repeat;*/
+}
+
+#bottom_block
+{
+    width: 940px;
+    margin: 0 auto;
+    clear: both;
+    padding: 14px 20px 5px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.bot_menu
+{
+    float: left;
+    width: 140px;
+    margin-right: 12px;
+    line-height: 1.7;
+    font-family: Georgia, serif;
+    font-size: 11px;
+}
+
+    .bot_menu a
+    {
+        color: #898989;
+    }
+
+.bot-menu-i
+{
+    padding-left: 8px;
+    /*background: url(http://static.president.az/assets/layout/bot-menu-i-58737b0768fa32e74c6267172079ebe20d306060c5b7f2dced2edc20d6d82565.png) no-repeat 0 7px;*/
+    margin-bottom: 4px;
+}
+
+.bot_menu a:hover
+{
+    color: #187fc9;
+}
+
+.bot-menu-title-container
+{
+    margin-bottom: 10px;
+}
+
+a.bot_menu_title
+{
+    color: #187fc9;
+    text-transform: uppercase;
+}
+
+#bot_hr
+{
+    clear: both;
+    width: 960px;
+    height: 1px;
+    margin-left: 20px;
+    margin-top: 0px;
+    border-top: 1px solid #AF0100;
+}
+
+#last_div
+{
+    font-size: 14px;
+    padding-top: 15px;
+}
+
+    #last_div a
+    {
+        color: #053F6F;
+    }
+
+#sub_title
+{
+    color: #d31717;
+}
+
+#content #read_more
+{
+    color: #AE0202;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+#content_sub div.link
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#content_sub .selected
+{
+    background-color: #eef2f5;
+}
+
+.block .menu_sub_title, .block .menu_sub_bot
+{
+    height: 14px;
+}
+
+.block .menu_sub_title
+{
+    /*background: url(http://static.president.az/assets/layout/inner_title_1-dc52e7cefe9bab647e6b970017ddb12e95619b39aa8767837f9bdc042add6507.jpg);*/
+}
+
+.block .menu_sub_bot
+{
+    /*background: url(http://static.president.az/assets/layout/inner_title_1_bot-f25fde7894d2a2fed5b981341b0485f4c7cbc45a32ec35a49db7c54ac089f238.jpg);*/
+}
+
+.dotted_line
+{
+    text-align: left;
+    height: 1px;
+    border: 0px none;
+    border-top: 1px dashed #D5D5D5;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#gerb img
+{
+    border: 0;
+}
+
+img.brdr
+{
+    padding-right: 5px;
+}
+
+div.article_item
+{
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #e5e5e5;
+    margin-bottom: 15px;
+}
+
+.article_item .datetime
+{
+    margin-bottom: 3px;
+}
+
+.article_item .rightside
+{
+    padding-left: 10px;
+}
+
+div.article_desc
+{
+    padding-bottom: 7px;
+}
+
+div.article_item img.article_photo, .article_photo
+{
+    padding: 4px;
+    border: 1px solid #e5ebf0;
+    background-color: #f4f7f9;
+}
+
+.article_photo__pages
+{
+    float: left;
+    margin-right: 25px;
+}
+
+.article_item .more_link
+{
+    color: #bd192c !important;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 0;
+    padding-right: 0;
+    background-image: none;
+    font-family: "Times New Roman", serif;
+}
+
+a.more_link
+{
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 11px;
+    font-style: italic;
+    padding-right: 20px;
+    /*background: url(http://static.president.az/assets/layout/icons/more_link-32dcf643ed6443433445b6e8ec26121a8b8a6960201798ef7b6d120c3b9f58b8.png) no-repeat right center;*/
+}
+
+#breadcrumb
+{
+    color: #0795d8;
+    margin-top: -5px;
+    font-weight: normal;
+    padding-bottom: 12px;
+    /*background: url(http://static.president.az/assets/layout/breadcrumb_line-4b930477f7386c44b53338ff20a0678e97cb90ee7877b41c2822a2de10783a3e.png) no-repeat left bottom;*/
+    font-style: italic;
+}
+
+    #breadcrumb a.first
+    {
+        margin-left: 0;
+        color: #df0303;
+        font-size: 25px;
+        text-transform: uppercase;
+        font-style: normal;
+    }
+
+        #breadcrumb a.first:hover
+        {
+            text-decoration: underline;
+        }
+
+    #breadcrumb a
+    {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 10px;
+        color: #0795d8;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: normal;
+        font-style: italic;
+        font-family: Georgia, serif;
+        zoom: 1;
+        *display: inline;
+    }
+
+        #breadcrumb a:hover
+        {
+            color: #d31717;
+            text-decoration: underline;
+        }
+
+table.fw
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.cycle_pager
+{
+    display: none;
+}
+
+#copyright
+{
+    padding-top: 22px;
+    padding-bottom: 30px;
+    /*background: url(http://static.president.az/assets/layout/footer_shadow-fdd39ac2cc66d46bceb05a17e4df3ccc9613e684c5d23c6b3e0aa665450f0b58.png) no-repeat center 5px;*/
+    font-family: Georgia, serif;
+    font-size: 11px;
+    text-align: center;
+    color: #919191;
+    line-height: 1.4;
+}
+
+td.stay_link
+{
+    padding-left: 7px;
+    padding-right: 7px;
+    text-align: center;
+    font-size: 11px;
+}
+
+    td.stay_link a:hover
+    {
+        text-decoration: none;
+    }
+
+.text_size
+{
+    float: right;
+}
+
+.red_btn
+{
+    /*background: url(http://static.president.az/assets/layout/btn_bg-2c46722911d651fe8da464973afb2a2cdf0eab6b1b2b1233ecec02071d06190d.jpg) no-repeat center center;*/
+    width: 72px;
+    height: 23px;
+    color: white;
+    border: 0px;
+}
+
+a
+{
+    outline: none;
+}
+
+    a img
+    {
+        border: none;
+    }
+
+img
+{
+    max-width: 100%;
+}
+
+input.solid_border
+{
+    border: 1px solid gray;
+}
+
+input.subscribe
+{
+    width: 155px;
+    height: 20px;
+}
+
+    input.subscribe.focus
+    {
+        color: gray;
+        font-style: oblique;
+        text-indent: 3px;
+    }
+
+.send-letter
+{
+    display: block;
+    overflow: hidden;
+    width: 246px;
+    height: 54px;
+    text-indent: -999px;
+    background: no-repeat 0 0;
+    margin-bottom: 30px;
+}
+
+table.other_galleries
+{
+    padding-top: 5px;
+    border-spacing: 5px;
+}
+
+    table.other_galleries th.separ
+    {
+        border-top: 1px solid #282828;
+        padding-left: 10px;
+    }
+
+    table.other_galleries a
+    {
+        color: #333333 !important;
+        font-family: "Palatino Linotype" !important;
+        font-size: 11px !important;
+    }
+
+        table.other_galleries a:hover
+        {
+            text-decoration: none;
+        }
+
+    table.other_galleries td
+    {
+        padding: 10px;
+        height: 150px;
+        width: 200px;
+    }
+
+        table.other_galleries td:hover
+        {
+            background-color: #dddddd;
+        }
+
+        table.other_galleries td.other_item
+        {
+            border: 1px solid #eeeeee;
+            text-align: center;
+        }
+
+            table.other_galleries td.other_item.bigger a
+            {
+                font-size: 120% !important;
+                font-weight: bold;
+            }
+
+div.pagination a, div.pagination span
+{
+    padding: 1px 3px;
+    font-family: "Times New Roman", serif !important;
+    text-shadow: 0 -1px #fff;
+}
+
+.pagination img
+{
+    vertical-align: middle;
+}
+
+.pagination span.current
+{
+    cursor: default;
+    color: #cc2b00;
+}
+
+div.pagination a:hover
+{
+    text-decoration: none;
+}
+
+div.pagination
+{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #336081;
+    cursor: default;
+}
+
+div.quote_block
+{
+    float: right;
+    margin: 10px;
+    width: 204px;
+}
+
+div.quote_border
+{
+    background-color: #dae1e7;
+    padding: 4px;
+}
+
+div.quote_block .content
+{
+    background-color: #f7f8fa;
+    font-weight: bold;
+    padding: 20px;
+    text-align: left !important;
+}
+
+div.quote_block .bottom
+{
+    /*background: url(http://static.president.az/assets/layout/bottom_quot-fe4a12a43c3d3c27a02eb4caef8bc7f25b2e8f554745c6a12c16fc22030a1cc0.jpg) no-repeat 165px bottom;*/
+    width: 100%;
+    height: 10px;
+}
+
+div.quote_block .redquote
+{
+    color: darkred;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.leftsubmenu
+{
+    width: 100px;
+    margin-top: 0pt;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+    .leftsubmenu .link a
+    {
+        font-size: 12px !important;
+        color: black !important;
+    }
+
+img.page_photo
+{
+    margin-top: 15px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    padding: 4px;
+    border: 1px solid #e5ebf0;
+    background-color: #f4f7f9;
+    float: left;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.center
+{
+    text-align: center !important;
+}
+
+div.ui-accordion-content
+{
+    overflow: hidden !important;
+}
+
+div.acc_header
+{
+    padding: 10px 18px 14px;
+    outline: medium none;
+    text-align: left !important;
+    font-size: 12px;
+}
+
+.acc-img
+{
+    height: 140px;
+    text-align: center !important;
+}
+
+    .acc-img img
+    {
+        width: 330px;
+    }
+
+div.acc.hover a:hover
+{
+    text-decoration: none !important;
+}
+
+div.acc.hover a
+{
+    color: white !important;
+}
+
+div.acc.hover
+{
+    background-color: #04426f;
+}
+
+    div.acc.hover .acc_header
+    {
+        text-shadow: 0 1px #000;
+        min-height: 45px;
+        /*background: url(http://static.president.az/assets/layout/accordione_current-217b9dbe7f8b2a4b1bf623f6db0801c31bb04033822adb95f3b2dd4df538fc6a.png) repeat-x 0 0;*/
+    }
+
+div.acc
+{
+    height: auto;
+}
+
+.acc + .acc
+{
+    border-top: 1px dashed #e2e2e2;
+}
+
+.acc:last-child
+{
+    border-bottom: 1px dashed #e2e2e2;
+}
+
+.acc.hover:last-child
+{
+    border-bottom: 0;
+}
+
+.acc.hover + .acc, .acc + .acc.hover
+{
+    border-top: 0;
+}
+
+.divtable3 div.acc img
+{
+    width: 274px;
+}
+
+td.grid_cell img
+{
+    border: 2px solid #eeeeee !important;
+}
+
+td.grid_cell
+{
+    padding: 5px;
+}
+
+#page_wrapper
+{
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.4;
+}
+
+    #page_wrapper p
+    {
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    #page_wrapper a
+    {
+        color: #326082;
+        text-decoration: underline;
+    }
+
+        #page_wrapper a:hover
+        {
+            color: #e60406;
+            text-decoration: none;
+        }
+
+    #page_wrapper img.article_photo
+    {
+        float: left;
+        margin-right: 20px;
+    }
+
+    #page_wrapper ul
+    {
+        margin-top: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+        #page_wrapper ul li
+        {
+            margin-bottom: 12px;
+            padding-left: 40px;
+            /*background: url(http://static.president.az/layout/content_li.png) no-repeat 20px 10px;*/
+        }
+
+    #page_wrapper blockquote.right
+    {
+        margin-left: 20px;
+        float: right;
+    }
+
+    #page_wrapper blockquote
+    {
+        float: left;
+        width: 220px;
+        margin: 15px 20px 15px 0;
+        padding-left: 10px;
+        font-size: 19px;
+        color: #8a8a8a;
+    }
+
+        #page_wrapper blockquote:before, #page_wrapper blockquote:after
+        {
+            position: absolute;
+            font-size: 54px;
+            line-height: 54px;
+            margin-top: -17px;
+            color: #d2d2d2;
+        }
+
+        #page_wrapper blockquote:before
+        {
+            content: '';
+            margin-left: -25px;
+        }
+
+        #page_wrapper blockquote:after
+        {
+            content: '';
+            margin-left: 3px;
+            margin-top: -23px;
+        }
+
+    #page_wrapper table
+    {
+        border: 1px solid navy !important;
+        border-collapse: collapse !important;
+        border-spacing: 0;
+    }
+
+        #page_wrapper table td, #page_wrapper table th
+        {
+            padding: 5px;
+            border: 1px dotted navy !important;
+        }
+
+table.data td input, table.data td textarea, table.data td select
+{
+    width: 350px;
+    height: 22px;
+    font-size: 12px;
+    padding: 2px;
+    padding-left: 4px;
+    border: 1px solid gray;
+}
+
+table.data td select
+{
+    width: 358px;
+    height: 28px;
+}
+
+table.data td textarea
+{
+    width: 500px;
+    height: 200px;
+}
+
+table.data strong
+{
+    display: inline-block;
+    vertical-align: top;
+    color: red;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+table.data td input.submit
+{
+    width: auto !important;
+}
+
+a.light
+{
+    color: lightgray !important;
+    text-decoration: underline;
+}
+
+#gmiw
+{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 450px;
+    padding: 5px;
+}
+
+    #gmiw h1
+    {
+        font-size: 18px;
+        font-weight: normal;
+        padding: 0px;
+        padding-bottom: 20px;
+        line-height: 12px;
+        margin: 0px;
+    }
+
+#map span, #map .terms-of-use-link, #logocontrol
+{
+    #display:none;
+}
+
+span.see_also_zone
+{
+    padding: 0 !important;
+}
+
+input.arc_btn
+{
+    border: 1px solid orange;
+    background-color: #faae3f;
+    color: white;
+    font-weight: bold;
+}
+
+div.doubleblock
+{
+    width: 690px;
+}
+
+.doubleblock .block-container
+{
+    padding-bottom: 12px;
+    /*background-image: url(http://static.president.az/assets/layout/block_bottom_shadow_wide_col-4c8b4a7a752c31030fa18c4fa3219f0cf631273e088d0e396a09a3c0e59b06df.png);*/
+}
+
+.actualBlock
+{
+    width: 690px;
+    height: 183px;
+    padding-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.actual-list
+{
+    overflow: hidden;
+    height: 135px;
+}
+
+.actual-i
+{
+    width: 135px;
+    padding-left: 19px;
+    padding-right: 19px;
+    float: left;
+    margin-bottom: 5px;
+}
+
+    .actual-i + .actual-i
+    {
+        /*background: url(http://static.president.az/assets/layout/actual-i-separator-106e4edd5d51f90c317959c9a5fe50b641d7de06edcee113d31150ab2d12032c.png) no-repeat left center;*/
+    }
+
+.actual-i-link
+{
+    display: block;
+}
+
+.actual-i-header
+{
+    color: #336081;
+    font-family: Georgia, serif;
+    font-size: 12px;
+}
+
+.actual-i-link:hover .actual-i-header
+{
+    color: #e60406;
+}
+
+.actual-i-img
+{
+    margin-bottom: 10px;
+}
+
+    .actual-i-img img
+    {
+        width: 125px;
+        height: 80px;
+    }
+
+.actual-prev, .actual-next
+{
+    position: absolute;
+    z-index: 5;
+    top: 50px;
+    display: block;
+    width: 10px;
+    height: 35px;
+    cursor: pointer;
+    background: no-repeat 0 0;
+}
+
+.actual-prev
+{
+    left: 1px;
+    /*background-image: url(http://static.president.az/assets/layout/actual_control_left-cd9981494dc5823dec1f2157a80027df3e28bbe248d1130daf0678aa78955975.png);*/
+}
+
+.actual-next
+{
+    right: 2px;
+    /*background-image: url(http://static.president.az/assets/layout/actual_control_right-8e97e5f3a0d5a50c095dcd0959db1e6f1a5110021fdf1cbeb6d91fa7eac0e78a.png);*/
+}
+
+div.actualBlock .btn
+{
+    /*background: url(http://static.president.az/assets/layout/button-2f17c33b0d73805770c2f1f0009d5349ff934c97d3ff915b16e2e360e2b257a8.gif) no-repeat;*/
+    float: left;
+    text-align: center;
+    padding: 3px 8px 4px;
+    width: 76px;
+}
+
+    div.actualBlock .btn > a
+    {
+        text-decoration: none;
+        color: white !important;
+    }
+
+div.actualBlock ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+    div.actualBlock ul > li
+    {
+        list-style-type: none;
+    }
+
+.rss
+{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    vertical-align: baseline;
+    text-indent: -9999px;
+    /*background: url(http://static.president.az/assets/layout/icons/rss_small-d47a22adafcb1b49ebdb322ccc5cc46c8b24205fe7683134fdbdc98620ba8a2e.png) no-repeat 0 0;*/
+}
+
+div.potd_desc
+{
+    padding-top: 8px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+.potd-link a
+{
+    font-style: italic;
+    font-size: 11px;
+}
+
+table.weather
+{
+    border: 1px solid black;
+    width: 100%;
+    font-size: 0.9em;
+}
+
+    table.weather th, table.weather td
+    {
+        vertical-align: middle !important;
+        border: 1px solid black;
+    }
+
+    table.weather th
+    {
+        font-weight: bold;
+        text-align: center;
+        height: 30px;
+    }
+
+    table.weather td
+    {
+        text-align: inherit !important;
+    }
+
+.weather .cities
+{
+    text-align: right;
+    padding-top: 4px;
+}
+
+    .weather .cities li
+    {
+        display: inline;
+    }
+
+        .weather .cities li a
+        {
+            padding: 6px;
+            font-size: 12px;
+            line-height: 26px;
+        }
+
+            .weather .cities li a.selected
+            {
+                border: 1px solid #dbdbdb;
+                border-bottom: 1px solid #fff;
+            }
+
+.weather ul
+{
+    border-bottom: 1px solid #dbdbdb;
+    margin-bottom: 8px;
+}
+
+.sub-page-item
+{
+    float: left;
+    padding: 6px;
+}
+
+    .sub-page-item img
+    {
+        border: 1px solid gray !important;
+        padding: 1px;
+    }
+
+    .sub-page-item a:hover
+    {
+        text-decoration: none !important;
+    }
+
+.bookmark
+{
+    list-style: none outside none;
+    padding: 0px;
+    float: left;
+    margin-top: 80px;
+}
+
+    .bookmark li
+    {
+        margin-bottom: 10px;
+    }
+
+        .bookmark li a
+        {
+            background-position: left center;
+            background-repeat: no-repeat;
+            padding: 0 16px 0px 22px;
+            color: lightgray !important;
+        }
+
+.blue .addthis_toolbox a
+{
+    background-position: left center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    *display: inline;
+    margin-right: 7px;
+}
+
+.photo_bookmarks.inverted, .photo_bookmarks.blue
+{
+    margin: 0;
+    padding: 0;
+}
+
+    .photo_bookmarks.inverted li a
+    {
+        background-position: left center;
+        background-repeat: no-repeat;
+        padding-bottom: 7px;
+    }
+
+li.delicious a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/delicious-e97f6dcee393e0b4c1d8853fea0c310249d1562c53cb7bc58db7560f26f958f1.gif);*/
+}
+
+li.digg a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/digg-a610326f90e9946ee0bb0fb13e7206319fe76b27f0dc6b07e9e2513921f98b3c.gif);*/
+}
+
+li.reddit a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/reddit-f6417ae31a2a8844218afbefd81bd31be86923d104549ab23005604aa2404421.gif);*/
+}
+
+li.facebook a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/facebook-5d303a75b5f4cf4da14218f06e08c0d15e82087db81e4569127442d5ca9f0ead.gif);*/
+}
+
+li.twitter a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/twitter-4bff67bd91c536b8d1ba6440ec34a43cb0319e51e3f9f944c2e3c9eb3985ed0b.gif);*/
+}
+
+li.myspace a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/myspace-a39747e0287a1d02bd411042646357b51b256a80ed37709cc48c068ec54b368a.gif);*/
+}
+
+li.google a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/google-38249d1ed98935854b0685fd338f3e26d1d8dcc4cdf7a5c20381cab6af5cde94.gif);*/
+}
+
+li.direct a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/direct-ce7aa97478824c7cfac303e72e3aa2118b5a38553877ce2a6681c4553d8ce9db.gif);*/
+}
+
+li.blog a
+{
+    /*background-image: url(http://static.president.az/assets/layout/bookmarks/blog-82bc01ed0db4efcb3e80ed58d7188e34ad16dda8af391411f4decac09183dd72.gif);*/
+}
+
+table.zebra tr.zebra-odd
+{
+    background-color: #EEF2F5;
+}
+
+table.currency
+{
+    border-collapse: collapse;
+    border: 0px;
+    width: 300px;
+}
+
+    table.currency thead th
+    {
+        text-align: center;
+        border-bottom: 2px solid black;
+    }
+
+    table.currency td
+    {
+        text-align: center;
+        height: 20px;
+    }
+
+.photo_bookmarks
+{
+    padding: 0px;
+    padding-right: 5px;
+    padding-left: 10px;
+    list-style: none outside none;
+    height: 20px;
+}
+
+    .photo_bookmarks li
+    {
+        float: left;
+    }
+
+.hidden
+{
+    display: none;
+}
+
+textarea.video_blog_copy
+{
+    background-color: black;
+    color: white;
+    width: 95%;
+    height: 150px;
+}
+
+#foreign_banner
+{
+    #margin-left:20px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.addthis_toolbox.addthis_default_style span
+{
+    padding: 0 2px;
+}
+
+.connections
+{
+    margin: 0;
+    margin-left: -40px;
+    padding: 0;
+    padding-left: 20px;
+    overflow: hidden;
+    list-style: none;
+}
+
+.connection
+{
+    margin: 0 0 14px;
+    padding: 0;
+    width: 50px;
+    float: left;
+}
+
+.connection-link
+{
+    display: block;
+    height: 30px;
+    width: 44px;
+    padding-top: 2px;
+    padding-left: 36px;
+    background-repeat: no-repeat;
+    background-position: 25px 0;
+}
+
+.other-news
+{
+    margin-top: 30px;
+    border-top: 1px dashed #e0e0e0;
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+.other-news-i
+{
+    float: left;
+    width: 38%;
+}
+
+    .other-news-i .datetime
+    {
+        margin-bottom: 2px;
+    }
+
+.other-news-prev
+{
+    text-align: left;
+    padding-right: 12%;
+}
+
+.other-news-next
+{
+    text-align: right;
+    padding-left: 12%;
+}
+
+.other-news-i-title
+{
+    display: block;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.other-news-i-more
+{
+    color: #bd192c !important;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.flexbox
+{
+    width: 980px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -o-box;
+    display: box;
+}
+
+.flexbox-child
+{
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+}
+
+.menu_parent .flexbox .flexbox-child
+{
+    display: block;
+}
+
+.banner
+{
+    padding-bottom: 10px;
+}
+
+.sf-menu, .sf-menu *
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sf-menu
+{
+    line-height: 1.0;
+    white-space: nowrap;
+    font-size: 0;
+    background-color: #0a5686;
+    background-image: -webkit-linear-gradient(top, #0f689b, #04426f);
+    background-image: -moz-linear-gradient(top, #0f689b, #04426f);
+    background-image: -ms-linear-gradient(top, #0f689b, #04426f);
+    background-image: -o-linear-gradient(top, #0f689b, #04426f);
+    background-image: linear-gradient(top, #0f689b, #04426f);
+    border-radius: 5px 5px 0 0;
+}
+
+    .sf-menu ul
+    {
+        position: absolute;
+        top: -999em;
+        width: 13em;
+    }
+
+        .sf-menu ul li
+        {
+            width: 100%;
+            text-align: left;
+        }
+
+    .sf-menu li:hover
+    {
+        visibility: inherit;
+    }
+
+    .sf-menu a
+    {
+        display: block;
+        position: relative;
+        font-size: 12px;
+    }
+
+    .sf-menu .menu-i
+    {
+        display: inline-block;
+        position: relative;
+        padding: 2px 2px 2px 3px;
+        font-size: 13px;
+        /*background: url(http://static.president.az/assets/layout/menu_br-4ddb81cad408e9c83fb2700b27cc0544d0d4215ac448d80e78b288ba6211aaae.png) no-repeat 0 center;*/
+        zoom: 1;
+        *display: inline;
+    }
+
+        .sf-menu .menu-i:first-child
+        {
+            background-image: none;
+        }
+
+        .sf-menu .menu-i:hover .menu-i-link
+        {
+            background: #fff ;
+            border-radius: 3px;
+            color: #0a5a8b;
+            text-shadow: 0 -1px #fff;
+        }
+
+    .sf-menu li:hover ul, .sf-menu li.sfHover ul
+    {
+        left: 3px;
+        top: 38px;
+        z-index: 99;
+    }
+
+ul.sf-menu li:hover li ul, ul.sf-menu li.sfHover li ul
+{
+    top: -999em;
+}
+
+ul.sf-menu li li:hover ul, ul.sf-menu li li.sfHover ul
+{
+    left: 13em;
+    top: 0;
+}
+
+ul.sf-menu li li:hover li ul, ul.sf-menu li li.sfHover li ul
+{
+    top: -999em;
+}
+
+ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul
+{
+    left: 13em;
+    top: 0;
+}
+
+.sf-menu:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+* html .sf-menu
+{
+    height: 1%;
+}
+
+.sf-menu
+{
+    zoom: 1;
+}
+
+    .sf-menu .menu-i-link
+    {
+        display: inline-block;
+        padding: 0 10px 0 10px;
+        height: 34px;
+        line-height: 34px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: Georgia, serif;
+        font-size: 11px;
+        font-weight: normal;
+        color: #f6fafb;
+        text-shadow: 0 1px #000;
+        text-align: center;
+    }
+
+    .sf-menu .submenu
+    {
+        
+        background-color: #FFF;
+        background-color: rgba(255,255,255,0.8);
+        *background-color: #FFF;
+        border: 2px solid #ebebeb;
+        border-color:#102937;
+        border-radius: 3px;
+        font-family: Georgia, serif;
+        font-size: 12px;
+        width: 450px;
+    }
+
+        ..sf-menu .submenu a, .sf-menu .submenu a:visited
+        {
+            display: block;
+            padding: 9px 15px;
+            border-bottom: 1px dashed #ebebeb;
+            color: #2c719b;
+            text-shadow: 0 1px #fff;
+        }
+
+        .sf-menu .submenu a:hover
+        {
+            color: #b9191b;
+            background-color: #f6f6f6;
+        }
+
+    .sf-menu .submenu-i:last-child a
+    {
+        border-bottom: 0;
+    }
+
+.menu-last > div.last
+{
+    background-color: transparent !important;
+    padding: 0.75em 0.54em 0.75em 1.45em;
+    /*background: url(http://static.president.az/assets/layout/menu_br-60ad943edd9cc0284a8e3f1bdb00a5d5d83a080752d39c02cfebc88fb7ee491b.jpg) no-repeat 0px -1px;*/
+}
+
+.menu-last:hover
+{
+    background-color: transparent !important;
+}
+
+.sf-menu a, .sf-menu a:visited
+{
+    color: white;
+}
+
+.sf-menu li li li
+{
+    background: #9AAEDB;
+}
+
+.sf-menu a.sf-with-ul
+{
+    min-width: 1px;
+}
+
+.sf-sub-indicator
+{
+    position: absolute;
+    display: block;
+    right: .75em;
+    top: 1.05em;
+    width: 10px;
+    height: 10px;
+    text-indent: -999em;
+    overflow: hidden;
+}
+
+.sf-menu ul .sf-sub-indicator
+{
+    background-position: -10px 0;
+}
+
+.sf-menu ul a > .sf-sub-indicator
+{
+    background-position: 0 0;
+}
+
+.sf-menu ul a:focus > .sf-sub-indicator, .sf-menu ul a:hover > .sf-sub-indicator, .sf-menu ul a:active > .sf-sub-indicator, .sf-menu ul li:hover > a > .sf-sub-indicator, .sf-menu ul li.sfHover > a > .sf-sub-indicator
+{
+    background-position: -10px 0;
+}
+
+.sf-shadow ul
+{
+    /*background: url(http://static.president.az/assets/layout/shadow-d3c47ba421ef894dcbd8fad83f29e4a6061281d52a63ffdba377810fcbcbf0cc.png) no-repeat bottom right;*/
+    padding: 0 8px 9px 0;
+    -moz-border-radius-bottomleft: 17px;
+    -moz-border-radius-topright: 17px;
+    -webkit-border-top-right-radius: 17px;
+    -webkit-border-bottom-left-radius: 17px;
+}
+
+    .sf-shadow ul.sf-shadow-off
+    {
+        background: transparent;
+    }
+
+.dd
+{
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    float: left;
+}
+
+    .dd .ddTitle
+    {
+        width: 220px;
+        height: 21px;
+        line-height: 21px;
+        padding: 3px 3px 3px 8px;
+        text-indent: 0;
+        cursor: default;
+        overflow: hidden;
+        /*background: url(http://static.president.az/assets/layout/search_where_bg-5bd1900f80cb899a827ef3f031a99fd14307f429226e4c7af77899c4aba93e88.png);*/
+        font-family: 'Times New Roman', serif;
+        font-size: 13px;
+        color: #818181;
+        text-shadow: 0 1px #fff;
+    }
+
+        .dd .ddTitle span.arrow
+        {
+            /*background: url(http://static.president.az/assets/layout/search_where_arrow-afe8bb4b8b0e49becabeda2e32f846f327b5735bd07fc25ff1421560deac86ae.png) no-repeat center center !important;*/
+            float: right;
+            display: inline-block;
+            width: 21px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .dd .ddTitle span.textTitle
+        {
+            text-indent: 1px;
+            overflow: hidden;
+            line-height: 21px;
+        }
+
+            .dd .ddTitle span.textTitle img
+            {
+                text-align: left;
+                padding: 0 2px 0 0;
+            }
+
+        .dd .ddTitle img.selected
+        {
+            padding: 0 3px 0 0;
+            vertical-align: top;
+        }
+
+    .dd .ddChild
+    {
+        position: absolute;
+        border: 1px solid #c3c3c3;
+        border-top: none;
+        display: none;
+        margin: 0;
+        width: auto;
+        overflow: scroll;
+        overflow-x: hidden !important;
+        background-color: #ffffff !important;
+        padding: 0 !important;
+    }
+
+        .dd .ddChild .opta a, .dd .ddChild .opta a:visited
+        {
+            padding-left: 10px;
+        }
+
+        .dd .ddChild a
+        {
+            display: block;
+            padding: 3px 0 3px 3px;
+            text-decoration: none;
+            color: #000;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+            .dd .ddChild a:hover
+            {
+                background: #66CCFF;
+            }
+
+            .dd .ddChild a img
+            {
+                border: 0;
+                padding: 0 2px 0 0;
+                vertical-align: middle;
+            }
+
+            .dd .ddChild a.selected
+            {
+                background: #66CCFF;
+            }
+
+.hidden
+{
+    display: none;
+}
+
+.a-letter-intro .highlight
+{
+    color: #9B2D30;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.a-letter-intro p, .a-letter-intro li
+{
+    text-align: justify !important;
+    padding-bottom: 10px;
+}
+
+.a-letter-intro address
+{
+    padding-top: 15px;
+    font-style: oblique;
+    color: blue;
+}
+
+form.a-letter textarea, form.a-letter select
+{
+    border: 1px solid gray;
+    width: 100%;
+}
+
+form.a-letter input[type=text]
+{
+    border: 1px solid gray;
+    width: 100%;
+}
+
+form.a-letter label.required
+{
+    /*background: url(http://static.president.az/assets/icons/asterisk-8a072225888c851c63c6ae4358b11e1fadf6baeead33f81cae1c8b454d3bdb18.gif) no-repeat right center;*/
+    padding-right: 15px;
+}
+
+form.a-letter input.c
+{
+    width: 50px !important;
+    text-align: center;
+}
+
+form.a-letter input.cplus
+{
+    width: 93px !important;
+    text-align: center;
+    font-size: 18px;
+}
+
+form.a-letter input[type=radio]
+{
+    vertical-align: bottom;
+}
+
+form.a-letter label.radio
+{
+    font-weight: lighter;
+}
+
+form.a-letter input.error
+{
+    border: 1px dashed red;
+}
+
+form.a-letter .error
+{
+    background-color: #FBDADA !important;
+}
+
+table.a-letter td
+{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-weight: bold;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+table.a-letter tr.indent td
+{
+    padding-left: 30px !important;
+}
+
+#russian_alert
+{
+    display: none;
+    font-weight: bold;
+    color: red;
+    padding-left: 20px;
+}
+
+.a-letter-intro ul
+{
+    padding-top: 6px;
+}
+
+    .a-letter-intro ul > li
+    {
+        padding-bottom: 6px;
+    }
+
+span.tooltip span.tipcontent
+{
+    display: none;
+}
+
+#NT_copy
+{
+    background-color: #285e80;
+    color: #FFFFFF;
+    font-size: 15px;
+    width: 400px;
+    left: 0;
+    top: 0;
+    padding: 4px;
+    position: absolute;
+    text-align: left;
+    z-index: 20;
+    -moz-border-radius: 0 10px 10px 10px;
+    -moz-opacity: .87;
+    -khtml-opacity: .87;
+    opacity: .87;
+}
+
+div.doc div.icon
+{
+    /*background-image: url(http://static.president.az/assets/icons/word-document-3c270b2f35c5ddf2ce934572b92f830c6cf7fbaf23df268a6add1cbae6603bc7.jpg);*/
+    background-repeat: no-repeat;
+    display: inline;
+    float: left;
+    width: 30px;
+    height: 50px;
+    padding-right: 15px;
+}
+
+div.doc
+{
+    display: table-header-group;
+    height: 30px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+    div.doc a
+    {
+        line-height: 30px;
+    }
+
+td.person_count
+{
+    display: none;
+}
+
+span.red
+{
+    color: red;
+}
+
+#letters_links
+{
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+    #letters_links td.left_links, #letters_links td.right_links
+    {
+        width: 50%;
+        padding-left: 10px !important;
+    }
+
+    #letters_links h3.a_caption
+    {
+        /*background: url(http://static.president.az/assets/layout/letters/links_header_cap-82de26939dd848405e9fa68ec399d9585e4d50a29ca8d8b79e68b12528019818.jpg) no-repeat top left;*/
+        line-height: 39px;
+        font-size: 100%;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+        #letters_links h3.a_caption.with_arrow a
+        {
+            /*background: url(http://static.president.az/assets/layout/letters/arr_right-6c183b3933d2a94dc846ce79ac465aecc6f54333aae934086a9b003bf7fed47e.png) no-repeat left center;*/
+            padding-left: 10px;
+        }
+
+            #letters_links h3.a_caption.with_arrow a.opened
+            {
+                /*background-image: url(http://static.president.az/assets/layout/letters/arr_down-4e7113dae40783898ecca42aea2b5facb6f32582dea2d0d895542003c541f80d.png);*/
+            }
+
+#links_accordion
+{
+    width: 100%;
+}
+
+    #links_accordion h3
+    {
+        padding-left: 27px;
+        line-height: 30px;
+        margin-bottom: 4px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #links_accordion div > ol
+    {
+        padding: 0px;
+        margin: 0px;
+    }
+
+        #links_accordion div > ol > li
+        {
+            font-size: small;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #316386;
+            margin-bottom: 5px;
+        }
+
+        #links_accordion div > ol a
+        {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+#rlinks
+{
+    display: none;
+    padding-bottom: 10px;
+}
+
+#search_line
+{
+    text-align: center;
+}
+
+    #search_line img
+    {
+        width: 17px;
+        height: 17px;
+        padding-top: 3px;
+        cursor: pointer;
+    }
+
+#searchbar
+{
+    width: 60%;
+    border: 1px solid navy;
+}
+
+h2.header
+{
+    text-align: center;
+    color: #AD0100;
+    margin: 0px;
+}
+
+#description
+{
+    text-align: center;
+}
+
+    #description .asterisk
+    {
+        color: #AD0100;
+    }
+
+#map_launcher
+{
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.zoomimage
+{
+    position: absolute;
+    display: none;
+    z-index: 5000;
+    outline: none;
+    /*cursor: url(http://static.president.az/assets/zoomimage/zoomout-110a21ee3616bfa86b492bb237eeb946ee4a643d7bb77a7fd2b131311f5ccf72.cur),default;*/
+}
+
+a.lightsGal
+{
+    /*cursor: url(http://static.president.az/assets/zoomimage/zoomin-1318ef5f4f0e2f32fb2fd399260c54b5f15c6d9d909a3e224fab4bb7760a0cff.cur),default;*/
+    height: 100%;
+}
+
+.zoomimage_focused
+{
+    z-index: 51000;
+}
+
+.zoomimage_s
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.zoomimage_st
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    overflow: hidden;
+}
+
+.zoomimage_stl
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    overflow: hidden;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-5fd64abe533b57dfb998f1cada792f8d30087179c65a7781f8f5fb923103c1bd.png) no-repeat scroll 0 0;*/
+}
+
+.zoomimage_stc
+{
+    overflow: hidden;
+    height: 6px;
+    margin: 0 6px;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-5fd64abe533b57dfb998f1cada792f8d30087179c65a7781f8f5fb923103c1bd.png) repeat-x scroll 0 -30px;*/
+}
+
+.zoomimage_str
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    overflow: hidden;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-5fd64abe533b57dfb998f1cada792f8d30087179c65a7781f8f5fb923103c1bd.png) no-repeat scroll 0 -18px;*/
+}
+
+.zoomimage_sc
+{
+    position: absolute;
+    top: 6px;
+    width: 100%;
+    left: 0;
+    overflow: hidden;
+}
+
+.zoomimage_scl
+{
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 6px;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-lr-b505740166ed0f6e989b89ef4b93ccf2e40054f639f7d5b942a970dd705f3487.png) repeat-y scroll 0pt;*/
+}
+
+.zoomimage_scr
+{
+    position: absolute;
+    overflow: hidden;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-lr-b505740166ed0f6e989b89ef4b93ccf2e40054f639f7d5b942a970dd705f3487.png) repeat-y scroll -6px 0pt;*/
+}
+
+.zoomimage_scc
+{
+    margin: 0 6px;
+    height: 100%;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-c-0952d6adcec034c07fdcc010f214afce230f7c1f3d26272b02420c90f759f41c.png);*/
+    overflow: hidden;
+}
+
+.zoomimage_sb
+{
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+}
+
+.zoomimage_sbl
+{
+    position: absolute;
+    overflow: hidden;
+    width: 6px;
+    height: 6px;
+    left: 0;
+    top: 0;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-5fd64abe533b57dfb998f1cada792f8d30087179c65a7781f8f5fb923103c1bd.png) no-repeat scroll 0pt -12px;*/
+}
+
+.zoomimage_sbc
+{
+    height: 6px;
+    overflow: hidden;
+    margin: 0 6px;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-5fd64abe533b57dfb998f1cada792f8d30087179c65a7781f8f5fb923103c1bd.png) repeat-x scroll 0pt -36px;*/
+}
+
+.zoomimage_sbr
+{
+    position: absolute;
+    overflow: hidden;
+    width: 6px;
+    height: 6px;
+    right: 0;
+    top: 0;
+    /*background: transparent url(http://static.president.az/assets/zoomimage/shadow-5fd64abe533b57dfb998f1cada792f8d30087179c65a7781f8f5fb923103c1bd.png) no-repeat scroll 0pt -6px;*/
+}
+
+.zoomimage img
+{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    display: none;
+    border: 20px solid #000;
+}
+
+.zoomimage_caption
+{
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    width: 100%;
+}
+
+    .zoomimage_caption p
+    {
+        padding: 10px;
+        margin: 0;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+.zoomimage_loading
+{
+    /*background-image: url(http://static.president.az/assets/zoomimage/ajax_small-eccfb6b431f97d1ba9d1ab69242fe0b30c183bd2c2c787d320e514a780729dc8.gif);*/
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.zoomimage_move
+{
+    cursor: move;
+}
+
+.zoomimage_controls
+{
+    position: absolute;
+    background: #fff;
+    height: 30px;
+    overflow: hidden;
+}
+
+.zoomimage_prev
+{
+    background: #fff; 
+    width: 39px;
+    height: 29px;
+    position: absolute;
+    bottom: 1px;
+    left: 10px;
+}
+
+.zoomimage_next
+{
+    background: #fff;
+    width: 39px;
+    height: 29px;
+    position: absolute;
+    bottom: 1px;
+    right: 10px;
+}
+
+.at15t_email
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/email-e9888168b8a81be0b93cbb8105f67a6c256ee256fde87fd8fb35f53d3ac554d4.gif) no-repeat !important;*/
+    background-position: -1px;
+}
+
+.inverted .at15t_facebook, .inverted .at15t_twitter, .inverted .at15t_myspace, .inverted .at15t_google, .inverted .at15t_email
+{
+    background: none !important;
+    padding: 0px;
+    height: 22px;
+    width: 23px;
+}
+
+.inverted .addthis_button_facebook
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/inverted/facebook-11cc4b0e9e8929ea616a04db055af87b33cace0de897d45a091deeba4700a724.png) no-repeat !important;*/
+}
+
+.inverted .addthis_button_twitter
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/inverted/twitter-f7c2d67b4c6cf4972788c96b58fd6143a48962f61847da093a3e0aacae2135da.png) no-repeat !important;*/
+}
+
+.inverted .addthis_button_myspace
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/inverted/myspace-844f285ba14a7c471f34f0230c9ca66f85fe53eff148c53bbf2805640bdf00c7.png) no-repeat !important;*/
+}
+
+.inverted .addthis_button_google
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/inverted/google-4af5123790ccf4b05f56378b7d887fbc2c40e2586bfd734cfc85640b3376200c.png) no-repeat !important;*/
+}
+
+.inverted .addthis_button_email
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/inverted/email-20592de2021efb3ad69f4a5b9ebaec8249974e9f0c8d93e7e6090cfb1213dab0.png) no-repeat !important;*/
+}
+
+.inverted a:hover
+{
+    text-decoration: none;
+}
+
+.blue .addthis_button_facebook
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/new/facebook-d6a4d4e88a8b3a9372b5ce4675ca1e19b238f8b8b6e5b9258a80ef42526b1c48.png) no-repeat !important;*/
+}
+
+.blue .addthis_button_twitter
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/new/twitter-8ddf510484ec02466438ff6f3c4fc05bd92195bded0416776f1048692b53189c.png) no-repeat !important;*/
+}
+
+.blue .addthis_button_myspace
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/new/myspace-22d1b0b88c625631b3295b7f317df5f0f5898098f94f4cd1c43ce70a051130c6.png) no-repeat !important;*/
+}
+
+.blue .addthis_button_google
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/new/google-b1f446d33ba83f90645c3ba9a53fabf7c390ef32c2247f2b6f0377fa3733807c.png) no-repeat !important;*/
+}
+
+.blue .addthis_button_email
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/new/email-845c18463fe6ed9ad11e168567b170cdff9685aaf350a8f1c229bd353cdcfe3a.png) no-repeat !important;*/
+}
+
+.blue .button_print
+{
+    /*background: url(http://static.president.az/assets/layout/bookmarks/new/print-0021364ce474339f0a6587ae008e0100e78996bc89abab7d86c54c427e98b6f6.png) no-repeat !important;*/
+}
+
+.blue a:hover
+{
+    text-decoration: none;
+}
+
+.addthis_toolbox span
+{
+    visibility: hidden;
+}
+
+.galleria
+{
+    list-style: none;
+    width: 500px;
+    margin: 0px;
+    padding: 0px;
+    height: 200px;
+    text-align: center;
+}
+
+    .galleria li
+    {
+        display: block;
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        float: left;
+        margin: 0 4px 10px 0;
+        border: 1px solid black;
+    }
+
+        .galleria li a
+        {
+            display: none;
+        }
+
+        .galleria li div
+        {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 180px;
+        }
+
+            .galleria li div img
+            {
+                cursor: pointer;
+            }
+
+        .galleria li.active div img, .galleria li.active div
+        {
+            display: block;
+        }
+
+        .galleria li img.thumb
+        {
+            cursor: pointer;
+            top: auto;
+            left: auto;
+            display: block;
+            width: auto;
+            height: auto;
+        }
+
+        .galleria li div span
+        {
+            width: 500px;
+        }
+
+.galleria_container
+{
+    text-align: center;
+}
+
+.caption
+{
+    display: block;
+    font-weight: bold;
+    line-height: 25px;
+    text-align: center;
+}
+
+#gallery
+{
+    visibility: hidden;
+    display: none;
+}
+
+.gallery
+{
+    background: #ddd;
+    border: 1px solid #aaa;
+    padding: 5px;
+}
+
+    .gallery.dark
+    {
+        border: 0;
+        background: none;
+    }
+
+.loader
+{
+    /*background: url(http://static.president.az/assets/loader-932644a8a5beb07357bd1e82220940bcc77de0feaf30c3e6145ed7d35360c561.gif) center center no-repeat;*/
+}
+
+.panel .panel-overlay, .panel .overlay-background
+{
+    height: 60px;
+    padding: 0 1em;
+}
+
+.panel .overlay-background
+{
+    background: #222;
+}
+
+.panel .panel-overlay
+{
+    color: white;
+    font-size: 0.7em;
+}
+
+    .panel .panel-overlay a
+    {
+        color: white !important;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+.filmstrip
+{
+    margin: 5px;
+}
+
+.frame .img_wrap
+{
+    border: 1px solid #000;
+}
+
+.frame.current .img_wrap
+{
+    border-color: #aaa;
+}
+
+.frame img
+{
+    border: none;
+}
+
+.frame .caption
+{
+    font-size: 11px;
+    text-align: center;
+    color: #888;
+}
+
+.frame.current .caption
+{
+    color: #000;
+}
+
+.pointer
+{
+    border-color: #000;
+}
+
+.gallery.dark .pointer
+{
+    border-color: #ddd;
+}
+
+* html .pointer
+{
+    filter: chroma(color=pink);
+}
+
+center.dark
+{
+    width: 100%;
+    background:  #282828 ;
+    border: 1px solid gray;
+}
+
+    center.dark h2
+    {
+        width: 780px;
+        #text-align:left !important;
+        font-family: "Palatino Linotype";
+        font-weight: normal;
+    }
+
+div.panel-content.panel
+{
+    border: 2px solid black;
+}
+
+div.panel-overlay table
+{
+    height: 60px;
+}
+
+div.panel-overlay td
+{
+    color: white !important;
+    width: 33%;
+}
+
+a.arrow-prev
+{
+    float: left;
+}
+
+a.arrow-next
+{
+    float: right;
+}
+
+a.arrow-prev, a.arrow-next
+{
+    padding-top: 180px;
+    display: none;
+}
+/*<!-background:url(http://static.president.az/assets/layout/bg_l-50f8e8a2ced0307a651ddc3e49e3acab1d82dea429118c4d1dce69305ace4bf6.png)-->*/

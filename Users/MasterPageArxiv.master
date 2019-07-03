@@ -1,0 +1,281 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Users/UserMasterPage.master" AutoEventWireup="true" CodeFile="MasterPageArxiv.master.cs" Inherits="Users_MasterPageArxiv" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style type="text/css">
+        p.MsoNormals {
+            margin-top: 0in;
+            margin-right: 0in;
+            margin-left: 0in;
+            margin-bottom: 0in;
+            font-size: 10.0pt;
+            font-family: Arial,"sans-serif";
+        }
+
+        .modalBackground {
+            background-color: Black;
+            filter: alpha(opacity=40);
+            opacity: 0.4;
+        }
+
+        .modalPopup {
+            background-color: #FFFFFF;
+            width: 300px;
+            border: 3px solid #0DA9D0;
+        }
+
+            .modalPopup .header {
+                background-color: #2FBDF1;
+                height: 30px;
+                color: White;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .modalPopup .body {
+                min-height: 50px;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .modalPopup .footer {
+                padding: 3px;
+            }
+
+            .modalPopup .yes, .modalPopup .no {
+                height: 23px;
+                color: White;
+                line-height: 23px;
+                text-align: center;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .modalPopup .yes {
+                background-color: #2FBDF1;
+                border: 1px solid #0DA9D0;
+            }
+
+            .modalPopup .no {
+                background-color: #9F9F9F;
+                border: 1px solid #5C5C5C;
+            }
+
+        .auto-style23 {
+            font-size: 35px;
+            width: 251px;
+        }
+
+        p.MsoNormals {
+            margin-top: 0in;
+            margin-right: 0in;
+            margin-left: 0in;
+            margin-bottom: 0in;
+            font-size: 10.0pt;
+            font-family: Arial,"sans-serif";
+        }
+
+        .auto-style26s {
+            width: 43px;
+        }
+
+        .auto-style27s {
+            width: 173px;
+        }
+
+        .auto-style29s {
+            width: 142px;
+        }
+
+        .auto-style30s {
+            width: 34px;
+        }
+
+        .auto-style31s {
+            width: 150px;
+        }
+
+        .auto-style32s {
+            width: 153px;
+        }
+
+        .auto-style33s {
+            width: 54px;
+        }
+
+        .auto-style383 {
+            width: 322px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div>
+        <table cellpadding="0" cellspacing="0" class="auto-style23" style="mso-table-layout-alt: fixed; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0in 5.4pt 0in 5.4pt; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext; width: 1004px; height: 31px;">
+            <tr>
+                <td class="auto-style30s">&nbsp;</td>
+                <td class="auto-style26s"><b>YVÖK</b></td>
+                <td class="auto-style27s">
+                    <asp:TextBox ID="txtyvok" runat="server" Width="150px"></asp:TextBox>
+                </td>
+                <td><b>Soyadı</b></td>
+                <td class="auto-style31s">
+                    <asp:TextBox ID="txtsoyad" runat="server" Width="120px"></asp:TextBox></td>
+                <td><b>Adı</b></td>
+                <td class="auto-style32s">
+                    <asp:TextBox ID="txtad" runat="server" Width="120px"></asp:TextBox></td>
+                <td class="auto-style33s"><b>Ata adı</b></td>
+                <td class="auto-style29s">
+                    <asp:TextBox ID="txtataadi" runat="server" Width="120px"></asp:TextBox></td>
+
+                <td>
+                    <asp:Button ID="btnaxtar" runat="server" Text="Axtar" OnClick="btnaxtar_Click" Width="106px" />
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div style="overflow: scroll; width: 100%; height: 119px;">
+
+        <table border="1" cellpadding="0" cellspacing="0" class="auto-style23" style="mso-table-layout-alt: fixed; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0in 5.4pt 0in 5.4pt; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext; width: 1004px; height: 49px;">
+            <tr>
+                <td valign="center" width="62" style="text-align: center;">
+                    <b><span lang="AZ-LATIN">S/n</span></b>
+                </td>
+                <td valign="center" width="178" style="text-align: center;">
+                    <b><span lang="AZ-LATIN">Vergi ödəyicisinin adı</span></b>
+                </td>
+                <td valign="center" style="text-align: center;" class="auto-style383">
+                    <b><span lang="AZ-LATIN">Silinmiş obyektin adı</span></b></td>
+                <td valign="center" style="text-align: center;" class="auto-style34">
+                    <b><span lang="AZ-LATIN">Obyekt haqqında</span></b>
+                </td>
+                <td valign="center" style="text-align: center;" class="auto-style34">
+                    <b><span lang="AZ-LATIN">YVÖK</span></b>
+                </td>
+
+                <td valign="center" width="80" style="text-align: center;">
+                    <b><span lang="AZ-LATIN">Bərpa et</span></b></td>
+            </tr>
+            <asp:Repeater ID="DataList1" runat="server">
+                <ItemTemplate>
+                    <tr>
+                        <td valign="top" width="62" class="auto-style24s">
+                            <p class="MsoNormals">
+                                <span lang="AZ-LATIN"><%#Container.ItemIndex+1%></span>
+                            </p>
+                        </td>
+                        <td valign="top" width="178" class="auto-style24s">
+                            <p class="MsoNormals">
+                                <span lang="AZ-LATIN">
+                                    <o:p><%#Eval("Name")%></o:p>
+                                </span>
+                            </p>
+                        </td>
+                        <td valign="top" class="auto-style383">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN">
+                                    <o:p><%#Eval("TaxesPaymentTypeName")%></o:p>
+                                </span>
+                            </p>
+                        </td>
+                        <td valign="top" class="auto-style34">
+                            <p class="MsoNormals">
+                                <span lang="AZ-LATIN"><%#Eval("unvan")%></span>
+                            </p>
+                        </td>
+                        <td valign="top" class="auto-style34">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN"><%#Eval("YVOK")%></span>
+                            </p>
+                        </td>
+
+                        <%--  <td valign="top" class="auto-style41s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN"><a href='GeneralTaxes.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=generaltax&IndividualLegal=<%= lblindividuallegal.Text %>'>Vergi obyektləri</a></span>
+                            </p>
+                        </td>
+                        <td valign="top" class="auto-style35s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN"><a href='PaymentNotice.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=PaymentNotice&IndividualLegal=<%= lblindividuallegal.Text %>'>Tədiyyə bildirişi</a></span>
+                            </p>
+                        </td>
+                        <td valign="top" class="auto-style39s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN"><a href='Certificate.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=Certificate&IndividualLegal=<%= lblindividuallegal.Text %>'>Şəhadətnamə</a></span>
+                            </p>
+                        </td>
+                        <td valign="top" class="auto-style37s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN"><a href='Personalacc.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=Certificate&IndividualLegal=<%= lblindividuallegal.Text %>'>Şəxsi hesab</a></span>
+                            </p>
+                        </td>
+                        <td valign="top" width="113" class="auto-style24s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN"><a href='Calculation.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=calc&IndividualLegal=<%= lblindividuallegal.Text %>'>Hesablama</a></span>
+                            </p>
+                        </td>
+                        <td valign="top" class="auto-style43s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN"><a href='Payment.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=odenis&IndividualLegal=<%= lblindividuallegal.Text %>'>Ödəniş</a></span>
+                            </p>
+                        </td>
+                      
+                        <td valign="top" class="auto-style46s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN">
+                                    <o:p><a href='<%= lblsehife.Text %>.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=baxis&IndividualLegal=<%= lblindividuallegal.Text %>'>Baxış</a></o:p>
+                                </span>
+                            </p>
+                        </td>  
+                        <td valign="top" width="60" class="auto-style24s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN">
+                                    <o:p><a href='<%= lblsehife.Text %>.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=duzelis&IndividualLegal=<%= lblindividuallegal.Text %>'>Düzəliş</a></o:p>
+
+                                </span>
+                            </p>
+                        </td>
+                        --%>
+                        <td valign="top" width="80" class="auto-style24s">
+                            <p align="center" class="MsoNormals">
+                                <span lang="AZ-LATIN">
+                                    <o:p><%--<a href='Individual.aspx?TaxpayerID=<%#Eval("TaxpayerID") %>&islem=sil'>Sil</a>--%>
+                                                            
+                                <asp:LinkButton ID="lnkDelete" runat="server" CommandArgument='<%#Eval("TaxpayerID")  + ";" +Eval("Taxesid") + ";" +Eval("LivingAreaID")%>'  CommandName="deleteRow" OnClick="DeleteRecord" Text="Bərpa et"></asp:LinkButton>
+                                <cc1:ConfirmButtonExtender ID="cbe" runat="server" DisplayModalPopupID="mpe" TargetControlID="lnkDelete">
+                                </cc1:ConfirmButtonExtender>
+                                <cc1:ModalPopupExtender ID="mpe" runat="server" BackgroundCssClass="modalBackground" CancelControlID="btnNo" OkControlID="btnYes" PopupControlID="pnlPopup" TargetControlID="lnkDelete">
+                                </cc1:ModalPopupExtender>
+                                                            
+                    <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Diqqətli olun.
+                        </div>
+                        <div class="body">
+                            Bərpa etməyə əminsinizmi?
+                        </div>
+                        <div class="footer" align="right">
+                            <asp:Button ID="btnYes" runat="server" Text="Bəli" CssClass="yes" />
+                            <asp:Button ID="btnNo" runat="server" Text="Xeyr" CssClass="no" />
+                        </div>
+                    </asp:Panel>
+                                    </o:p>
+                                </span>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+        </table>
+    </div>
+    <div style="height: auto; width: 1024px;">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div>
+        <asp:Label ID="lblsehife" runat="server" Visible="False"></asp:Label>
+        <asp:Label ID="lblindividuallegal" runat="server" Visible="False"></asp:Label>
+    </div>
+</asp:Content>
+

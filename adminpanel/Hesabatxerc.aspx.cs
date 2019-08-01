@@ -86,26 +86,29 @@ public partial class adminpanel_Hesabatxerc : System.Web.UI.Page
         string dc2 = dc + dc1;
 
 
-//        string dcx = klas.getdatacell(@"select t1.* from 
-//(
-//select ' ' name,sum(yerliozunuidetme) yerliozunuidetme,sum(tehsilsahesi) tehsilsahesi,sum(sehiyye) sehiyye,
-//sum(medeniyyet) medeniyyet,sum(idman) idman,sum(avtomobil) avtomobil,sum(menzilkomunal) menzilkomunal,
-//sum(suteserrufati) suteserrufati,sum(iqtisadisahe) iqtisadisahe,sum(yerliekoloji) yerliekoloji,
-//sum(yerlisosialmud) yerlisosialmud,sum(digerxerc) digerxerc,sum(qaliq) qaliq,sum(cemi) cemi,sum(gelir) gelir,
-//sum(dotasiya) dotasiya,sum(iane) iane,sum(umumixerc) umumixerc,' ' RegionID from 
-//(" + dc2 + ") as kk union " + dc2 + ") t1 order by name");
+        //        string dcx = klas.getdatacell(@"select t1.* from 
+        //(
+        //select ' ' name,sum(yerliozunuidetme) yerliozunuidetme,sum(tehsilsahesi) tehsilsahesi,sum(sehiyye) sehiyye,
+        //sum(medeniyyet) medeniyyet,sum(idman) idman,sum(avtomobil) avtomobil,sum(menzilkomunal) menzilkomunal,
+        //sum(suteserrufati) suteserrufati,sum(iqtisadisahe) iqtisadisahe,sum(yerliekoloji) yerliekoloji,
+        //sum(yerlisosialmud) yerlisosialmud,sum(digerxerc) digerxerc,sum(qaliq) qaliq,sum(cemi) cemi,sum(gelir) gelir,
+        //sum(dotasiya) dotasiya,sum(iane) iane,sum(umumixerc) umumixerc,' ' RegionID from 
+        //(" + dc2 + ") as kk union " + dc2 + ") t1 order by name");
 
-//        DataTable dt = klas.getdatatable(@"select t1.* from 
-//(
-//select ' ' name,sum(yerliozunuidetme) yerliozunuidetme,sum(tehsilsahesi) tehsilsahesi,sum(sehiyye) sehiyye,
-//sum(medeniyyet) medeniyyet,sum(idman) idman,sum(avtomobil) avtomobil,sum(menzilkomunal) menzilkomunal,
-//sum(suteserrufati) suteserrufati,sum(iqtisadisahe) iqtisadisahe,sum(yerliekoloji) yerliekoloji,
-//sum(yerlisosialmud) yerlisosialmud,sum(digerxerc) digerxerc,sum(qaliq) qaliq,sum(cemi) cemi,sum(gelir) gelir,
-//sum(dotasiya) dotasiya,sum(iane) iane,sum(digergelir) digergelir,sum(umumixerc) umumixerc,' ' RegionID from 
-//(" + dc2 + ") as kk union " + dc2 + ") t1 order by name");
+        //        DataTable dt = klas.getdatatable(@"select t1.* from 
+        //(
+        //select ' ' name,sum(yerliozunuidetme) yerliozunuidetme,sum(tehsilsahesi) tehsilsahesi,sum(sehiyye) sehiyye,
+        //sum(medeniyyet) medeniyyet,sum(idman) idman,sum(avtomobil) avtomobil,sum(menzilkomunal) menzilkomunal,
+        //sum(suteserrufati) suteserrufati,sum(iqtisadisahe) iqtisadisahe,sum(yerliekoloji) yerliekoloji,
+        //sum(yerlisosialmud) yerlisosialmud,sum(digerxerc) digerxerc,sum(qaliq) qaliq,sum(cemi) cemi,sum(gelir) gelir,
+        //sum(dotasiya) dotasiya,sum(iane) iane,sum(digergelir) digergelir,sum(umumixerc) umumixerc,' ' RegionID from 
+        //(" + dc2 + ") as kk union " + dc2 + ") t1 order by name");
 
 
-        DataTable dt = klas.getdatatable(@"select t1.* from 
+        DataTable dt;
+        if (RadioButtonList1.SelectedIndex == 0)
+        {
+            dt = klas.getdatatable(@"select t1.* from 
 (
 select ' ' name,cast(sum(yerliozunuidetme) as numeric(15,2)) yerliozunuidetme,
 cast(sum(tehsilsahesi) as numeric(15,2)) tehsilsahesi,
@@ -307,18 +310,221 @@ group by lcm1.RegionsID,lcm1.Name
 
 
 ) t1 order by name");
+            GridView2.Visible = false;
+            GridView1.Visible = true;
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            if (RadioButtonList1.SelectedIndex == 0)
+                if (GridView1.Rows.Count > 0)
+                {
+                    GridView1.HeaderRow.Cells[3].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ilə qalıq";
+                    GridView1.HeaderRow.Cells[4].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə vergi və ödənişlərdən daxil olma";
+                    GridView1.HeaderRow.Cells[8].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə bələdiyyələrin ümumi xərci";
 
 
-        GridView1.DataSource = dt;
-        GridView1.DataBind();
-        if (GridView1.Rows.Count > 0)
-        {
-            GridView1.HeaderRow.Cells[3].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ilə qalıq";
-            GridView1.HeaderRow.Cells[4].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə vergi və ödənişlərdən daxil olma";
-            GridView1.HeaderRow.Cells[8].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə bələdiyyələrin ümumi xərci";
-            
-       
+                }
         }
+        else if (RadioButtonList1.SelectedIndex==1)
+        {
+            SqlDataAdapter dap=new SqlDataAdapter(@"select t1.* from 
+(select ' ' name,' ' bldname,cast(isnull(sum(yerliozunuidetme),0) as numeric(15,2)) yerliozunuidetme,
+cast(isnull(sum(tehsilsahesi),0) as numeric(15,2)) tehsilsahesi,
+cast(isnull(sum(sehiyye),0) as numeric(15,2)) sehiyye,
+cast(isnull(sum(medeniyyet),0) as numeric(15,2)) medeniyyet,
+cast(isnull(sum(idman),0) as numeric(15,2)) idman,
+cast(isnull(sum(avtomobil),0) as numeric(15,2)) avtomobil,
+cast(isnull(sum(menzilkomunal),0)  as numeric(15,2)) menzilkomunal,
+cast(isnull(sum(suteserrufati),0)  as numeric(15,2)) suteserrufati,
+cast(isnull(sum(iqtisadisahe),0) as numeric(15,2)) iqtisadisahe,
+cast(isnull(sum(yerliekoloji),0) as numeric(15,2)) yerliekoloji,
+cast(isnull(sum(yerlisosialmud),0) as numeric(15,2)) yerlisosialmud,
+cast(isnull(sum(digerxerc),0)  as numeric(15,2)) digerxerc,
+cast(isnull(sum(qaliq),0)  as numeric(15,2)) qaliq,
+cast(isnull(sum(cemi),0) as numeric(15,2)) cemi,
+cast(isnull(sum(gelir),0) as numeric(15,2)) gelir,
+cast(isnull(sum(dotasiya),0) as numeric(15,2)) dotasiya,
+cast(isnull(sum(iane),0) as numeric(15,2)) iane,
+cast(isnull(sum(digergelir),0) as numeric(15,2)) digergelir,
+cast(isnull(sum(umumixerc),0) as numeric(15,2)) umumixerc,0 RegionID, 0 MunicipalID from 
+(
+select lcm1.name,lcm2.MunicipalName,cast((select sum(Amount+case when DFMF22 is null then 0 else dfmf22 end) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID
+ where epi.ExpensesAreaID=49 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) yerliozunuidetme,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=50 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) tehsilsahesi,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=51 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) sehiyye,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=52 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) medeniyyet,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=53 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) idman,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=54 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) avtomobil,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=55 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) menzilkomunal,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=56 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) suteserrufati,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=57 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) iqtisadisahe,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=58 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) yerliekoloji,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID=59 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) yerlisosialmud,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID 
+ where epi.ExpensesAreaID in(210,211,0) and ExpensesType=1 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) digerxerc,
+cast((select (select case when sum(p.Amount) is null then 0 else sum(p.Amount) end mebleg  from Payments p inner join Taxpayer tx on tx.TaxpayerID=p.TaxpayerID 
+ inner join List_classification_Municipal lcm on tx.MunicipalID=lcm.MunicipalID 
+where p.Operation=10 and year(p.NowTime)<=" + cmbhesabatili.SelectedValue + @" -1 and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID)
+ + (select case when SUM(amount) is null then 0 else SUM(amount) end cemi from Dotation m inner join List_classification_Municipal lcm 
+on m.MunicipalID=lcm.MunicipalID where year(DotationGiveDate)<=" + cmbhesabatili.SelectedValue + @" -1  and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID)
+- (select case when SUM(amount+case when DFMF22 is null then 0 else dfmf22 end) is null then 0 else SUM(amount+case when DFMF22 is null then 0 else dfmf22 end) end xerc from ExpensesProject epi inner join List_classification_Municipal lcm 
+on epi.MunicipalID=lcm.MunicipalID where ExpensesYear<=" + cmbhesabatili.SelectedValue + @" -1  and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID and ExpensesType=1)) as numeric(15,2)) qaliq,
+
+
+cast( (select (select case when SUM(amount) is null then 0 else SUM(amount) end mebleg  from Payments p inner join Taxpayer tx on tx.TaxpayerID=p.TaxpayerID 
+inner join List_classification_Municipal lcm on tx.MunicipalID=lcm.MunicipalID 
+where p.Operation=10  and year(p.NowTime)=" + cmbhesabatili.SelectedValue + " " + @hesabatayix1 + " " + @hesabatayix2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) +
+(select case when SUM(amount) is null then 0 else SUM(amount) end cemi from Dotation m inner join List_classification_Municipal lcm 
+on m.MunicipalID=lcm.MunicipalID where year(DotationGiveDate)=" + cmbhesabatili.SelectedValue + " " + @hesabatayiq1 + " " + @hesabatayiq2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID))
++ (select (select case when sum(p.Amount) is null then 0 else sum(p.Amount) end mebleg  from Payments p inner join Taxpayer tx on tx.TaxpayerID=p.TaxpayerID 
+ inner join List_classification_Municipal lcm on tx.MunicipalID=lcm.MunicipalID 
+ where p.Operation=10  and year(p.NowTime)<=" + cmbhesabatili.SelectedValue + @" -1 and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID)+ 
+ (select case when SUM(amount) is null then 0 else SUM(amount) end cemi from Dotation m inner join List_classification_Municipal lcm 
+on m.MunicipalID=lcm.MunicipalID where year(DotationGiveDate)<=" + cmbhesabatili.SelectedValue + @" -1  and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID)
+ - (select case when SUM(amount+case when DFMF22 is null then 0 else dfmf22 end) is null then 0 else SUM(amount+case when DFMF22 is null then 0 else dfmf22 end) end xerc from ExpensesProject epi inner join List_classification_Municipal lcm 
+ on epi.MunicipalID=lcm.MunicipalID where ExpensesYear<=" + cmbhesabatili.SelectedValue + @" -1  and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID and ExpensesType=1)) as numeric(15,2))  cemi,
+
+
+
+cast( (select sum(p.Amount) mebleg  from Payments p inner join Taxpayer tx on tx.TaxpayerID=p.TaxpayerID 
+ inner join List_classification_Municipal lcm on tx.MunicipalID=lcm.MunicipalID
+ where p.Operation=10 and year(p.NowTime)=" + cmbhesabatili.SelectedValue + " " + @hesabatayix1 + " " + @hesabatayix2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) gelir,
+
+
+
+cast( (select sum(amount) from Dotation p inner join List_classification_Municipal lcm
+on p.MunicipalID=lcm.MunicipalID where Dotationtype=1 and year(DotationGiveDate)=" + cmbhesabatili.SelectedValue + " " + @hesabatayiq1 + " " + @hesabatayiq2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) dotasiya,
+cast( (select sum(amount) from Dotation p inner join List_classification_Municipal lcm
+on p.MunicipalID=lcm.MunicipalID where Dotationtype=2 and year(DotationGiveDate)=" + cmbhesabatili.SelectedValue + " " + @hesabatayiq1 + " " + @hesabatayiq2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) iane,
+cast( (select sum(amount) from Dotation p inner join List_classification_Municipal lcm
+on p.MunicipalID=lcm.MunicipalID where Dotationtype=3 and year(DotationGiveDate)=" + cmbhesabatili.SelectedValue + " " + @hesabatayiq1 + " " + @hesabatayiq2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) digergelir,
+cast( (select sum(amount+case when DFMF22 is null then 0 else dfmf22 end) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID
+ where ExpensesType=1 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) umumixerc,
+lcm1.RegionsID RegionID,lcm2.MunicipalID from List_classification_Regions lcm1 inner join List_classification_Municipal lcm2 on lcm2.RegionID=lcm1.RegionsID where lcm1.ForDelete=1
+group by lcm1.RegionsID,lcm1.Name,lcm2.MunicipalID,lcm2.MunicipalName
+
+) as kk union 
+
+select lcm1.name,lcm2.MunicipalName,cast((select sum(Amount+case when DFMF22 is null then 0 else dfmf22 end) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=49  and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) yerliozunuidetme,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=50 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) tehsilsahesi,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=51 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) sehiyye,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=52 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) medeniyyet,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=53 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) idman,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=54 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) avtomobil,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=55 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) menzilkomunal,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=56 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) suteserrufati,
+ cast(( select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=57 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) iqtisadisahe,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=58 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) yerliekoloji,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID 
+ where epi.ExpensesAreaID=59 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) yerlisosialmud,
+ cast((select sum(Amount) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID
+ where epi.ExpensesAreaID in(210,211,0) and ExpensesType=1 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) digerxerc,
+cast((select (select case when sum(p.Amount) is null then 0 else sum(p.Amount) end mebleg  from Payments p inner join Taxpayer tx on tx.TaxpayerID=p.TaxpayerID 
+ inner join List_classification_Municipal lcm on tx.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID
+where p.Operation=10  and year(p.NowTime)<=" + cmbhesabatili.SelectedValue + @" -1 and lcm.RegionID=lcm1.RegionsID)
+ + (select case when SUM(amount) is null then 0 else SUM(amount) end cemi from Dotation m inner join List_classification_Municipal lcm 
+on m.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID where year(DotationGiveDate)<=" + cmbhesabatili.SelectedValue + @" -1  and lcm.RegionID=lcm1.RegionsID)
+- (select case when SUM(amount+case when DFMF22 is null then 0 else dfmf22 end) is null then 0 else SUM(amount+case when DFMF22 is null then 0 else dfmf22 end) end xerc from ExpensesProject epi inner join List_classification_Municipal lcm 
+on epi.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID where ExpensesYear<=" + cmbhesabatili.SelectedValue + @" -1  and lcm.RegionID=lcm1.RegionsID and ExpensesType=1)) as numeric(15,2)) qaliq,
+cast( (select (select case when SUM(amount) is null then 0 else SUM(amount) end mebleg  from Payments p inner join Taxpayer tx on tx.TaxpayerID=p.TaxpayerID 
+inner join List_classification_Municipal lcm on tx.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID
+where p.Operation=10  and year(p.NowTime)=" + cmbhesabatili.SelectedValue + " " + @hesabatayix1 + " " + @hesabatayix2 + @" and lcm.RegionID=lcm1.RegionsID) +
+(select case when SUM(amount) is null then 0 else SUM(amount) end cemi from Dotation m inner join List_classification_Municipal lcm 
+on m.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID  where year(DotationGiveDate)=" + cmbhesabatili.SelectedValue + " " + @hesabatayiq1 + " " + @hesabatayiq2 + @" and lcm.RegionID=lcm1.RegionsID))
++ (select (select case when sum(p.Amount) is null then 0 else sum(p.Amount) end mebleg  from Payments p inner join Taxpayer tx on tx.TaxpayerID=p.TaxpayerID 
+ inner join List_classification_Municipal lcm on tx.MunicipalID=lcm.MunicipalID and lcm.MunicipalID=lcm2.MunicipalID 
+ where p.Operation=10 and year(p.NowTime)<=" + cmbhesabatili.SelectedValue + @" -1 and lcm.RegionID=lcm1.RegionsID)+ 
+ (select case when SUM(amount) is null then 0 else SUM(amount) end cemi from Dotation m inner join List_classification_Municipal lcm 
+on m.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID  where year(DotationGiveDate)<=" + cmbhesabatili.SelectedValue + @" -1  and lcm.RegionID=lcm1.RegionsID)
+ - (select case when SUM(amount+case when DFMF22 is null then 0 else dfmf22 end) is null then 0 else SUM(amount+case when DFMF22 is null then 0 else dfmf22 end) end xerc from ExpensesProject epi inner join List_classification_Municipal lcm 
+ on epi.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID where ExpensesYear<=" + cmbhesabatili.SelectedValue + @" -1  and lcm.RegionID=lcm1.RegionsID and ExpensesType=1)) as numeric(15,2))  cemi,
+
+cast( (select sum(p.Amount) mebleg  from Payments p inner join Taxpayer tx on tx.TaxpayerID=p.TaxpayerID 
+ inner join List_classification_Municipal lcm on tx.MunicipalID=lcm.MunicipalID and lcm.MunicipalID=lcm2.MunicipalID 
+ where p.Operation=10 and year(p.NowTime)=" + cmbhesabatili.SelectedValue + " " + @hesabatayix1 + " " + @hesabatayix2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) gelir,
+cast( (select sum(amount) from Dotation p inner join List_classification_Municipal lcm
+on p.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID  where Dotationtype=1 and year(DotationGiveDate)=" + cmbhesabatili.SelectedValue + " " + @hesabatayiq1 + " " + @hesabatayiq2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) dotasiya,
+cast( (select sum(amount) from Dotation p inner join List_classification_Municipal lcm
+on p.MunicipalID=lcm.MunicipalID  and lcm.MunicipalID=lcm2.MunicipalID  where Dotationtype=2 and year(DotationGiveDate)=" + cmbhesabatili.SelectedValue + " " + @hesabatayiq1 + " " + @hesabatayiq2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) iane,
+cast( (select sum(amount) from Dotation p inner join List_classification_Municipal lcm 
+on p.MunicipalID=lcm.MunicipalID and lcm.MunicipalID=lcm2.MunicipalID  where Dotationtype=3 and year(DotationGiveDate)=" + cmbhesabatili.SelectedValue + " " + @hesabatayiq1 + " " + @hesabatayiq2 + @" and lcm.RegionID=lcm1.RegionsID) as numeric(15,2)) digergelir,
+cast( (select sum(amount+case when DFMF22 is null then 0 else dfmf22 end) mebleg from ExpensesProject epi
+inner join List_classification_Municipal lcm on lcm.MunicipalID=epi.MunicipalID
+ where ExpensesType=1 and epi.ExpensesYear=" + cmbhesabatili.SelectedValue + " " + @hesabatayi1 + " " + @hesabatayi2 + @" and lcm.RegionID=lcm1.RegionsID and lcm.MunicipalID=lcm2.MunicipalID) as numeric(15,2)) umumixerc,
+lcm1.RegionsID RegionID,lcm2.MunicipalID  from List_classification_Regions lcm1 inner join List_classification_Municipal lcm2 on lcm1.RegionsID=lcm2.RegionID  where lcm1.ForDelete=1
+group by lcm1.RegionsID,lcm1.Name,lcm2.MunicipalID,lcm2.MunicipalName) t1 order by name", klas.baglan());
+            dap.SelectCommand.CommandTimeout = 3600;
+            dt = new DataTable();
+            try
+            {
+                dap.Fill(dt);
+              
+            }
+            catch
+            {
+                klas.baglan().Close();
+            }
+            GridView1.Visible = false;
+            GridView2.Visible = true;
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
+            if (RadioButtonList1.SelectedIndex == 0)
+                if (GridView2.Rows.Count > 0)
+                {
+                    GridView2.HeaderRow.Cells[3].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ilə qalıq";
+                    GridView2.HeaderRow.Cells[4].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə vergi və ödənişlərdən daxil olma";
+                    GridView2.HeaderRow.Cells[8].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə bələdiyyələrin ümumi xərci";
+
+
+                }
+        }
+
+
+       
     }
 
 

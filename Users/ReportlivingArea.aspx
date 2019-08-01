@@ -46,12 +46,13 @@
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="Vergi ödəyicisinin adı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="fullname" />
                     <asp:BoundField HeaderText="YVÖK" HeaderStyle-CssClass="headertextaligncenter" DataField="YVOK" />
+                    <asp:BoundField HeaderText="Ünvan" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="unvan" />
                     <asp:BoundField HeaderText="Güzəşt" HeaderStyle-CssClass="headertextaligncenter" DataField="Concession" />
                     <asp:BoundField HeaderText="Əmlakın sahəsi" HeaderStyle-CssClass="headertextaligncenter" DataField="GeneralArea" />
                     <asp:BoundField HeaderText="Vergiyə cəlb olunan sahə" HeaderStyle-CssClass="headertextaligncenter" DataField="DiffGeneralArea" />
                     <asp:BoundField HeaderText="Zona əmsalı" HeaderStyle-CssClass="headertextaligncenter" DataField="ZonaFactor" />
                     <asp:BoundField HeaderText="Vergi dərəcəsi" HeaderStyle-CssClass="headertextaligncenter" DataField="TaxRate" />
-                    <asp:BoundField HeaderText="Əmlak üzrə ödənilməli vergi" HeaderStyle-CssClass="headertextaligncenter" DataField="mebleg" />
+                    <asp:BoundField HeaderText="Ödənilməli vergi" HeaderStyle-CssClass="headertextaligncenter" DataField="mebleg" />
                     <asp:BoundField HeaderText="Tarix" HeaderStyle-CssClass="headertextaligncenter" DataField="Tarix" />
 
                 </Columns>

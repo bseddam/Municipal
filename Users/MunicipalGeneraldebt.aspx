@@ -6,22 +6,34 @@
     <link href="../style_1/styles.css" rel="stylesheet" />
     <link href="../style_1/bootstrap.css" rel="stylesheet" />
 
+    <style type="text/css">
+        .auto-style4 {
+            height: 50px;
+            text-align:right;
+        }
+        .auto-style5 {
+            height: 50px;
+            width: 658px;
+
+        }
+        </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <script type="text/javascript">
         function PrintPanel() {
             var panel = document.getElementById("<%=pnlhtml.ClientID %>");
-                var printWindow = window.open('', '', 'height=400,width=800');
-                printWindow.document.write('<html><head><title></title>');
-                printWindow.document.write('</head><body >');
-                printWindow.document.write(panel.innerHTML);
-                printWindow.document.write('</body></html>');
-                printWindow.document.close();
-                setTimeout(function () {
-                    printWindow.print();
-                }, 500);
-                return false;
-            }
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title></title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(panel.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            setTimeout(function () {
+                printWindow.print();
+            }, 500);
+            return false;
+        }
     </script>
     <div align="center">
         <br />
@@ -32,29 +44,36 @@
         <div style="padding-top: 10px;">
             <h3>Vergi və ödəniş borcu olan fiziki və hüquqi şəxslərin siyahısı </h3>
         </div>
-        <div style="padding-top: 10px;">
+        <div style="padding-top: 10px;padding-left:10px;">
             <table>
                 <tr>
-                    <td>Vergi və ödəniş növləri :
+                    <td class="auto-style4">Vergi və ödəniş növləri:
                     </td>
-                    <td>
+                    <td class="auto-style5">
                         <asp:DropDownList ID="vergiadi" runat="server" Width="650"></asp:DropDownList>
-
                     </td>
-                                        <td>
-                                            &nbsp;&nbsp;
-                                            <asp:Button ID="Btnhesabat" runat="server" Text="Hesabata bax" OnClick="Btnhesabat_Click" Width="120px" />
+                </tr>
+                 <tr>
+                    <td class="auto-style4">Ödəyicinin yaşayış ünvanı:
                     </td>
-
+                    <td class="auto-style5">
+                        <asp:TextBox ID="txtunvan" runat="server" Width="650"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">&nbsp;</td>
+                    <td class="auto-style5">
+                      <asp:Button ID="Btnhesabat" runat="server" Text="Hesabata bax" OnClick="Btnhesabat_Click" Width="120px" />
+                    </td>
                 </tr>
                 <tr style="height: 20px;">
-                    <td></td>
+                    <td>&nbsp;</td>
                 </tr>
             </table>
         </div>
         <div style="height: auto; width: 100%; background-color: white;">
 
-                        <asp:GridView ID="GridView1" Width="100%" CellPadding="4"
+            <asp:GridView ID="GridView1" Width="100%" CellPadding="4"
                 AllowPaging="true" AutoGenerateColumns="False" DataKeyNames="fullname,YVOK,Mobiltel,TaxesPaymentTypeName,Payment"
                 runat="server" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="500">
                 <Columns>
@@ -65,6 +84,7 @@
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="Vergi ödəyicisinin adı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="fullname" />
                     <asp:BoundField HeaderText="YVÖK" HeaderStyle-CssClass="headertextaligncenter" DataField="YVOK" />
+                    <asp:BoundField HeaderText="Ödəyicinin yaşayış ünvanı"  HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="ActualAdress" />
                     <asp:BoundField HeaderText="Telefon nömrəsi" HeaderStyle-CssClass="headertextaligncenter" DataField="Mobiltel" />
                     <asp:BoundField HeaderText="Vergi obyektləri" HeaderStyle-CssClass="headertextaligncenter" DataField="TaxesPaymentTypeName" />
                     <asp:BoundField HeaderText="Borc (manat)" HeaderStyle-CssClass="headertextaligncenter" DataField="Payment" />

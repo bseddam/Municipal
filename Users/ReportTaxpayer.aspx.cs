@@ -103,12 +103,26 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
                     ataadi1 = "   and t2.FName like N'%" + txtataadi.Text + "%'";
                     ataadi2 = " and t.FName like N'%" + txtataadi.Text + "%'";
                 }
-
+                string unvan = "  ";
+                string unvan1 = "  ";
+                string unvan2 = "  ";
+                if (txtunvan.Text == "" || txtunvan.Text == null)
+                {
+                    unvan = "  ";
+                    unvan1 = "  ";
+                    unvan2 = "  ";
+                }
+                else
+                {
+                    unvan = " and t1.ActualAdress like '%" + txtunvan.Text + "%'";
+                    unvan1 = " and t2.ActualAdress like '%" + txtunvan.Text + "%'";
+                    unvan2 = " and t.ActualAdress like '%" + txtunvan.Text+"%'";
+                }
 
                 DataTable dt = klas.getdatatable(@"Select '' TaxpayerID,'0' sn,'' RegionName ,'' MunicipalName,convert(nvarchar(50),count(TaxpayerID)) fullname,N'Yox: '+Convert(nvarchar(50),(Select count(TaxpayerID) cem from Taxpayer t1 inner join List_classification_Municipal lcm 
-on t1.MunicipalID=lcm.MunicipalID where Concession=1 and t1.Fordelete<>0  and t1.MunicipalID="+MunicipalId + fizhuq + yvok + ad + soyad + ataadi + ")) +' '+  N'Hə: '+Convert(nvarchar(50),(Select count(TaxpayerID) cem from Taxpayer t2 " +
-        " inner join List_classification_Municipal lcm on t2.MunicipalID=lcm.MunicipalID where Concession=2 and t2.Fordelete<>0 and t2.MunicipalID=" + MunicipalId + fizhuq1 + yvok1 + ad1 + soyad1 + ataadi1 + ")) Guzesht  , '' ActualAdress,'' telefon,'' YVOK ,'' RegistrPetitondate  from Taxpayer t " +
-        " inner join List_classification_Municipal lcm on t.MunicipalID=lcm.MunicipalID where 1=1  and t.Fordelete<>0 and t.MunicipalID=" + MunicipalId + fizhuq2 + yvok2 + ad2 + soyad2 + ataadi2 +
+on t1.MunicipalID=lcm.MunicipalID where Concession=1 and t1.Fordelete<>0  and t1.MunicipalID="+MunicipalId + fizhuq + yvok + ad + soyad + ataadi+unvan + ")) +' '+  N'Hə: '+Convert(nvarchar(50),(Select count(TaxpayerID) cem from Taxpayer t2 " +
+        " inner join List_classification_Municipal lcm on t2.MunicipalID=lcm.MunicipalID where Concession=2 and t2.Fordelete<>0 and t2.MunicipalID=" + MunicipalId + fizhuq1 + yvok1 + ad1 + soyad1 + ataadi1 + unvan1 +")) Guzesht  , '' ActualAdress,'' telefon,'' YVOK ,'' RegistrPetitondate  from Taxpayer t " +
+        " inner join List_classification_Municipal lcm on t.MunicipalID=lcm.MunicipalID where 1=1  and t.Fordelete<>0 and t.MunicipalID=" + MunicipalId + fizhuq2 + yvok2 + ad2 + soyad2 + ataadi2 + unvan2 +
         " union Select convert(nvarchar(20),TaxpayerID),'1' sn, " +
         " case when lr.CityID=2 then lr.Name+N' rayonu' when CityID=1 then lr.Name+N' şəhəri' end as RegionName,lcm.MunicipalName," +
         " t1.SName+' '+t1.Name+' '+t1.FName as fullname, " +
@@ -117,7 +131,7 @@ on t1.MunicipalID=lcm.MunicipalID where Concession=1 and t1.Fordelete<>0  and t1
         "   convert(nvarchar(15),t1.RegistrPetitondate,104) RegistrPetitondate  from Taxpayer t1 " +
         " inner join List_classification_Municipal lcm on t1.MunicipalID=lcm.MunicipalID " +
         " inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID " +
-        "  where 1=1 and t1.Fordelete<>0 and t1.MunicipalID=" + MunicipalId + fizhuq + yvok + ad + soyad + ataadi + " order by sn,fullname");
+        "  where 1=1 and t1.Fordelete<>0 and t1.MunicipalID=" + MunicipalId + fizhuq + yvok + ad + soyad + ataadi+unvan + " order by sn,fullname");
 
                 GridView1.DataSource = dt;
                 GridView1.DataBind();

@@ -41,7 +41,7 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
        '' ZonaFactor,
        '' TaxRate,
        sum(l.mebleg) mebleg,
-       '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix       
+       '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix  ,'' unvan 
 from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID where t.fordelete=1 and ExitDate is null and t.MunicipalID=" + MunicipalId+
      " union select '1' sn, "+
      "   t.SName+' '+t.Name+' '+t.FName as fullname, "+ 
@@ -52,7 +52,7 @@ from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID wh
      "   convert(nvarchar(50),cast(l.ZonaFactor as numeric(18,2))) ZonaFactor, "+
      "   l.TaxRate, "+
      "   l.mebleg, "+
-     "   '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix     "+
+     "   '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix ,l.unvan     " +
 " from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID where t.fordelete=1 and ExitDate is null and t.MunicipalID="
  + MunicipalId + " order by sn,fullname");
              

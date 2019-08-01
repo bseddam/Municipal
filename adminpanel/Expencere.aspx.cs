@@ -101,27 +101,32 @@ public partial class adminpanel_Reports : System.Web.UI.Page
             teyinati1 = ",p.ExpensesSubAreaID ";
         }
 
-        string hesabatayi1 = " "; string hesabatayi1x = "  ";
+        string hesabatayi1 = " "; string hesabatayi1x = "  ";string hesabatayi1y = "  ";
         if (cmbhesabatayi1.SelectedValue == "-1" || cmbhesabatayi1.SelectedValue == "" || cmbhesabatayi1.SelectedValue == null)
         {
             hesabatayi1 = "  ";
             hesabatayi1x = "  ";
+            hesabatayi1y = "  ";
         }
         else
         {
             hesabatayi1 = " and "+ cmbhesabatayi1.SelectedItem.ToString() + "<=month(p.NowTime) ";
             hesabatayi1x = " and " + cmbhesabatayi1.SelectedItem.ToString() + "<= p.ExpensesHalfYear ";
+            hesabatayi1y = " and " + cmbhesabatayi1.SelectedItem.ToString() + "<=month(p.DotationGiveDate) ";
         }
 
-        string hesabatayi2 = " "; string hesabatayi2x = " ";
+        string hesabatayi2 = " "; string hesabatayi2x = " ";string hesabatayi2y = " ";
         if (cmbhesabatayi2.SelectedValue == "-1" || cmbhesabatayi2.SelectedValue == "" || cmbhesabatayi2.SelectedValue == null)
         {
             hesabatayi2 = "  ";
+            hesabatayi2x = " ";
+            hesabatayi2y = " ";
         }
         else
         {
             hesabatayi2 = " and " + cmbhesabatayi2.SelectedItem.ToString() + ">=month(p.NowTime) ";
             hesabatayi2x = " and " + cmbhesabatayi2.SelectedItem.ToString() + ">= p.ExpensesHalfYear ";
+            hesabatayi2y = " and " + cmbhesabatayi2.SelectedItem.ToString() + ">=month(p.DotationGiveDate) ";
         }
 
         umumigelir.Text = klas.getdatacell(@"select cast((select case when SUM(p.amount) is null then 0 else SUM(p.amount) end mebleg     
@@ -148,7 +153,7 @@ on tx.MunicipalID=lcm.MunicipalID  where  p.Operation=10  and "
 
         dotasiya.Text = klas.getdatacell(@"select cast(SUM(amount) as numeric(18,2)) as cemi from Dotation p 
 inner join List_classification_Municipal lcm 
-on p.MunicipalID=lcm.MunicipalID where Dotationtype=1 and year(DotationGiveDate)=" + cmbhesabatili.SelectedItem.ToString() + hesabatayi1 + hesabatayi2 + bel + ray);
+on p.MunicipalID=lcm.MunicipalID where Dotationtype=1 and year(DotationGiveDate)=" + cmbhesabatili.SelectedItem.ToString() + hesabatayi1y + hesabatayi2y + bel + ray);
 
         iane.Text = klas.getdatacell(@"select cast(SUM(amount) as numeric(18,2)) as cemi from Dotation p 
 inner join List_classification_Municipal lcm 

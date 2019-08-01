@@ -41,7 +41,7 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
         vergiadi.SelectedValue = "-1";
     }
 
-   
+
     protected void selectTaxesObject()
     {
         if (Session["UserID"] == null)
@@ -60,26 +60,37 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
             odeniwnov = " and TaxesPaymentID=" + vergiadi.SelectedValue;
         }
 
+        string unvan = " ";
+
+        if (txtunvan.Text == "" || txtunvan.Text == null)
+        {
+            unvan = "  ";
+        }
+        else
+        {
+            unvan = " and ActualAdress like N'%" + txtunvan.Text+"%'";
+        }
 
 
-       DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from Users u inner join List_classification_Municipal lm 
+        DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from Users u 
+inner join List_classification_Municipal lm 
 on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
-                if (Municipal != null)
-                {
-                    MunicipalId = Municipal["MunicipalID"].ToString();
-                    MunicipalName = Municipal["MunicipalName"].ToString();
-                }
-                if (MunicipalId != "")
-                {
+        if (Municipal != null)
+        {
+            MunicipalId = Municipal["MunicipalID"].ToString();
+            MunicipalName = Municipal["MunicipalName"].ToString();
+        }
+        if (MunicipalId != "")
+        {
 
-                        DataTable dt = klas.getdatatable(@"Select '0' sn,N'Cəmi' fullname,'' YVOK,'' Mobiltel, cast(sum(Payment) as numeric(18,2))  Payment,
-'' TaxesPaymentTypeName, '' ActualAdress from viewdepts where  MunicipalID=" + MunicipalId + odeniwnov+
+            DataTable dt = klas.getdatatable(@"Select '0' sn,N'Cəmi' fullname,'' YVOK,'' Mobiltel, cast(sum(Payment) as numeric(18,2))  Payment,
+'' TaxesPaymentTypeName, '' ActualAdress from viewdepts where  MunicipalID=" + MunicipalId + odeniwnov+ unvan +
 " union   SELECT '1' sn, fullname, YVOK, Mobiltel,  Payment, TaxesPaymentTypeName, ActualAdress FROM   viewdepts  " +
-" where MunicipalID=" + MunicipalId + odeniwnov+" order by sn,fullname");
-                        GridView1.DataSource = dt;
-                        GridView1.DataBind();
-                    
-                }
+" where MunicipalID=" + MunicipalId + odeniwnov+ unvan + " order by sn,fullname");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
+        }
     }
     protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

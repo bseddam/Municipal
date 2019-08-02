@@ -54,7 +54,7 @@
                     </td>
                 </tr>
                  <tr>
-                    <td class="auto-style4">Ödəyicinin yaşayış ünvanı:
+                    <td class="auto-style4">Ödəyicilərin yaşayış ünvanı:
                     </td>
                     <td class="auto-style5">
                         <asp:TextBox ID="txtunvan" runat="server" Width="650"></asp:TextBox>

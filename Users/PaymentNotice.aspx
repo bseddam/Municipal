@@ -236,23 +236,19 @@
 
         <div style="clear: both; width: 1014px;"></div>
         <div>&nbsp;</div>
-        <div class="MsoNormal">
-            <div lang="AZ-CYR" style="width: 1015px">
+
+          <div class="MsoNormal">
+            <div lang="AZ-CYR">
                 <div style="float: left; width: 27px; font-weight: bold;">4.</div>
-                <div style="text-align: center; float: left; width: 600px; border-bottom: 1px solid #000;">
-                    <asp:Label ID="lblyvok" runat="server"></asp:Label>
-                    &nbsp;
+                <div style="float: left; width: 220px;"><b>YVÖK</b> - yerli vergi ödəyicisinin kodu:</div>
+                <div style="text-align: center; float: left; width: 444px; border-bottom: 1px solid #000;">
+                    <span>
+                        <asp:Label ID="lblyvok" runat="server" Font-Bold="true"></asp:Label>
+                        &nbsp;</span>
                 </div>
+              
             </div>
         </div>
-        <div class="MsoListParagraph">
-            <div style="text-align: center; float: left; width: 627px;">(<b>YVÖK</b>-yerli vergi ödəyicisinin kodu)</div>
-        </div>
-
-
-
-
-
 
 
 

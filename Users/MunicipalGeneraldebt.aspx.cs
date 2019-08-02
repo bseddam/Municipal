@@ -50,7 +50,6 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
         }
 
         string odeniwnov = " ";
-
         if (vergiadi.SelectedValue == "-1" || vergiadi.SelectedValue == "" || vergiadi.SelectedValue == null)
         {
             odeniwnov = "  ";
@@ -61,7 +60,6 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
         }
 
         string unvan = " ";
-
         if (txtunvan.Text == "" || txtunvan.Text == null)
         {
             unvan = "  ";
@@ -85,8 +83,8 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
 
             DataTable dt = klas.getdatatable(@"Select '0' sn,N'Cəmi' fullname,'' YVOK,'' Mobiltel, cast(sum(Payment) as numeric(18,2))  Payment,
 '' TaxesPaymentTypeName, '' ActualAdress from viewdepts where  MunicipalID=" + MunicipalId + odeniwnov+ unvan +
-" union   SELECT '1' sn, fullname, YVOK, Mobiltel,  Payment, TaxesPaymentTypeName, ActualAdress FROM   viewdepts  " +
-" where MunicipalID=" + MunicipalId + odeniwnov+ unvan + " order by sn,fullname");
+@" union   SELECT '1' sn, fullname, YVOK, Mobiltel,  Payment, TaxesPaymentTypeName, ActualAdress FROM   viewdepts  
+where MunicipalID=" + MunicipalId + odeniwnov+ unvan + " order by sn,fullname");
             GridView1.DataSource = dt;
             GridView1.DataBind();
 

@@ -13,7 +13,7 @@ public partial class Users_Homepagefd : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            selectNolivingArea();
+            
         }
     }
     protected void selectNolivingArea()
@@ -28,7 +28,25 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
                 MunicipalId = Municipal["MunicipalID"].ToString();
                 MunicipalName = Municipal["MunicipalName"].ToString();
             }
+            string odeyiciunvan = " ";
+            if (txtunvanodeyici.Text == "" || txtunvanodeyici.Text == null)
+            {
+                odeyiciunvan = "  ";
+            }
+            else
+            {
+                odeyiciunvan = " and t.ActualAdress like N'%" + txtunvanodeyici.Text + "%'";
+            }
 
+            string unvanobyekt = " ";
+            if (txtunvanobyekt.Text == "" || txtunvanobyekt.Text == null)
+            {
+                unvanobyekt = "  ";
+            }
+            else
+            {
+                unvanobyekt = " and l.unvan like N'%" + txtunvanobyekt.Text + "%'";
+            }
 
             if (MunicipalId != "")
             {
@@ -41,8 +59,9 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
        '' ZonaFactor,
        '' TaxRate,
        sum(l.mebleg) mebleg,
-       '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix  ,'' unvan 
-from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID where t.fordelete=1 and ExitDate is null and t.MunicipalID=" + MunicipalId+
+       '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix,'' unvan ,'' ActualAdress 
+from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID 
+where t.fordelete=1 and ExitDate is null and t.MunicipalID=" + MunicipalId + odeyiciunvan + unvanobyekt +
      " union select '1' sn, "+
      "   t.SName+' '+t.Name+' '+t.FName as fullname, "+ 
      "   t.YVOK, "+
@@ -52,9 +71,10 @@ from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID wh
      "   convert(nvarchar(50),cast(l.ZonaFactor as numeric(18,2))) ZonaFactor, "+
      "   l.TaxRate, "+
      "   l.mebleg, "+
-     "   '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix ,l.unvan     " +
-" from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID where t.fordelete=1 and ExitDate is null and t.MunicipalID="
- + MunicipalId + " order by sn,fullname");
+     "   '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix ,l.unvan ,t.ActualAdress  " +
+" from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID " +
+"where t.fordelete=1 and ExitDate is null and t.MunicipalID="
+ + MunicipalId + odeyiciunvan + unvanobyekt + " order by sn,fullname");
              
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
@@ -64,6 +84,11 @@ from Taxpayer t inner join viewQLivingProperty l on t.TaxpayerID=l.TaxpayerID wh
     protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         GridView1.PageIndex = e.NewPageIndex;
+        selectNolivingArea();
+    }
+
+    protected void Btnhesabat_Click(object sender, EventArgs e)
+    {
         selectNolivingArea();
     }
 }

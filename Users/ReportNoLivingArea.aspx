@@ -3,7 +3,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="../style_1/styles.css" rel="stylesheet" />
     <link href="../style_1/bootstrap.css" rel="stylesheet" />
+         <style type="text/css">
+        .auto-style4 {
+            height: 50px;
+            text-align:right;
+        }
+        .auto-style5 {
+            height: 50px;
+            width: 658px;
 
+        }
+     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
@@ -32,6 +42,38 @@
             <h3>QEYRİ-YAŞAYIŞ SAHƏLƏRİ ÜZRƏ ƏMLAKLAR </h3>
         </div>
 
+
+            <div style="padding-top: 10px;padding-left:10px;">
+            <table>
+                <tr>
+                    <td class="auto-style4">Ödəyicilərin yaşayış ünvanı:
+                    </td>
+                    <td class="auto-style5">
+                        <asp:TextBox ID="txtunvanodeyici" runat="server" Width="650"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">Vergi obyektlərinin ünvanı:
+                    </td>
+                    <td class="auto-style5">
+                        <asp:TextBox ID="txtunvanobyekt" runat="server" Width="650"></asp:TextBox>
+                    </td>
+                </tr>
+              
+                <tr>
+                    <td class="auto-style4">&nbsp;</td>
+                    <td class="auto-style5">
+                      <asp:Button ID="Btnhesabat" runat="server" Text="Hesabata bax" OnClick="Btnhesabat_Click" Width="120px" />
+                    </td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+
+
         <div style="height: auto; width: 100%; background-color: white;">
 
 
@@ -47,7 +89,8 @@
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="Vergi ödəyicisinin adı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="fullname" />
                     <asp:BoundField HeaderText="YVÖK" HeaderStyle-CssClass="headertextaligncenter" DataField="YVOK" />
-                    <asp:BoundField HeaderText="Ünvan" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="unvan" />
+                    <asp:BoundField HeaderText="Vergi ödəyicisinin ünvanı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="ActualAdress" />
+                    <asp:BoundField HeaderText="Vergi obyektinin ünvanı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="unvan" />       
                     <asp:BoundField HeaderText="Güzəşt" HeaderStyle-CssClass="headertextaligncenter" DataField="Concession" />
                     <asp:BoundField HeaderText="Əmlakın sahəsi" HeaderStyle-CssClass="headertextaligncenter" DataField="GeneralArea" />
                     <asp:BoundField HeaderText="Vergiyə cəlb olunan sahə" HeaderStyle-CssClass="headertextaligncenter" DataField="DiffGeneralArea" />

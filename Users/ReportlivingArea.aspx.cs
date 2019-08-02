@@ -13,27 +13,45 @@ public partial class Users_Homepage1 : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            kk();
+            
         }
     }
 
 
-  void kk() {
-      if (Session["UserID"] != null)
-      {
-          string MunicipalId = ""; string MunicipalName = "";
-          DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from Users u inner join List_classification_Municipal lm 
+    void kk()
+    {
+        if (Session["UserID"] != null)
+        {
+            string MunicipalId = ""; string MunicipalName = "";
+            DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from Users u inner join List_classification_Municipal lm 
 on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
-          if (Municipal != null)
-          {
-              MunicipalId = Municipal["MunicipalID"].ToString();
-              MunicipalName = Municipal["MunicipalName"].ToString();
-          }
+            if (Municipal != null)
+            {
+                MunicipalId = Municipal["MunicipalID"].ToString();
+                MunicipalName = Municipal["MunicipalName"].ToString();
+            }
+            string odeyiciunvan = " ";
+            if (txtunvanodeyici.Text == "" || txtunvanodeyici.Text == null)
+            {
+                odeyiciunvan = "  ";
+            }
+            else
+            {
+                odeyiciunvan = " and t.ActualAdress like N'%" + txtunvanodeyici.Text + "%'";
+            }
 
-          if (MunicipalId != "")
-          {
-
-              DataTable dt = klas.getdatatable(@"select '0' sn, 
+            string unvanobyekt = " ";
+            if (txtunvanobyekt.Text == "" || txtunvanobyekt.Text == null)
+            {
+                unvanobyekt = "  ";
+            }
+            else
+            {
+                unvanobyekt = " and l.unvan like N'%" + txtunvanobyekt.Text + "%'";
+            }
+            if (MunicipalId != "")
+            {
+                DataTable dt = klas.getdatatable(@"select '0' sn, 
        N'  Cəmi  ' fullname, 
        '' YVOK,
        '' Concession,
@@ -42,10 +60,10 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
        '' ZonaFactor,
        '' TaxRate,
        sum(l.mebleg) mebleg,
-       '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix ,'' unvan 
+       '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix ,'' unvan ,'' ActualAdress 
 from Taxpayer t inner join viewLivingProperty l on t.TaxpayerID=l.TaxpayerID 
-where t.fordelete=1 and ExitDate is null and t.MunicipalID=" + MunicipalId +
-@" union select '1' sn, 
+where t.fordelete=1 and ExitDate is null and t.MunicipalID=" + MunicipalId + odeyiciunvan + unvanobyekt +
+  @" union select '1' sn, 
 t.SName+' '+t.Name+' '+t.FName as fullname, 
 t.YVOK,
 l.Concession,
@@ -54,16 +72,16 @@ l.DiffGeneralArea,
 convert(nvarchar(50),cast(l.ZonaFactor as numeric(18,2))) ZonaFactor,
 l.TaxRate,
 l.mebleg,
-'01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix  ,l.unvan 
+'01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix  ,l.unvan  ,t.ActualAdress 
 from Taxpayer t inner join viewLivingProperty l on t.TaxpayerID=l.TaxpayerID 
-where t.fordelete=1 and ExitDate is null and t.MunicipalID=" + MunicipalId +" order by sn,fullname");
-             
-              // dt = klas.tekrarlamax2("fullname", "YVOK","N",dt);
-              GridView1.DataSource = dt;
-              GridView1.DataBind();
-          }
-      }
+where t.fordelete=1 and ExitDate is null and t.MunicipalID=" + MunicipalId + odeyiciunvan + unvanobyekt+
+" order by sn,fullname");
 
+                // dt = klas.tekrarlamax2("fullname", "YVOK","N",dt);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+        }
     }
     protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
@@ -71,4 +89,8 @@ where t.fordelete=1 and ExitDate is null and t.MunicipalID=" + MunicipalId +" or
         kk();
     }
 
+    protected void Btnhesabat_Click(object sender, EventArgs e)
+    {
+        kk();
+    }
 }

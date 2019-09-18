@@ -438,10 +438,10 @@
 
         <p class="MsoNormal" style="margin-right: -.25pt">
             <b><span lang="AZ-CYR">11. Vergi bələdiyyənin
-            <asp:Label ID="bank" runat="server"></asp:Label> bankda yerləşən VÖEN
+            <asp:Label ID="bank" runat="server"></asp:Label> yerləşən VÖEN
             <asp:Label ID="voen" runat="server"></asp:Label>,
             <asp:Label ID="hesabn" runat="server"></asp:Label>
-            №-li hesabına bank, poçt və ya mövcud nəğdsiz ödəmə vasitələri ilə ödənməlidir.</span></b></p>
+            №-li hesabına Hökumət Ödəniş Portalı üzərindən bank &nbsp;və poçt şöbələri, ödəniş terminalı vasit</span><span>ə</span><span lang="AZ-CYR">silə nağd,&nbsp;www.gpp.az&nbsp;saytından isə ödəniş kartları vasitəsilə ödənilməlidir.</span></b></p>
 
         <p class="MsoNormal" style="margin-right: -.25pt">
             <b><span lang="AZ-LATIN">12.</span></b><span lang="AZ-LATIN">&nbsp; Vergi müəyyən edilmiş müddətdə ödənilmədikdə vergi məcəlləsinin 59.1-ci maddəsinə əsasən ödənmə müddətindən sonrakı hər bir ötmüş gün üçün ödənilməmiş vergi məbləğinin 0,1 %&nbsp; məbləğində faiz tutulacaq və maliyyə sanksiyyası tətbiq ediləcək.</span>

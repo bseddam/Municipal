@@ -40,7 +40,7 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
             }
             DataTable dt = klas.getdatatable(@"select '0' sn,N'  Cəmi ' fullname,'' YVOK, '' nametype,'' id,cast(sum(Mebleg) as numeric(15,2)) Mebleg, '01.01.'+CAST((YEAR(getdate())+1) as varchar) Tarix from ViewPaymentBaza vpb 
   where 1=1 and vpb.MunicipalID=" + MunicipalId + odeniw +
-    " union  select '1' sn, fullname,YVOK,nametype,id,cast(Mebleg as numeric(15,2)) Mebleg,Tarix from ViewPaymentBaza vpb " +
+    " union all select '1' sn, fullname,YVOK,nametype,id,cast(Mebleg as numeric(15,2)) Mebleg,Tarix from ViewPaymentBaza vpb " +
     "  where 1=1 and vpb.MunicipalID=" + MunicipalId + odeniw + " order by sn,fullname");
             GridView1.DataSource = dt;
             GridView1.DataBind();

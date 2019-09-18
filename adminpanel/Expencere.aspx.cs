@@ -195,8 +195,9 @@ m.TaxpayerID=p.TaxpayerID inner join List_classification_Municipal lcm on m.Muni
 
 
         DataTable region2 = klas.getdatatable(@"select case when lr.CityID = 2 then lr.Name + ' ' + 'rayonu' 
-when lr.CityID = 1 then lr.Name + ' ' + N'şəhəri' end as Name,lcm.MunicipalName,ExpensesID,Amount ayri,Convert(nvarchar(50),mebleg1) teyinat,
-ep1.MunicipalID,ep1.MunicipalName,ep1.ExpensesYear,Convert(nvarchar(50),ep1.mebleg) sahe,ep1.ExpensesAreaID,ep1.ExpensesAreaName,
+when lr.CityID = 1 then lr.Name + ' ' + N'şəhəri' end as Name,lcm.MunicipalName,ExpensesID,Amount ayri,
+Convert(nvarchar(50),cast(mebleg1 as numeric(15,2))) teyinat,
+ep1.MunicipalID,ep1.MunicipalName,ep1.ExpensesYear,Convert(nvarchar(50),cast(ep1.mebleg as decimal(15,2))) sahe,ep1.ExpensesAreaID,ep1.ExpensesAreaName,
 Convert(nvarchar(50), c.ExpensesSubAreaID) ExpensesSubAreaID,c.ExpensesSubAreaName,ad.NoteText,case when lcc.sort Is null then 100000 else lcc.sort  end  as sort1,
 case when lcc1.sort Is null then 100000 else lcc1.sort  end  as sort2
  from (
@@ -214,13 +215,13 @@ select SUM(Amount+case when DFMF22 is null then 0 else DFMF22 end) mebleg,Expens
 "select ExpensesID,NoteText,ExpensesYear,p.ExpensesAreaID,p.MunicipalID,p.ExpensesSubAreaID,(Amount+case when DFMF22 is null then 0 else DFMF22 end) Amount, " +
 "p.ExpensesAreaName,p.ExpensesSubAreaName,lcm.MunicipalName from ExpensesProject p  " +
 "inner join List_classification_Municipal lcm on p.MunicipalID=lcm.MunicipalID where ExpensesType=1  and ExpensesYear=" + cmbhesabatili.SelectedItem.ToString() + hesabatayi1x + hesabatayi2x + bel + ray + sahe + teyinati +
-") ad on ad.MunicipalID=c.MunicipalID and ad.ExpensesYear=c.ExpensesYear and  " +
-"ad.ExpensesAreaID=c.ExpensesAreaID and c.ExpensesSubAreaID=ad.ExpensesSubAreaID and c.ExpensesAreaName=ad.ExpensesAreaName " +
-"and c.ExpensesSubAreaName=ad.ExpensesSubAreaName " +
-"left join List_classifications lcc on lcc.ClassifID=c.ExpensesAreaID " +
-"left join List_classifications lcc1 on lcc1.ClassifID=c.ExpensesSubAreaID "+
-"inner join List_classification_Municipal lcm on lcm.MunicipalID=ep1.MunicipalID " +
-"inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID order by MunicipalID,sort1,sort2");
+@") ad on ad.MunicipalID=c.MunicipalID and ad.ExpensesYear=c.ExpensesYear and  
+ad.ExpensesAreaID=c.ExpensesAreaID and c.ExpensesSubAreaID=ad.ExpensesSubAreaID and c.ExpensesAreaName=ad.ExpensesAreaName 
+and c.ExpensesSubAreaName=ad.ExpensesSubAreaName 
+left join List_classifications lcc on lcc.ClassifID=c.ExpensesAreaID 
+left join List_classifications lcc1 on lcc1.ClassifID=c.ExpensesSubAreaID 
+inner join List_classification_Municipal lcm on lcm.MunicipalID=ep1.MunicipalID 
+inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID order by MunicipalID,sort1,sort2");
 
 
 

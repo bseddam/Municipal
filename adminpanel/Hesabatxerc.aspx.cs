@@ -512,12 +512,12 @@ group by lcm1.RegionsID,lcm1.Name,lcm2.MunicipalID,lcm2.MunicipalName) t1 order 
             GridView2.Visible = true;
             GridView2.DataSource = dt;
             GridView2.DataBind();
-            if (RadioButtonList1.SelectedIndex == 0)
+            if (RadioButtonList1.SelectedIndex == 1)
                 if (GridView2.Rows.Count > 0)
                 {
-                    GridView2.HeaderRow.Cells[3].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ilə qalıq";
-                    GridView2.HeaderRow.Cells[4].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə vergi və ödənişlərdən daxil olma";
-                    GridView2.HeaderRow.Cells[8].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə bələdiyyələrin ümumi xərci";
+                    GridView2.HeaderRow.Cells[4].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ilə qalıq";
+                    GridView2.HeaderRow.Cells[5].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə vergi və ödənişlərdən daxil olma";
+                    GridView2.HeaderRow.Cells[9].Text = cmbhesabatili.SelectedItem.ToString() + "-cı ildə bələdiyyələrin ümumi xərci";
 
 
                 }

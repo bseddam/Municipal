@@ -150,12 +150,12 @@ yerliozunuidetme,tehsilsahesi,sehiyye,medeniyyet,idman,avtomobil,menzilkomunal,s
                     <asp:BoundField HeaderText="Şəhər, Rayon" HeaderStyle-CssClass="headertextaligncenter"  ItemStyle-CssClass="text-left" DataField="Name" />
                     <asp:BoundField HeaderText="Bələdiyyə" HeaderStyle-CssClass="headertextaligncenter"  ItemStyle-CssClass="text-left" DataField="bldname" />
                     <asp:BoundField HeaderText="Cəmi" HeaderStyle-CssClass="headertextaligncenter"  DataField="cemi" />
-                    <asp:BoundField HeaderText="01.01.2018-cı ilə qalıq" HeaderStyle-CssClass="headertextaligncenter" DataField="qaliq" />
-                    <asp:BoundField HeaderText="2018-ci ildə vergi və ödənişlərdən daxil olma" HeaderStyle-CssClass="headertextaligncenter" DataField="gelir" />
+                    <asp:BoundField HeaderText="01.01.2019-cu ilə qalıq" HeaderStyle-CssClass="headertextaligncenter" DataField="qaliq" />
+                    <asp:BoundField HeaderText="2019-cu ildə vergi və ödənişlərdən daxil olma" HeaderStyle-CssClass="headertextaligncenter" DataField="gelir" />
                     <asp:BoundField HeaderText="Dövlət tərəfindən verilən dotasiya" HeaderStyle-CssClass="headertextaligncenter" DataField="dotasiya" />
                     <asp:BoundField HeaderText="İanələrdən daxilolmalar" HeaderStyle-CssClass="headertextaligncenter" DataField="iane" />
                     <asp:BoundField HeaderText="Digər gəlirlər" HeaderStyle-CssClass="headertextaligncenter" DataField="digergelir" />
-                    <asp:BoundField HeaderText="2017-cı ildə bələdiyyələrin ümumi xərci" HeaderStyle-CssClass="headertextaligncenter" DataField="umumixerc" />
+                    <asp:BoundField HeaderText="2018-cı ildə bələdiyyələrin ümumi xərci" HeaderStyle-CssClass="headertextaligncenter" DataField="umumixerc" />
                     
                     <asp:BoundField HeaderText="Yerli özünüidarəetmə orqanlarının saxlanılması xərcləri" HeaderStyle-CssClass="headertextaligncenter" DataField="yerliozunuidetme" />
                     <asp:BoundField HeaderText="Təhsil sahəsində xərclər" HeaderStyle-CssClass="headertextaligncenter" DataField="tehsilsahesi" />

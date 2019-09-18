@@ -151,8 +151,8 @@ m.ForDelete=1 and " + cmbhesabatili.SelectedItem.ToString() + "-1>=year(p.NowTim
         trx.Text = trx1.Text = trx2.Text = trx3.Text = trx4.Text = cmbhesabatili.SelectedItem.ToString();
         
 
-        DataTable region2 = klas.getdatatable(@"select ExpensesID,Amount ayri,Convert(nvarchar(50),mebleg1) teyinat,
-ep1.MunicipalID,ep1.MunicipalName,ep1.ExpensesYear,Convert(nvarchar(50),ep1.mebleg) sahe,ep1.ExpensesAreaID,ep1.ExpensesAreaName,
+        DataTable region2 = klas.getdatatable(@"select ExpensesID,Amount ayri,Convert(nvarchar(50),cast(mebleg1 as numeric(15,2))) teyinat,
+ep1.MunicipalID,ep1.MunicipalName,ep1.ExpensesYear,Convert(nvarchar(50),cast(ep1.mebleg as decimal(15,2))) sahe,ep1.ExpensesAreaID,ep1.ExpensesAreaName,
 Convert(nvarchar(50), c.ExpensesSubAreaID) ExpensesSubAreaID,c.ExpensesSubAreaName,ad.NoteText,case when lcc.sort Is null then 100000 else lcc.sort  end  as sort1,
 case when lcc1.sort Is null then 100000 else lcc1.sort  end  as sort2
  from (

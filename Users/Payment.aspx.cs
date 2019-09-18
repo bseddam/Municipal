@@ -35,7 +35,8 @@ public partial class Users_Payment : System.Web.UI.Page
             DataRow userrow = klas.GetDataRow("Select * from Taxpayer where TaxpayerID=" + TaxpayerID);
             if (userrow != null)
             {
-                LBTaxPayerName.Text = userrow["SName"].ToString() + " " + userrow["Name"].ToString() + " " + userrow["Fname"].ToString();
+                LBTaxPayerName.Text = userrow["SName"].ToString() + " " + userrow["Name"].ToString() 
+                    + " " + userrow["Fname"].ToString();
                 YVOK.Text = userrow["YVOK"].ToString();
                 VOEN.Text = userrow["VOEN"].ToString();
             }
@@ -358,7 +359,6 @@ values (@TaxpayerID,@TaxesPaymentID,@Amount,@PaymentDocument,@NowTime,@Operation
         {
             hesabla.hesab08_11emlaktorpaq("2", TaxpayerID, "08", buil);
             hesabla.hesab08_11emlaktorpaq("2", TaxpayerID, "11", buil);
-
             hesabla.CalcToday("2", TaxpayerID);
         }
         goruntu();
@@ -378,428 +378,7 @@ values (@TaxpayerID,@TaxesPaymentID,@Amount,@PaymentDocument,@NowTime,@Operation
 
  
     
-   
-  
-  
-    void emlak(string verginov)
-    {
-        SqlConnection baglan = klas.baglan();
-        DataRow dr1 = klas.GetDataRow(@"select TaxpayerID from CalcTaxes where TaxpayerID=" + TaxpayerID +
-            " and CalcYear=Year(getdate()) and TaxesType=" + verginov);
-        if (dr1 == null)
-        {
-            DataRow dr;
 
-            if (verginov == "1")
-            {
-                dr = klas.GetDataRow(@"select l.TaxpayerID,sum(mebleg)  Cem,1 TaxesType from (select LivingAreaID,TaxpayerID,RegistrCode,LivingType,mebleg from viewLivingProperty where ExitDate is null
-                union select LivingAreaID,TaxpayerID,RegistrCode,LivingType,mebleg from viewQLivingProperty  where ExitDate is null
-                union  select TransportID LivingAreaID,TaxpayerID,RegistrCode,6 LivingType,mebleg from viewWaterAirTransport where ExitDate is null)
-                l where l.TaxpayerID=" + TaxpayerID + "  group by TaxpayerID");
-            }
-            else
-            {
-                dr = klas.GetDataRow(@"select l.TaxpayerID,sum(mebleg)  Cem,2 TaxesType from ( select TaxpayerID,RegistrCode,mebleg,LivingType from ViewLivingLand where ExitDate is null
-                 union select TaxpayerID,RegistrCode,mebleg,LivingType from ViewQLivingLand where ExitDate is null
-                 union select TaxpayerID,RegistrCode,mebleg,LivingType from ViewVillageLand where ExitDate is null) l where l.TaxpayerID=" + TaxpayerID + "  group by TaxpayerID");
-            }
-
-            if (dr != null)
-            {
-                SqlCommand cmd = new SqlCommand(@"insert into CalcTaxes (TaxpayerID,TaxesType,AmountTax,CalcYear) 
-Values (@TaxpayerID,@TaxesType,@AmountTax,Year(getdate()))", baglan);
-
-                cmd.Parameters.AddWithValue("@TaxpayerID", TaxpayerID);
-                cmd.Parameters.AddWithValue("@TaxesType", dr["TaxesType"].ToString());
-                cmd.Parameters.AddWithValue("@AmountTax", dr["Cem"].ToString());
-                cmd.ExecuteNonQuery();
-            }
-        }
-        else
-        {
-            DataRow dr;
-            if (verginov == "1")
-            {
-                dr = klas.GetDataRow(@"select l.TaxpayerID,sum(mebleg)  Cem,1 TaxesType from ( select LivingAreaID,TaxpayerID,RegistrCode,LivingType,mebleg from viewLivingProperty where ExitDate is null
-union select LivingAreaID,TaxpayerID,RegistrCode,LivingType,mebleg from viewQLivingProperty where ExitDate is null
-union  select TransportID LivingAreaID,TaxpayerID,RegistrCode,6 LivingType,mebleg from viewWaterAirTransport where ExitDate is null) l where l.TaxpayerID=" + TaxpayerID + " group by TaxpayerID");
-            }
-            else
-            {
-                dr = klas.GetDataRow(@"select l.TaxpayerID,sum(mebleg)  Cem,2 TaxesType from ( select TaxpayerID,RegistrCode,mebleg,LivingType from ViewLivingLand where ExitDate is null
- union select TaxpayerID,RegistrCode,mebleg,LivingType from ViewQLivingLand  where ExitDate is null
- union select TaxpayerID,RegistrCode,mebleg,LivingType from ViewVillageLand where ExitDate is null) l where l.TaxpayerID=" + TaxpayerID + "  group by TaxpayerID");
-            }
-            if (dr != null)
-            {
-                //Response.Write(dr["Cem"].ToString());
-                SqlCommand cmd = new SqlCommand(@"Update CalcTaxes set AmountTax=@AmountTax,
-CalcYear=Year(getdate()) where TaxpayerID=" + TaxpayerID + " and CalcYear=Year(getdate()) and TaxesType=" + verginov, baglan);
-                cmd.Parameters.AddWithValue("@AmountTax", dr["Cem"].ToString());
-                cmd.ExecuteNonQuery();
-            }
-        }
-        DataRow drw3 = klas.GetDataRow(@"select Series,SanctionTax,CalcID,TaxpayerID,CalcYear,AmountTax,cast(AmountTax/2 as numeric(15,2)) as yarisi
-from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear=Year(getdate()) and TaxesType in (" + verginov + ") order by CalcID desc");
-        if (drw3 != null)
-        {
-           // lblseria.Text = drw3["Series"].ToString();
-          //  seriakotuk.Text = drw3["Series"].ToString();
-            if (drw3["SanctionTax"] != null)
-            {
-             //   lblmaliyesanksiya.Text = drw3["SanctionTax"].ToString();
-            }
-
-            DataRow drw1zx = klas.GetDataRow(@"    select TaxpayerID,cast(sum(AmountTax)/2 as numeric(15,2)) as yarisi
-from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear=Year(getdate()) and TaxesType in (" + verginov + ") group by TaxpayerID ");
-        }
-        DataRow drqaliq1 = klas.GetDataRow(@"select mt.TaxpayerId,(select top 1 Operation from Payments  p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov
-        + ") order by PaymentID desc)  Operation,  case when " +
-                   " (select top 1 RemainingDebt from Payments  p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) is null then 0 " +
-                  "   else (select top 1 RemainingDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) " +
-               " end  qaliq, " +
-
-               " case when " +
-                "     (select top 1 morepayment from Payments  p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) is null then 0 " +
-
-                 "    else (select top 1 morepayment from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) " +
-              "  end  artiqodeme, " +
-               " case when (case when  " +
-              "       (select top 1 RemainingDebt from Payments  p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) is null then 0 " +
-               "      else (select top 1 RemainingDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) " +
-              "  end=0) then 0 " +
-              "  else " +
-              "  DATEDIFF(DAY,(select top 1 NowTime from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID in (" + verginov + ") order by PaymentID desc),GETDATE() ) " +
-              "  end as yenigday, " +
-              "  DATEDIFF(DAY,(select top 1 NowTime from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc),GETDATE())*  " +
-              "  (select top 1 RemainingDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc)/1000 as yenifaiz, " +
-               " (DATEDIFF(DAY,(select top 1 NowTime from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc),GETDATE())* " +
-               "  (select top 1 RemainingDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc)/1000) + " +
-               "  (select top 1 PercentDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) as yenifaizqaliq, " +
-               " (select top 1 sanction from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) as sanction, " +
-               " (select top 1 PaymentID from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) as PaymentID, " +
-              "  Convert(varchar,(select top 1 NowTime from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc),104) as DrealDatetime, " +
-              "  Convert(varchar,Getdate(),104) nowdatetime " +
-         " from CalcTaxes mt  " +
-         "  where mt.TaxesType  in (" + verginov + ") and mt.TaxpayerID=" + TaxpayerID + " and CalcYear=YEAR(GETDATE()) group by mt.TaxpayerId");
-
-        if (drqaliq1 != null)
-        {
-            if (drqaliq1["DrealDatetime"].ToString() != drqaliq1["nowdatetime"].ToString() )
-            {
-                //Response.Write(mebleg.Text +' '+ drqaliq1["qaliq"].ToString());
-
-                SqlCommand cmdx = new SqlCommand(@"Insert into Payments (TaxpayerID,TaxesPaymentID,Operation,Amount,RemainingDebt,
-PercentDayCount,PercentCounted,PercentDebt,PaymentDocument,NowTime,MorePayment,Sanction) 
-values (@TaxpayerID,@TaxesPaymentID,@Operation,@Amount,@RemainingDebt,@PercentDayCount,@PercentCounted,@PercentDebt,@PaymentDocument,
-getdate(),@MorePayment,@Sanction)", baglan);
-                cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
-                cmdx.Parameters.Add("TaxesPaymentID", verginov);
-                cmdx.Parameters.Add("Operation", 11);
-
-
-
-                float a = 0, art = 0; ;
-                float f = 0;
-                float s = 0;
-                float q = 0;
-                art = float.Parse(drqaliq1["artiqodeme"].ToString());
-                a = 0 - float.Parse(drqaliq1["qaliq"].ToString()) + float.Parse(drqaliq1["artiqodeme"].ToString());
-                if (drqaliq1["yenifaizqaliq"].ToString() != "" && drqaliq1["yenifaizqaliq"] != null)
-                {
-                    f = float.Parse(drqaliq1["yenifaizqaliq"].ToString());
-                }
-
-                if (drqaliq1["Sanction"].ToString() != "" && drqaliq1["Sanction"] != null)
-                {
-                    s = float.Parse(drqaliq1["Sanction"].ToString());
-                    //if (txtsanksiya.Text != "")
-                    //{
-                    //    s = s + float.Parse(txtsanksiya.Text);
-                    //}
-                }
-                if (0 >= float.Parse(drqaliq1["qaliq"].ToString()))
-                {
-
-                    q = 0;
-                    art = a;
-                }
-                else
-                {
-                    q = float.Parse(drqaliq1["qaliq"].ToString()) - 0;
-                    art = 0;
-                }
-                if (art > q)
-                {
-                    if (art > f)
-                    {
-                        art = art - f;
-                        f = 0;
-                    }
-                    else
-                    {
-                        f = f - art;
-                        art = 0;
-                    }
-
-                    if (art > s)
-                    {
-                        art = art - s;
-                        s = 0;
-                    }
-                    else
-                    {
-                        s = s - art;
-                        art = 0;
-                    }
-                }
-
-                if (0 >= float.Parse(drqaliq1["qaliq"].ToString()))
-                {
-
-                    cmdx.Parameters.Add("RemainingDebt", int.Parse("0"));
-                    cmdx.Parameters.Add("MorePayment", art);
-                }
-                else
-                {
-                    a = float.Parse(drqaliq1["qaliq"].ToString()) - 0;
-                    cmdx.Parameters.Add("RemainingDebt", a);
-                    cmdx.Parameters.Add("MorePayment", int.Parse("0"));
-                }
-                cmdx.Parameters.Add("Sanction", s);
-                cmdx.Parameters.Add("Amount", int.Parse("0"));
-                cmdx.Parameters.Add("PercentDayCount", drqaliq1["yenigday"].ToString());
-                cmdx.Parameters.Add("PercentCounted", drqaliq1["yenifaiz"].ToString());
-                cmdx.Parameters.Add("PercentDebt", f);
-                cmdx.Parameters.Add("PaymentDocument", "");
-                cmdx.ExecuteNonQuery();
-            }
-            else if (drqaliq1["DrealDatetime"].ToString() == drqaliq1["nowdatetime"].ToString()  && drqaliq1["Operation"].ToString() != "10")
-            {
-                //Response.Write(mebleg.Text +' '+ drqaliq1["qaliq"].ToString());
-
-                SqlCommand cmdx = new SqlCommand(@"Update Payments set TaxpayerID=@TaxpayerID,TaxesPaymentID=@TaxesPaymentID,Operation=@Operation,
-                                                   Amount=@Amount,RemainingDebt=@RemainingDebt,PercentDayCount=@PercentDayCount,PercentCounted=@PercentCounted,
-                                                   PercentDebt=@PercentDebt,PaymentDocument=@PaymentDocument,NowTime=getdate(),MorePayment=@MorePayment,Sanction=@Sanction
-                                                   Where PaymentID=@PaymentID", baglan);
-                cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
-                cmdx.Parameters.Add("TaxesPaymentID", verginov);
-                cmdx.Parameters.Add("Operation", drqaliq1["Operation"].ToString());
-
-
-                float a = 0, art = 0; ;
-                float f = 0;
-                float s = 0;
-                float q = 0;
-                art = float.Parse(drqaliq1["artiqodeme"].ToString());
-                a = 0 - float.Parse(drqaliq1["qaliq"].ToString()) + float.Parse(drqaliq1["artiqodeme"].ToString());
-                if (drqaliq1["yenifaizqaliq"].ToString() != "" && drqaliq1["yenifaizqaliq"] != null)
-                {
-                    f = float.Parse(drqaliq1["yenifaizqaliq"].ToString());
-                }
-
-                if (drqaliq1["Sanction"].ToString() != "" && drqaliq1["Sanction"] != null)
-                {
-                    s = float.Parse(drqaliq1["Sanction"].ToString());
-                    //if (txtsanksiya.Text != "")
-                    //{
-                    //    s = s + float.Parse(txtsanksiya.Text);
-                    //}
-                }
-                if (0 >= float.Parse(drqaliq1["qaliq"].ToString()))
-                {
-
-                    q = 0;
-                    art = a;
-                }
-                else
-                {
-                    q = float.Parse(drqaliq1["qaliq"].ToString()) - 0;
-                    art = 0;
-                }
-                if (art > q)
-                {
-                    if (art > f)
-                    {
-                        art = art - f;
-                        f = 0;
-                    }
-                    else
-                    {
-                        f = f - art;
-                        art = 0;
-                    }
-
-                    if (art > s)
-                    {
-                        art = art - s;
-                        s = 0;
-                    }
-                    else
-                    {
-                        s = s - art;
-                        art = 0;
-                    }
-                }
-
-                if (0 >= float.Parse(drqaliq1["qaliq"].ToString()))
-                {
-
-                    cmdx.Parameters.Add("RemainingDebt", int.Parse("0"));
-                    cmdx.Parameters.Add("MorePayment", art);
-                }
-                else
-                {
-                    a = float.Parse(drqaliq1["qaliq"].ToString()) - 0;
-                    cmdx.Parameters.Add("RemainingDebt", a);
-                    cmdx.Parameters.Add("MorePayment", int.Parse("0"));
-                }
-                cmdx.Parameters.Add("Sanction", s);
-                cmdx.Parameters.Add("Amount", int.Parse("0"));
-                cmdx.Parameters.Add("PercentDayCount", drqaliq1["yenigday"].ToString());
-                cmdx.Parameters.Add("PercentCounted", drqaliq1["yenifaiz"].ToString());
-                cmdx.Parameters.Add("PercentDebt", f);
-                cmdx.Parameters.Add("PaymentDocument", "");
-                cmdx.Parameters.Add("PaymentID", drqaliq1["PaymentID"].ToString());
-                cmdx.ExecuteNonQuery();
-            }
-
-        }
-
-
-
-
-
-
-        DataRow drinsertsora = klas.GetDataRow(@"select mt.TaxpayerId,  case when " +
-          "   (select top 1 RemainingDebt from Payments  p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) is null then 0 " +
-         "    else (select top 1 RemainingDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) " +
-      "  end  qaliq, " +
-      "  case when " +
-       "      (select top 1 morepayment from Payments  p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) is null then 0 " +
-
-      "       else (select top 1 morepayment from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) " +
-     "   end  artiqodeme, " +
-    "    case when (case when  " +
-     "        (select top 1 RemainingDebt from Payments  p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) is null then 0  " +
-     "        else (select top 1 RemainingDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc)  " +
-    "    end=0) then 0  " +
-    "    else  " +
-    "    DATEDIFF(DAY,(select top 1 NowTime from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID in (" + verginov + ") order by PaymentID desc),GETDATE() )  " +
-    "    end as yenigday,  " +
-    "    DATEDIFF(DAY,(select top 1 NowTime from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc),GETDATE())*  " +
-    "    (select top 1 RemainingDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc)/1000 as yenifaiz,  " +
-     "   (DATEDIFF(DAY,(select top 1 NowTime from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc),GETDATE())*  " +
-     "    (select top 1 RemainingDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc)/1000) + " +
-
-      "   (select top 1 PercentDebt from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) as yenifaizqaliq," +
-     "   (select top 1 sanction from Payments p where p.TaxpayerID=mt.TaxpayerID and TaxesPaymentID  in (" + verginov + ") order by PaymentID desc) as sanction " +
- "  from CalcTaxes mt  where mt.TaxesType  in (" + verginov + ") and mt.TaxpayerID=" + TaxpayerID + " and CalcYear=YEAR(GETDATE()) group by mt.TaxpayerId");
-        if (drinsertsora != null)
-        {
-
-            float tq = float.Parse(drinsertsora["qaliq"].ToString());
-            float tart = float.Parse(drinsertsora["artiqodeme"].ToString());
-            float tfaiz = 0;
-            if (drinsertsora["yenifaizqaliq"] != null && drinsertsora["yenifaizqaliq"].ToString() != "")
-            {
-                tfaiz = float.Parse(drinsertsora["yenifaizqaliq"].ToString());
-            }
-            float tsanksia = 0;
-            if (drinsertsora["sanction"] != null && drinsertsora["sanction"].ToString() != "")
-            {
-                tsanksia = float.Parse(drinsertsora["sanction"].ToString());
-            }
-            DataRow dremlak = klas.GetDataRow(@"select Series,SanctionTax,CalcID,TaxpayerID,CalcYear,AmountTax,cast(AmountTax/2 as numeric(15,2)) as yarisi
-from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear<=Year(getdate()) and TaxesType=" + verginov + " order by CalcYear desc");
-
-
-            float emlakv = 0;
-            if (dremlak != null)
-            {
-                emlakv = float.Parse(dremlak["AmountTax"].ToString());
-            }
-            if (drw3 != null)
-            {
-                float.Parse(drw3["AmountTax"].ToString());
-            }
-
-            float eo08 = emlakv / 2;
-            float eo11 = emlakv / 2;
-
-            if (tart > 0)
-            {
-                if (emlakv > tart)
-                {
-                    emlakv = emlakv - tart;
-                }
-                else
-                {
-                    emlakv = 0;
-                }
-                if (eo08 > tart)
-                {
-                    eo08 = eo08 - tart;
-
-                }
-                else
-                {
-                    eo08 = 0;
-                    if ((eo08 + eo11) > tart)
-                    {
-                        eo11 = eo11 - tart + eo08;
-                    }
-                    else
-                    {
-                        eo11 = 0;
-                    }
-                }
-            }
-
-            //if (verginov == "1")
-            //{
-            //    cem08 = eo08;
-            //    cem11 = eo11;
-            //    cemtq = tq;
-            //    cemfaiz = tfaiz;
-            //    cemsanksiya = tsanksia;
-            //    umumiborc = eo11 + eo08 + tq + tfaiz + tsanksia;
-            //    lblevergi.Text = Math.Round(Convert.ToDecimal(emlakv), 2).ToString();
-            //}
-            //else
-            //{
-            //    cem08 += eo08;
-            //    cem11 += eo11;
-            //    cemtq += tq;
-            //    cemfaiz += tfaiz;
-            //    cemsanksiya += tsanksia;
-            //    umumiborc = umumiborc + eo11 + eo08 + tq + tfaiz + tsanksia;
-            //    lbltvergi.Text = Math.Round(Convert.ToDecimal(emlakv), 2).ToString();
-            //    lbltarixindenman.Text = Math.Round(Convert.ToDecimal(cem08), 2).ToString();
-            //    lbltarixedekman.Text = Math.Round(Convert.ToDecimal(cem11), 2).ToString();
-            //    lblborc.Text = Math.Round(Convert.ToDecimal(cemtq), 2).ToString();
-            //    lblfaizmeb.Text = Math.Round(Convert.ToDecimal(cemfaiz), 2).ToString();
-            //    string payment;
-            //    payment = klas.getdatacell("Select Amount from Payments where TaxesPaymentID=15 and TaxpayerID=" + TaxpayerID + " order by NowTime desc,PaymentID desc");
-            //    if (payment != null)
-            //    {
-            //        lblmaliyesanksiya.Text = Math.Round(Convert.ToDecimal(payment), 2).ToString();
-            //        umumiborc = umumiborc + float.Parse(payment);
-            //    }
-            //    lblodcekmebleg.Text = Math.Round(Convert.ToDecimal(umumiborc), 2).ToString();
-            //    lblhesmanat.Text = Math.Round(Convert.ToDecimal(lblodcekmebleg.Text), 2).ToString();
-
-            //}
-
-
-
-
-
-        }
-
-        baglan.Close();
-        baglan.Dispose();
-    }
 
     void goruntu() {
 
@@ -944,17 +523,21 @@ from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear=Year(getdate()) 
                 float eo11 = torpaqv / 2;
 
                 string datelastinsert = klas.getdatacell("Select Getdate()");
+                string ilindiki = klas.getdatacell("Select Year(Getdate())");
 
-                if (Convert.ToDateTime(datelastinsert) >= Convert.ToDateTime("15.08." + DateTime.Now.Year.ToString()) && Convert.ToDateTime(datelastinsert) <= Convert.ToDateTime("15.11." + DateTime.Now.Year.ToString()))
+
+                if (Convert.ToDateTime(datelastinsert) >= Convert.ToDateTime("15.08." + ilindiki) && Convert.ToDateTime(datelastinsert) <= Convert.ToDateTime("15.11." + ilindiki))
                 {
+
                     umumiborc = eo11 + tq + tfaiz + tsanksia - tart;
                 }
-                else if (Convert.ToDateTime(datelastinsert) < Convert.ToDateTime("15.08." + DateTime.Now.Year.ToString()))
+                else if (Convert.ToDateTime(datelastinsert) < Convert.ToDateTime("15.08." + ilindiki))
                 {
                     umumiborc = eo11 + eo08 + tq + tfaiz + tsanksia - tart;
                 }
-                else if (Convert.ToDateTime(datelastinsert) >= Convert.ToDateTime("15.11." + DateTime.Now.Year.ToString()))
+                else if (Convert.ToDateTime(datelastinsert) >= Convert.ToDateTime("15.11." + ilindiki))
                 {
+
                     umumiborc = tq + tfaiz + tsanksia - tart;
                 }
                 qaliqborc.Text = System.Math.Round(umumiborc, 2, MidpointRounding.AwayFromZero).ToString();
@@ -1141,16 +724,26 @@ when  Operation=10 then N'Ödəmə' else N'Hesablanma' end Operation1,cast(Remai
             DataRow icazever = klas.GetDataRow(@"Select Icaze from Users u inner join List_classification_Municipal lm 
 on u.MunicipalID=lm.MunicipalID Where year(getdate())>(select year(NowTime) from Payments Where PaymentID=" + PaymentID+@") 
             and UserID=" + Session["UserID"].ToString());
+
+            DataRow icazeveronline = klas.GetDataRow(@"Select p.TaxesPaymentOnline 
+from Payments p  Where PaymentID=" + PaymentID + @" and TaxesPaymentOnline=1 ");
+
+
             if (icazever != null)
             {
                 icaze = icazever["Icaze"].ToString();
             }
 
-            if(icaze=="1")
+            if(icaze=="1" && icazeveronline==null)
             {
             klas.cmd("Delete from Payments Where PaymentID=" + PaymentID);
             goruntu();
             msg.Text = "";
+            }
+            else if(icazeveronline != null)
+            {
+                msg.ForeColor = Color.Red;
+                msg.Text = "Online ödənişi silməyə admin tərəfindən icazə verilmir.";
             }
             else 
             {

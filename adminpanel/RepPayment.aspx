@@ -33,18 +33,25 @@
         <div style="height: auto; width: 100%; background-color: white;">
             <table>
                 <tr>
-                    <td style="width: 160px;">
+                    <td style="width: 100px;">
                         Rayon:
-                <asp:DropDownList ID="ddlrayon" runat="server" AutoPostBack="True" Width="150px" OnSelectedIndexChanged="ddlrayon_SelectedIndexChanged" >
+                <asp:DropDownList ID="ddlrayon" runat="server" AutoPostBack="True" Width="100px" OnSelectedIndexChanged="ddlrayon_SelectedIndexChanged" >
                 </asp:DropDownList>
                     </td>
-                    <td style="width: 160px;">
-                        Bələdiyyə:<asp:DropDownList ID="ddlbelediyye" runat="server"  Width="150px">
-                </asp:DropDownList>
+                    <td style="width: 100px;">
+                        Bələdiyyə:<asp:DropDownList ID="ddlbelediyye" runat="server"  Width="100px"></asp:DropDownList>
                     </td>
 
-                    <td style="width: 160px;">
+                    <td style="width: 150px;">
                         Vergi obyekti:<asp:DropDownList ID="vergiadi" runat="server" Width="150px"></asp:DropDownList>
+                    </td>
+
+                    <td style="width: 120px;">
+                        Ödəniş növü:<asp:DropDownList ID="ddlodenisnovu" runat="server" Width="120px">
+                            <asp:ListItem Value="-1">Ümumi</asp:ListItem>
+                            <asp:ListItem Value="0">Nəğd</asp:ListItem>
+                            <asp:ListItem Value="1">Online</asp:ListItem>
+                        </asp:DropDownList>
                     </td>
 
                     <td style="width: 160px;">
@@ -91,6 +98,7 @@
                     <asp:BoundField HeaderText="Vergi ödəyicisinin adı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="fullname" />
                     <asp:BoundField HeaderText="YVÖK" HeaderStyle-CssClass="headertextaligncenter" DataField="YVOK" />
                     <asp:BoundField HeaderText="Vergi obyektləri" HeaderStyle-CssClass="headertextaligncenter" DataField="TaxesPaymentName" />
+                    <asp:BoundField HeaderText="Ödəniş növü" HeaderStyle-CssClass="headertextaligncenter" DataField="odenisnovu" />
                     <asp:BoundField HeaderText="Ödənilmiş məbləğ (manat)" HeaderStyle-CssClass="headertextaligncenter" DataField="mebleg" />
                     <asp:BoundField HeaderText="Tarix" HeaderStyle-CssClass="headertextaligncenter" DataField="Tarix" />
 

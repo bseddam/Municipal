@@ -45,7 +45,9 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
         {
             Response.Redirect("EntryAdmin.aspx");
         }
-        string MunicipalId = ""; string ray = " "; string vergiid = ""; string tarix1 = ""; string tarix2 = ""; string yvok = "";
+        string MunicipalId = ""; string ray = " "; string vergiid = ""; string tarix1 = "";
+        string tarix2 = ""; string yvok = "";string odenisnovu="";
+
         if (ddlbelediyye.SelectedValue == "-1" || ddlbelediyye.SelectedValue == "" || ddlbelediyye.SelectedValue == null)
         {
             MunicipalId = " ";
@@ -88,7 +90,7 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
         }
         else
         {
-            tarix1 = " and p.NowTime>=convert(datetime,'" + DEDate1.Text + "',104) ";
+            tarix1 = " and convert(date,p.NowTime)>=convert(date,'" + DEDate1.Text + "',104) ";
         }
         if (DEDate2.Text == "" || DEDate2.Text == null)
         {
@@ -96,25 +98,42 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
         }
         else
         {
-            tarix2 = " and p.NowTime<=convert(datetime,'" + DEDate2.Text + "',104) ";
+            tarix2 = " and convert(date,p.NowTime)<=convert(date,'" + DEDate2.Text + "',104) ";
+        }
+        if (ddlodenisnovu.SelectedValue.ToString() == "-1" || ddlodenisnovu.SelectedValue.ToString() == "" || ddlodenisnovu.SelectedValue.ToString() == null)
+        {
+            odenisnovu = " ";
+        }
+        else if(ddlodenisnovu.SelectedValue.ToString() == "1")
+        {
+            odenisnovu = " and p.TaxesPaymentOnline=1 ";
+        }
+        else
+        {
+            odenisnovu = " and p.TaxesPaymentOnline <>1 ";
         }
 
 
 
-        DataTable dt = klas.getdatatable(@"select '0' sn, '' fullname, '' YVOK,CAST(Sum(p.Amount)as numeric(18,2)) mebleg, '' Tarix,'' TaxesPaymentName,
+        DataTable dt = klas.getdatatable(@"select '0' sn, '' fullname, '' YVOK,CAST(Sum(p.Amount)as numeric(18,2)) mebleg, '' Tarix,
+'' odenisnovu,
+'' TaxesPaymentName,
 '' MunicipalName,'' Name   from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID 
-                   inner join List_classification_Municipal lcm on t.MunicipalID=lcm.MunicipalID 
-inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID  where 1=1 " + tarix1 + tarix2 + vergiid + MunicipalId + ray + yvok +
-         @" and p.Operation=10     union  select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, t.YVOK, CAST(p.Amount as numeric(18,2)) mebleg,
-convert(varchar,p.NowTime,104) Tarix,
+inner join List_classification_Municipal lcm on t.MunicipalID=lcm.MunicipalID 
+inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID  where 1=1  "
++ tarix1 + tarix2 + vergiid + MunicipalId + ray + yvok + odenisnovu+
+@" and p.Operation=10     union  
+select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, t.YVOK, CAST(p.Amount as numeric(18,2)) mebleg,
+convert(varchar,p.NowTime,104) Tarix,case when p.TaxesPaymentOnline=1 then 'Online' else N'Nəğd' end odenisnovu,
 case when p.TaxesPaymentID=1 then N'Əmlak vergisi' 
 when p.TaxesPaymentID=2 then N'Torpaq vergisi' else TaxesPaymentTypeName end TaxesPaymentName,lcm.MunicipalName,
 case when lr.CityID=2 then lr.Name+N' rayonu' when CityID=1 then lr.Name+N' şəhəri' end Name
 from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID 
 inner join List_classification_Municipal lcm on t.MunicipalID=lcm.MunicipalID 
 inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID 
-inner join (select * from TaxesPaymentList d union select 15,N'Maliyyə sanksiyası','3',getdate() ) txl on txl.TaxesPaymentID=p.TaxesPaymentID where 1=1 " +
-         tarix1 + tarix2 + vergiid + MunicipalId + ray + yvok + @" and p.Operation=10  
+inner join (select * from TaxesPaymentList d union select 15,N'Maliyyə sanksiyası','3',getdate() )
+ txl on txl.TaxesPaymentID=p.TaxesPaymentID where 1=1 " +
+         tarix1 + tarix2 + vergiid + MunicipalId + ray + yvok + odenisnovu + @" and p.Operation=10  
         order by sn,Name,MunicipalName, tarix desc");
 
         GridView1.DataSource = dt;

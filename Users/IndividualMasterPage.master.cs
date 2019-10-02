@@ -125,15 +125,17 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
     protected void DeleteRecord(object sender, EventArgs e)
     {
         string TaxpayerID1 = (sender as LinkButton).CommandArgument.ToString();
-        if (klas.getdatatable("select TaxpayerID from Payments where TaxpayerID=" + TaxpayerID1 + " and amount<>0 and Operation=10").Rows.Count == 0)
-        {    
-       
-        klas.cmd("Update  Taxpayer set Fordelete=0,FordeleteTime=getdate() Where TaxpayerID=" + TaxpayerID1);
-        if (IndividualLegal != "")
+        if (klas.getdatatable(@"select TaxpayerID from Payments where TaxpayerID=" 
++ TaxpayerID1 + " and amount<>0 and Operation=10").Rows.Count == 0)
         {
-            vizual("");
-        }
-        Response.Redirect(lblsehife.Text + ".aspx?IndividualLegal=" + lblindividuallegal.Text);
+
+            klas.cmd(@"Update Taxpayer set Fordelete=0,FordeleteTime=getdate() Where TaxpayerID=" 
++ TaxpayerID1);
+            if (IndividualLegal != "")
+            {
+                vizual("");
+            }
+            Response.Redirect(lblsehife.Text + ".aspx?IndividualLegal=" + lblindividuallegal.Text);
         }
         else
         {
@@ -169,9 +171,9 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
         }
         else
         {
-            yvok = "  and t1.YVOK like '%" + txtyvok.Text + "%'";
-            yvok1 = "  and t2.YVOK like '%" + txtyvok.Text + "%'";
-            yvok2 = "  and t.YVOK like '%" + txtyvok.Text + "%'";
+            yvok = "  and t1.YVOK like N'%" + txtyvok.Text + "%'";
+            yvok1 = "  and t2.YVOK like N'%" + txtyvok.Text + "%'";
+            yvok2 = "  and t.YVOK like N'%" + txtyvok.Text + "%'";
         }
 
         if (txtad.Text == " " || txtad.Text == "" || txtad.Text == null)

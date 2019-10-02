@@ -55,13 +55,11 @@
                     </td>
 
                     <td style="width: 160px;">
-                        
                        YVÖK:<asp:TextBox ID="txtyvok" runat="server"></asp:TextBox>
                     </td>
 
                     <td style="width: 160px;">
                         Tarixdən:<dx:aspxdateedit id="DEDate1" runat="server" Width="150px"></dx:aspxdateedit>
-                       
                     </td>
                       
                     <td style="width: 160px;">

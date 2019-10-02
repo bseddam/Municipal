@@ -19,10 +19,14 @@ public partial class Users_Homepage : System.Web.UI.Page
     }
     void xx()
     {
-        DataTable dtiller = klas.getdatatable(@"select distinct txl.TaxesPaymentID,case when txl.TaxesPaymentID in(1,3,6) then N'Əmlak vergisi' when txl.TaxesPaymentID in(2,4,5) then N'Torpaq vergisi' else  
-TaxesPaymentTypeName end TaxesPaymentTypeName
- from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID
-                                           inner join (select * from TaxesPaymentList d union select 15,N'Maliyyə sanksiyası','3',getdate() ) txl on txl.TaxesPaymentID=p.TaxesPaymentID order by txl.TaxesPaymentID");
+        DataTable dtiller = klas.getdatatable(@"select distinct txl.TaxesPaymentID, 
+case when txl.TaxesPaymentID in(1,3,6) then N'Əmlak vergisi' 
+when txl.TaxesPaymentID in(2,4,5) then N'Torpaq vergisi' else  
+TaxesPaymentTypeName end TaxesPaymentTypeName 
+ from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID 
+ inner join (select * from TaxesPaymentList d union 
+select 15,N'Maliyyə sanksiyası','3',getdate() ) txl on txl.TaxesPaymentID=p.TaxesPaymentID 
+order by txl.TaxesPaymentID");
         vergiadi.DataTextField = "TaxesPaymentTypeName";
         vergiadi.DataValueField = "TaxesPaymentID";
         vergiadi.DataSource = dtiller;
@@ -34,7 +38,8 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
     {
         if (Session["UserID"] != null)
         {
-            string MunicipalId = ""; string MunicipalName = ""; string vergiid = ""; string tarix1 = ""; string tarix2 = "";
+            string MunicipalId = ""; string MunicipalName = "";
+            string vergiid = ""; string tarix1 = ""; string tarix2 = ""; string odenisnovu = "";
             DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from Users u inner join List_classification_Municipal lm 
 on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
             if (Municipal != null)
@@ -57,7 +62,7 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
             }
             else
             {
-                tarix1 = " and p.NowTime>=convert(datetime,'" + DEDate1.Text + "',104) ";
+                tarix1 = " and convert(date,p.NowTime)>=convert(date,'" + DEDate1.Text + "',104) ";
             }
             if (DEDate2.Text == "" || DEDate2.Text == null)
             {
@@ -65,7 +70,7 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
             }
             else
             {
-                tarix2 = " and p.NowTime<=convert(datetime,'" + DEDate2.Text + "',104) ";
+                tarix2 = " and convert(date,p.NowTime)<=convert(date,'" + DEDate2.Text + "',104) ";
             }
 
             string yvok="";
@@ -75,23 +80,39 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
             }
             else
             {
-                yvok = "  and t.YVOK like '%" + txtyvok.Text + "%'";
+                yvok = "  and t.YVOK like N'%" + txtyvok.Text + "%'";
+            }
+            if (ddlodenisnovu.SelectedValue.ToString() == "-1" || ddlodenisnovu.SelectedValue.ToString() == "" || ddlodenisnovu.SelectedValue.ToString() == null)
+            {
+                odenisnovu = " ";
+            }
+            else if (ddlodenisnovu.SelectedValue.ToString() == "1")
+            {
+                odenisnovu = " and p.TaxesPaymentOnline=1 ";
+            }
+            else
+            {
+                odenisnovu = " and p.TaxesPaymentOnline is null ";
             }
 
             if (MunicipalId != "")
             {
-                DataTable dt = klas.getdatatable(@"select '0' sn, N' Cəmi ' fullname, '' YVOK,Sum(p.Amount) mebleg, '' Tarix,'' TaxesPaymentName          
-                   from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID where 1=1 " + tarix1 + tarix2 +yvok+
+                DataTable dt = klas.getdatatable(@"select '0' sn, N' Cəmi ' fullname, '' YVOK,
+Sum(p.Amount) mebleg, '' Tarix,'' TaxesPaymentName          
+                   from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID where 1=1 " 
++ tarix1 + tarix2 + yvok + odenisnovu +
                  " and p.Operation=10 and t.ForDelete=1  and t.MunicipalID=" + MunicipalId + " " + vergiid +
-                 " union select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, " +
+                 " union all select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, " +
                  "                          t.YVOK,   " +
                  "                          p.Amount mebleg," +
                  "                          convert(varchar,p.NowTime,104) Tarix," +
                  "  case when p.TaxesPaymentID=1 then N'Əmlak vergisi' " +
                  " when p.TaxesPaymentID=2 then N'Torpaq vergisi' else TaxesPaymentTypeName end TaxesPaymentName      " +
-                 "                          from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID " +
-                 "                          inner join (select * from TaxesPaymentList d union select 15,N'Maliyyə sanksiyası','3',getdate()) txl on txl.TaxesPaymentID=p.TaxesPaymentID where 1=1 " +
-                 tarix1 + tarix2 + yvok + " and p.Operation=10  and t.MunicipalID=" + MunicipalId + " and t.ForDelete=1 " + vergiid +
+                 " from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID " +
+                 " inner join (select * from TaxesPaymentList d union select 15,N'Maliyyə sanksiyası','3',getdate()) txl " +
+                 "on txl.TaxesPaymentID=p.TaxesPaymentID where 1=1 " +
+                 tarix1 + tarix2 + yvok + odenisnovu + " and p.Operation=10  and t.MunicipalID=" 
+                 + MunicipalId + " and t.ForDelete=1 " + vergiid +
                  " order by sn, tarix desc");
                 
                 GridView1.DataSource = dt;

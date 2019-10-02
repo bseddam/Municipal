@@ -18,7 +18,7 @@ public partial class adminpanel_RepPayment : System.Web.UI.Page
             {
                 Response.Redirect("EntryAdmin.aspx");
             }
-           // kk();
+
             xx();
             rayon();
             municipal();
@@ -28,10 +28,14 @@ public partial class adminpanel_RepPayment : System.Web.UI.Page
 
     void xx()
     {
-        DataTable dtiller = klas.getdatatable(@"select distinct txl.TaxesPaymentID,case when txl.TaxesPaymentID in(1,3,6) then N'Əmlak vergisi' when txl.TaxesPaymentID in(2,4,5) then N'Torpaq vergisi' else  
-TaxesPaymentTypeName end TaxesPaymentTypeName
- from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID
-                                           inner join (select * from TaxesPaymentList d union select 15,N'Maliyyə sanksiyası','3',getdate() ) txl on txl.TaxesPaymentID=p.TaxesPaymentID order by txl.TaxesPaymentID");
+        DataTable dtiller = klas.getdatatable(@"select 
+distinct txl.TaxesPaymentID,case when txl.TaxesPaymentID in(1,3,6) then N'Əmlak vergisi' 
+when txl.TaxesPaymentID in(2,4,5) then N'Torpaq vergisi' else  
+TaxesPaymentTypeName end TaxesPaymentTypeName 
+ from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID 
+inner join (select * from TaxesPaymentList d union 
+select 15,N'Maliyyə sanksiyası','3',getdate() ) txl on 
+txl.TaxesPaymentID=p.TaxesPaymentID order by txl.TaxesPaymentID");
         vergiadi.DataTextField = "TaxesPaymentTypeName";
         vergiadi.DataValueField = "TaxesPaymentID";
         vergiadi.DataSource = dtiller;
@@ -72,7 +76,7 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
         }
         else
         {
-            yvok = "  and t.YVOK like '%" + txtyvok.Text + "%'";
+            yvok = "  and t.YVOK like N'%" + txtyvok.Text + "%'";
         }
 
 
@@ -110,19 +114,20 @@ TaxesPaymentTypeName end TaxesPaymentTypeName
         }
         else
         {
-            odenisnovu = " and p.TaxesPaymentOnline <>1 ";
+            odenisnovu = " and p.TaxesPaymentOnline is null ";
         }
 
 
 
-        DataTable dt = klas.getdatatable(@"select '0' sn, '' fullname, '' YVOK,CAST(Sum(p.Amount)as numeric(18,2)) mebleg, '' Tarix,
+        DataTable dt = klas.getdatatable(@"select '0' sn, '' fullname, '' YVOK,
+CAST(Sum(p.Amount)as numeric(18,2)) mebleg, '' Tarix,
 '' odenisnovu,
 '' TaxesPaymentName,
 '' MunicipalName,'' Name   from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID 
 inner join List_classification_Municipal lcm on t.MunicipalID=lcm.MunicipalID 
 inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID  where 1=1  "
 + tarix1 + tarix2 + vergiid + MunicipalId + ray + yvok + odenisnovu+
-@" and p.Operation=10     union  
+@" and p.Operation=10     union  all 
 select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, t.YVOK, CAST(p.Amount as numeric(18,2)) mebleg,
 convert(varchar,p.NowTime,104) Tarix,case when p.TaxesPaymentOnline=1 then 'Online' else N'Nəğd' end odenisnovu,
 case when p.TaxesPaymentID=1 then N'Əmlak vergisi' 

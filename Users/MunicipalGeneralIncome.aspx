@@ -36,34 +36,27 @@
      <div style="height:auto; width:100%; background-color:white;">
          <table>
              <tr>
-                 <td style="width:150px;">
-                     Vergi obyekti:
+                 <td style="width:180px;">
+                     Vergi obyekti:<asp:DropDownList ID="vergiadi" runat="server" Width="150"></asp:DropDownList>
                  </td>
+
                  <td style="width:150px;">                    
-                     <asp:DropDownList ID="vergiadi" runat="server" Width="150"></asp:DropDownList>
+                    Ödəniş növü:<asp:DropDownList ID="ddlodenisnovu" runat="server" Width="120px">
+                            <asp:ListItem Value="-1">Ümumi</asp:ListItem>
+                            <asp:ListItem Value="0">Nəğd</asp:ListItem>
+                            <asp:ListItem Value="1">Online</asp:ListItem>
+                        </asp:DropDownList>
                  </td>
-                    <td style="width:50px;">                    
-                  YVÖK:
+                 <td style="width:160px;">                    
+                  YVÖK:<asp:TextBox ID="txtyvok" runat="server" style="width:150px;"></asp:TextBox>
                  </td>
-                      <td style="width:100px;">                    
-                     <asp:TextBox ID="txtyvok" runat="server" ></asp:TextBox>
+                 <td style="width:160px;">
+                     Tarixdən:<dx:ASPxDateEdit ID="DEDate1" runat="server"  Width="150px"></dx:ASPxDateEdit>
                  </td>
-                 <td style="width: 54px;">
-                     Müddət:
+                 <td style="width:160px;">
+                     tarixədək <dx:ASPxDateEdit ID="DEDate2" runat="server"  Width="150px"></dx:ASPxDateEdit>
                  </td>
-                 <td style="width:150px;">
-                     <dx:ASPxDateEdit ID="DEDate1" runat="server"  Width="150px"></dx:ASPxDateEdit>
-                 </td>
-                 <td style="width:100px;">
-                     Tarixdən
-                 </td>
-                 <td style="width:150px;">
-                     <dx:ASPxDateEdit ID="DEDate2" runat="server"  Width="150px"></dx:ASPxDateEdit>
-                 </td>
-                 <td style="width:100px;">
-                     tarixədək
-                 </td>
-                 <td style="width:150px;">
+                 <td style="width: 150px;vertical-align:bottom">
                      <asp:Button ID="btnaxtar" runat="server" Text="Axtar" OnClick="btnaxtar_Click" />
                  </td>
              </tr>

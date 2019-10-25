@@ -91,8 +91,7 @@
                 AllowPaging="true" AutoGenerateColumns="False" DataKeyNames="Sn,fullname,YVOK,TaxesPaymentName,mebleg,Tarix"
                 runat="server" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="1000">
                 <Columns>
-
-                              <asp:TemplateField HeaderText="SN" HeaderStyle-CssClass="headertextaligncenter">
+                    <asp:TemplateField HeaderText="SN" HeaderStyle-CssClass="headertextaligncenter">
                         <ItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text="<%#Container.DataItemIndex%>"></asp:Label>
                         </ItemTemplate>
@@ -100,7 +99,10 @@
                     <asp:BoundField HeaderText="Vergi ödəyicisinin adı" HeaderStyle-CssClass="headertextaligncenter" ItemStyle-CssClass="text-left" DataField="fullname" />
                     <asp:BoundField HeaderText="YVÖK" HeaderStyle-CssClass="headertextaligncenter" DataField="YVOK" />
                     <asp:BoundField HeaderText="Vergi obyektləri" HeaderStyle-CssClass="headertextaligncenter" DataField="TaxesPaymentName" />
-                    <asp:BoundField HeaderText="Ödənilmiş məbləğ (manat)" HeaderStyle-CssClass="headertextaligncenter" DataField="mebleg" />
+                    <asp:BoundField HeaderText="Ödənilmiş məbləğ (manatla)" HeaderStyle-CssClass="headertextaligncenter" DataField="mebleg" />
+                    <asp:BoundField HeaderText="Online xidmət haqqı - 3% (manatla)" HeaderStyle-CssClass="headertextaligncenter" DataField="faizmebleg" />
+                    <asp:BoundField HeaderText="Qalıq" HeaderStyle-CssClass="headertextaligncenter" DataField="qaliq" />
+
                     <asp:BoundField HeaderText="Tarix" HeaderStyle-CssClass="headertextaligncenter" DataField="Tarix" />
 
                 </Columns>
@@ -113,14 +115,7 @@
 
             </asp:GridView>
 
-
-
-
-
-
-                   
-
-                     </div>
+</div>
 
 </div>
 </asp:Content>

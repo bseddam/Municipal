@@ -18,6 +18,10 @@ public class Class2
         baglan.Open();
         return baglan;
     }
+    public bool IsASCII(string value)
+    {
+       return Encoding.UTF8.GetByteCount(value) == value.Length;
+    }
     public static void MsgBox(string mstx, Page P)
     {
         P.ClientScript.RegisterClientScriptBlock(P.GetType(), "PopupScript", "window.focus(); alert('" + mstx + "');", true);

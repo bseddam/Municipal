@@ -98,13 +98,15 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
             if (MunicipalId != "")
             {
                 DataTable dt = klas.getdatatable(@"select '0' sn, N' Cəmi ' fullname, '' YVOK,
-Sum(p.Amount) mebleg, '' Tarix,'' TaxesPaymentName          
-                   from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID where 1=1 " 
+Sum(p.Amount) mebleg, cast(sum(p.Amount)*3/100 as numeric(18,2)) faizmebleg, 
+cast(Sum(p.Amount)-sum(p.Amount)*3/100 as numeric(18,2)) qaliq,'' Tarix,'' TaxesPaymentName          
+                   from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID where 1=1 "
 + tarix1 + tarix2 + yvok + odenisnovu +
                  " and p.Operation=10 and t.ForDelete=1  and t.MunicipalID=" + MunicipalId + " " + vergiid +
                  " union all select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, " +
                  "                          t.YVOK,   " +
-                 "                          p.Amount mebleg," +
+                 "p.Amount mebleg,cast(p.Amount*3/100 as numeric(18,2)) faizmebleg," +
+                 "cast(p.Amount-p.Amount*3/100 as numeric(18,2)) qaliq,  " +
                  "                          convert(varchar,p.NowTime,104) Tarix," +
                  "  case when p.TaxesPaymentID=1 then N'Əmlak vergisi' " +
                  " when p.TaxesPaymentID=2 then N'Torpaq vergisi' else TaxesPaymentTypeName end TaxesPaymentName      " +

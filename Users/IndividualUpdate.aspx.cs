@@ -361,9 +361,10 @@ public partial class Users_Individual : System.Web.UI.Page
         {
 
             DataRow drform = klas.GetDataRow(@"SELECT TaxpayerID from Taxpayer where  TaxpayerID <>" + TaxpayerID + 
-                "  and ForDelete=1  and Pincode='" + vespinkod.Text + "' and MunicipalID="
+                "   and Pincode=N'" + vespinkod.Text + "' and MunicipalID="
                 + MunicipalId);
-            if (drform == null)
+            
+            if (drform == null && klas.IsASCII(vespinkod.Text))
             {
             SqlConnection baglan = klas.baglan();
             SqlCommand cmd = new SqlCommand(@"Update Taxpayer set SName=@SName,Name=@Name,FName=@FName,
@@ -446,13 +447,20 @@ UpdateDate=@UpdateDate where TaxpayerID=" + TaxpayerID, baglan);
             }
             else
             {
+                if (!klas.IsASCII(vespinkod.Text))
+                {
+                    lblBilgi.Text = "Düzgün simvollardan istifadə etməmisiniz";
+                }
+                else
+                { 
                 lblBilgi.Text = "Bu vergi ödəyicisi qeydiyyatdan keçib";
+                }
             }
         }
         else if (islem == "yeni") {
 
-            DataRow drform = klas.GetDataRow("SELECT TaxpayerID from Taxpayer where Pincode='" + vespinkod.Text + "'  and ForDelete=1  and MunicipalID=" + MunicipalId);
-            if (drform == null)
+            DataRow drform = klas.GetDataRow("SELECT TaxpayerID from Taxpayer where Pincode=N'" + vespinkod.Text + "'   and MunicipalID=" + MunicipalId);
+            if (drform == null && klas.IsASCII(vespinkod.Text))
             {
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Insert into Taxpayer (MunicipalID,RegistrPetitondate,SName,Name,FName,IDcardsNumber,Pincode,
@@ -540,7 +548,14 @@ values(@MunicipalID,@RegistrPetitondate,@SName,@Name,@FName,@IDcardsNumber,@Pinc
             }
             else
             {
-                lblBilgi.Text = "Bu vergi ödəyicisi qeydiyyatdan keçib";
+                if (klas.IsASCII(vespinkod.Text)==false)
+                {
+                    lblBilgi.Text = "Düzgün simvollardan istifadə etməmisiniz";
+                }
+                else
+                {
+                    lblBilgi.Text = "Bu vergi ödəyicisi qeydiyyatdan keçib";
+                }
             }
         }
 

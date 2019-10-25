@@ -120,7 +120,8 @@ txl.TaxesPaymentID=p.TaxesPaymentID order by txl.TaxesPaymentID");
 
 
         DataTable dt = klas.getdatatable(@"select '0' sn, '' fullname, '' YVOK,
-CAST(Sum(p.Amount)as numeric(18,2)) mebleg, '' Tarix,
+CAST(Sum(p.Amount)as numeric(18,2)) mebleg, cast(sum(p.Amount)*3/100 as numeric(18,2)) faizmebleg, 
+cast(Sum(p.Amount)-sum(p.Amount)*3/100 as numeric(18,2)) qaliq, '' Tarix,
 '' odenisnovu,
 '' TaxesPaymentName,
 '' MunicipalName,'' Name   from Taxpayer t inner join Payments p on t.TaxpayerID=p.TaxpayerID 
@@ -128,7 +129,9 @@ inner join List_classification_Municipal lcm on t.MunicipalID=lcm.MunicipalID
 inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID  where 1=1  "
 + tarix1 + tarix2 + vergiid + MunicipalId + ray + yvok + odenisnovu+
 @" and p.Operation=10     union  all 
-select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, t.YVOK, CAST(p.Amount as numeric(18,2)) mebleg,
+select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, t.YVOK, CAST(p.Amount as numeric(18,2)) mebleg, 
+cast(p.Amount*3/100 as numeric(18,2)) faizmebleg,
+cast(p.Amount-p.Amount*3/100 as numeric(18,2)) qaliq,
 convert(varchar,p.NowTime,104) Tarix,case when p.TaxesPaymentOnline=1 then 'Online' else N'Nəğd' end odenisnovu,
 case when p.TaxesPaymentID=1 then N'Əmlak vergisi' 
 when p.TaxesPaymentID=2 then N'Torpaq vergisi' else TaxesPaymentTypeName end TaxesPaymentName,lcm.MunicipalName,

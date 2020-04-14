@@ -195,8 +195,6 @@ from Structure where ForDelete=1 and MunicipalID=" + MunicipalId);
                 string uzanti = Path.GetExtension(fufoto.PostedFile.FileName);
                 if (fufoto.HasFile && (uzanti == ".jpeg" || uzanti == ".jpg" || uzanti == ".png" || uzanti == ".JPEG" || uzanti == ".JPG" || uzanti == ".PNG"))
                 {
-
-
                     SqlConnection baglan = klas.baglan();
                     SqlCommand cmd = new SqlCommand(@"Insert into Structure (StatusPositionID,MunicipalID,MunicipalName,SName,Name,FName,
 StatusPositionName,Gender,Adress,Mobiltel,Email,PartyID,Party,BirthDate,Nationality,EducationID,Education) 

@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 public partial class adminpanel_MasterPageArxiv : System.Web.UI.MasterPage
 {
     Class2 klas = new Class2(); string IndividualLegal = "";
+
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -44,11 +45,11 @@ public partial class adminpanel_MasterPageArxiv : System.Web.UI.MasterPage
 
             if (IndividualLegal != "")
             {
-               
+
             }
         }
     }
- 
+
     void vizual()
     {
         if (Session["UserID1"] == null || Session["passvord1"] == null)
@@ -74,7 +75,7 @@ public partial class adminpanel_MasterPageArxiv : System.Web.UI.MasterPage
             swhere = swhere + "ka.MunicipalID=" + ddlbelediyye.SelectedValue.ToString() + " and ";
         }
 
-        DataTable region2 = klas.getdatatable(@"select ROW_NUMBER() over(order by TaxpayerID) sn,LivingAreaID,Taxesid, TaxesPaymentTypeName ,
+        Session["region1"] = klas.getdatatable(@"select ROW_NUMBER() over(order by TaxpayerID) sn,LivingAreaID,Taxesid, TaxesPaymentTypeName ,
 ka.TaxpayerID,Fordelete,Individual_Legal,ka.MunicipalID,Name,Name1,SName,FName,MunicipalName, YVOK,unvan from (
 select  LivingAreaID,Taxesid, TaxesPaymentTypeName ,tx.TaxpayerID,Fordelete,Individual_Legal,MunicipalID,Name,Name1,SName,FName,
 YVOK,VOEN,unvan from
@@ -111,10 +112,10 @@ when Individual_Legal=2 then CompanyName
 end as Name,Name Name1,SName,FName,YVOK,VOEN,'' unvan from Taxpayer where ForDelete=0
 
 ) as ka inner join List_classification_Municipal lcm on lcm.MunicipalID=ka.MunicipalID  
-where "+swhere+" Individual_Legal="
- + lblindividuallegal.Text + " and YVOK like '%" + txtyvok.Text + "%'  and Name1 like N'%" + txtad.Text + "%'  and SName like N'%"
- + txtsoyad.Text + "%' and FName like N'%" + txtataadi.Text + "%' order by sn,municipalid");
-        GridView1.DataSource = region2;
+where " + swhere + " Individual_Legal="
++ lblindividuallegal.Text + " and YVOK like '%" + txtyvok.Text + "%'  and Name1 like N'%" + txtad.Text + "%'  and SName like N'%"
++ txtsoyad.Text + "%' and FName like N'%" + txtataadi.Text + "%' order by sn,municipalid");
+        GridView1.DataSource = Session["region1"];
         GridView1.DataBind();
 
 
@@ -138,6 +139,71 @@ where "+swhere+" Individual_Legal="
         ddlbelediyye.DataBind();
         ddlbelediyye.Items.Insert(0, new ListItem("Ümumi", "-1"));
     }
+    void silyoxla(string args0, string args1, string args2, string args3, string args4,
+        string args5, string args6, string args7)
+    {
+
+        SqlCommand cmd = new SqlCommand(@"insert into DeleteTaxes (TaxpayerID,TaxesID,LivingAreaID, Deteleobyektname, Adress,YVOK,MunicipalID,Name)
+values (@TaxpayerID,@TaxesID,@LivingAreaID,@Deteleobyektname,@Adress,@YVOK,@MunicipalID,@Name)", klas.baglan());
+        cmd.Parameters.AddWithValue("TaxpayerID", args0);
+        cmd.Parameters.AddWithValue("TaxesID", args1);
+        cmd.Parameters.AddWithValue("LivingAreaID", args2);
+        cmd.Parameters.AddWithValue("Deteleobyektname", args3);
+        cmd.Parameters.AddWithValue("Adress", args4);
+        cmd.Parameters.AddWithValue("YVOK", args5);
+        cmd.Parameters.AddWithValue("MunicipalID", args6);
+        cmd.Parameters.AddWithValue("Name", args7);
+        cmd.ExecuteNonQuery();
+        klas.baglan().Close();
+        if (args1 == "0" && args2 == "0")
+        {
+            if (klas.getdatatable("select TaxpayerID from Payments where TaxpayerID=" + args0 + " and amount<>0 and Operation=10").Rows.Count == 0)
+            {
+                klas.cmd("Delete from Taxpayer  Where Fordelete=0 and TaxpayerID=" + args0);
+            }
+            else
+            {
+                Class2.MsgBox("Bu vergi ödəyicisinə məxsus sistemə ödəniş daxil edilmişdir.", Page);
+            }
+        }
+        if (args1 == "1" || args1 == "2" || args1 == "3" || args1 == "4" || args1 == "5" || args1 == "8")
+        {
+            klas.cmd("Delete from LivingArea   Where ExitDate is not null and LivingAreaID=" + args2);
+        }
+        if (args1 == "6")
+        {
+            klas.cmd("Delete from WaterAirTransport  Where ExitDate is not null and TransportID=" + args2);
+        }
+        if (args1 == "7")
+        {
+            klas.cmd("Delete from MineTax  Where ExitDate is not null and MineId=" + args2);
+        }
+        if (args1 == "9")
+        {
+            klas.cmd("Delete from Advertisement  Where ExitDate is not null and AdvertisementID=" + args2);
+        }
+        if (args1 == "10")
+        {
+            klas.cmd("Delete from CarStop  Where ExitDate is not null and CarID=" + args2);
+        }
+        if (args1 == "11")
+        {
+            klas.cmd("Delete from Hotel  Where ExitDate is not null and HotelID=" + args2);
+        }
+        if (args1 == "12")
+        {
+            klas.cmd("Delete from TradeService  Where ExitDate is not null and TradeID=" + args2);
+        }
+        if (args1 == "13")
+        {
+            klas.cmd("Delete from Alienation Where ExitDate is not null and AlienationID=" + args2);
+        }
+        if (args1 == "14")
+        {
+            klas.cmd("Delete from ProfitsTax  Where ExitDate is not null and IncomeTaxID=" + args2);
+        }
+        vizual();
+    }
     protected void DeleteRecord(object sender, EventArgs e)
     {
         LinkButton lnkPortal = (LinkButton)sender;
@@ -145,76 +211,7 @@ where "+swhere+" Individual_Legal="
         string[] arg = new string[2];
         char[] splitter = { 'Ё' };
         arg = info.Split(splitter);
-
-        SqlCommand cmd = new SqlCommand(@"insert into DeleteTaxes (TaxpayerID,TaxesID,LivingAreaID, Deteleobyektname, Adress,YVOK,MunicipalID,Name)
-values (@TaxpayerID,@TaxesID,@LivingAreaID,@Deteleobyektname,@Adress,@YVOK,@MunicipalID,@Name)", klas.baglan());
-        cmd.Parameters.AddWithValue("TaxpayerID", arg[0]);
-        cmd.Parameters.AddWithValue("TaxesID", arg[1]);
-        cmd.Parameters.AddWithValue("LivingAreaID", arg[2]);
-        cmd.Parameters.AddWithValue("Deteleobyektname", arg[3]);
-        cmd.Parameters.AddWithValue("Adress", arg[4]);
-        cmd.Parameters.AddWithValue("YVOK", arg[5]);
-        cmd.Parameters.AddWithValue("MunicipalID", arg[6]);
-        cmd.Parameters.AddWithValue("Name", arg[7]);
-        cmd.ExecuteNonQuery();
-
-      
-
-
-        if (arg[1] == "0" && arg[2] == "0")
-        {
-
-            if (klas.getdatatable("select TaxpayerID from Payments where TaxpayerID=" + arg[0] + " and amount<>0 and Operation=10").Rows.Count == 0)
-            {
-                klas.cmd("Delete from Taxpayer  Where Fordelete=0 and TaxpayerID=" + arg[0]);
-            }
-            else
-            {
-                Class2.MsgBox("Bu vergi odəyicisinə məxsus sistemə odəniş daxil edilmişdir.", Page);
-            }
-        }
-        if (arg[1] == "1" || arg[1] == "2" || arg[1] == "3" || arg[1] == "4" || arg[1] == "5" || arg[1] == "8")
-        {
-            klas.cmd("Delete from LivingArea   Where ExitDate is not null and LivingAreaID=" + arg[2]);
-        }
-        if (arg[1] == "6")
-        {
-            klas.cmd("Delete from WaterAirTransport  Where ExitDate is not null and TransportID=" + arg[2]);
-        }
-        if (arg[1] == "7")
-        {
-            klas.cmd("Delete from MineTax  Where ExitDate is not null and MineId=" + arg[2]);
-        }
-        if (arg[1] == "9")
-        {
-            klas.cmd("Delete from Advertisement  Where ExitDate is not null and AdvertisementID=" + arg[2]);
-        }
-        if (arg[1] == "10")
-        {
-            klas.cmd("Delete from CarStop  Where ExitDate is not null and CarID=" + arg[2]);
-        }
-        if (arg[1] == "11")
-        {
-            klas.cmd("Delete from Hotel  Where ExitDate is not null and HotelID=" + arg[2]);
-        }
-        if (arg[1] == "12")
-        {
-            klas.cmd("Delete from TradeService  Where ExitDate is not null and TradeID=" + arg[2]);
-        }
-        if (arg[1] == "13")
-        {
-            klas.cmd("Delete from Alienation Where ExitDate is not null and AlienationID=" + arg[2]);
-        }
-        if (arg[1] == "14")
-        {
-            klas.cmd("Delete from ProfitsTax  Where ExitDate is not null and IncomeTaxID=" + arg[2]);
-        }
-        vizual();
-        //if (IndividualLegal != "")
-        //{
-        //    vizual();
-        //}
-       // Response.Redirect(lblsehife.Text + ".aspx?IndividualLegal=" + lblindividuallegal.Text);
+        silyoxla(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7]);
     }
     protected void btnaxtar_Click(object sender, EventArgs e)
     {
@@ -229,5 +226,23 @@ values (@TaxpayerID,@TaxesID,@LivingAreaID,@Deteleobyektname,@Adress,@YVOK,@Muni
     {
         municipal();
     }
-
+    protected void hamisinisil_Click(object sender, EventArgs e)
+    {
+        DataTable region1 = Session["region1"] as DataTable;
+        if (Session["region1"] != null)
+        {
+            for (int i = 0; i < region1.Rows.Count; i++)
+            {
+                silyoxla(region1.Rows[i]["TaxpayerID"].ToString(),
+               region1.Rows[i]["Taxesid"].ToString(),
+               region1.Rows[i]["LivingAreaID"].ToString(),
+               region1.Rows[i]["TaxesPaymentTypeName"].ToString(),
+               region1.Rows[i]["unvan"].ToString(),
+               region1.Rows[i]["YVOK"].ToString(),
+               region1.Rows[i]["MunicipalID"].ToString(),
+               region1.Rows[i]["Name"].ToString());
+            }
+           
+        }
+    }
 }

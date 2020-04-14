@@ -303,7 +303,7 @@ from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear<=Year(getdate())
                 lbltarixedekman.Text = Math.Round(Convert.ToDecimal(cem11), 2).ToString();
                 lblborc.Text = Math.Round(Convert.ToDecimal(cemtq), 2).ToString();
                 lblfaizmeb.Text = Math.Round(Convert.ToDecimal(cemfaiz), 2).ToString();
-                string payment = klas.getdatacell(@"  select 
+                string payment = klas.getdatacell(@"select 
   (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID + 
 " and p.TaxesPaymentID=15 and p.Operation<>10 ) - ( case when 	(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID + 
 " and p.TaxesPaymentID=15 and p.Operation=10) is null then 0 else  (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID + 
@@ -321,6 +321,7 @@ from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear<=Year(getdate())
         }
         else 
         {
+
             cem08 += eo08;
             cem11 += eo11;
             cemtq += tq;
@@ -356,28 +357,32 @@ from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear<=Year(getdate())
             lbltarixedekman.Text = Math.Round(Convert.ToDecimal(cem11), 2).ToString();
             lblborc.Text = Math.Round(Convert.ToDecimal(cemtq), 2).ToString();
             lblfaizmeb.Text = Math.Round(Convert.ToDecimal(cemfaiz), 2).ToString();
-            string payment = klas.getdatacell(@"  select 
+
+            if (verginov != "1")
+            {
+                string payment = klas.getdatacell(@"  select 
   (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
 " and p.TaxesPaymentID=15 and p.Operation<>10 ) - ( case when 	(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
 " and p.TaxesPaymentID=15 and p.Operation=10) is null then 0 else  (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
 " and p.TaxesPaymentID=15 and p.Operation=10)  end ) as sanctionborc");
-            if (payment != null && payment != "")
-            {
-                lblmaliyesanksiya.Text = Math.Round(float.Parse(payment), 2).ToString();
-                umumiborc = umumiborc + float.Parse(payment);
+                if (payment != null && payment != "")
+                {
+                    lblmaliyesanksiya.Text = Math.Round(float.Parse(payment), 2).ToString();
+                    umumiborc = umumiborc + float.Parse(payment);
+                }
             }
 
             lblodcekmebleg.Text = Math.Round(Convert.ToDecimal(umumiborc), 2).ToString();
             lblhesmanat.Text = Math.Round(Convert.ToDecimal(lblodcekmebleg.Text), 2).ToString();
         }
     }
-   protected void btnsanksiya_Click(object sender, EventArgs e)
+    protected void btnsanksiya_Click(object sender, EventArgs e)
     {
-         SqlConnection baglanx = klas.baglan();
-         string datetoday = klas.getdatacell("Select NowTime from Payments where TaxesPaymentID=15 and TaxpayerID=" + TaxpayerID + " order by NowTime desc,PaymentID desc");
-         string datelastinsert=klas.getdatacell("Select Getdate()");
-          
-        if (Convert.ToDateTime(datetoday).ToString("yyyy-MM-dd")!=Convert.ToDateTime(datelastinsert).ToString("yyyy-MM-dd"))
+        SqlConnection baglanx = klas.baglan();
+        string datetoday = klas.getdatacell("Select NowTime from Payments where TaxesPaymentID=15 and TaxpayerID=" + TaxpayerID + " order by NowTime desc,PaymentID desc");
+        string datelastinsert = klas.getdatacell("Select Getdate()");
+
+        if (Convert.ToDateTime(datetoday).ToString("yyyy-MM-dd") != Convert.ToDateTime(datelastinsert).ToString("yyyy-MM-dd"))
         {
             string payment = klas.getdatacell("Select Amount from Payments where TaxesPaymentID=15 and TaxpayerID=" + TaxpayerID + " order by NowTime desc,PaymentID desc");
             if (payment == null)
@@ -385,36 +390,38 @@ from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear<=Year(getdate())
                 payment = "0";
             }
             float payment1 = 0;
-            if (payment != "" && txtsanksiya.Text!="")
+            if (payment != "" && txtsanksiya.Text != "")
             {
                 payment1 = float.Parse(payment) + float.Parse(txtsanksiya.Text);
             }
             else if (payment != "")
             {
-            payment1 = Convert.ToInt32(payment);
+                payment1 = Convert.ToInt32(payment);
             }
-                SqlCommand cmdx = new SqlCommand(@"Insert into Payments (TaxpayerID,TaxesPaymentID,Operation,Amount,RemainingDebt,
+            SqlCommand cmdx = new SqlCommand(@"Insert into Payments (TaxpayerID,TaxesPaymentID,Operation,Amount,RemainingDebt,
 PercentDayCount,PercentCounted,PercentDebt,PaymentDocument,NowTime,MorePayment,Sanction) 
 values (@TaxpayerID,@TaxesPaymentID,@Operation,@Amount,@RemainingDebt,@PercentDayCount,@PercentCounted,@PercentDebt,@PaymentDocument,
 getdate(),@MorePayment,@Sanction)", baglanx);
-                cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
-                cmdx.Parameters.Add("TaxesPaymentID", 15);
-                cmdx.Parameters.Add("Operation", 11);
-                cmdx.Parameters.Add("RemainingDebt", int.Parse("0"));
-                cmdx.Parameters.Add("MorePayment", int.Parse("0"));
-                cmdx.Parameters.Add("Sanction", payment1);
-                cmdx.Parameters.Add("Amount", payment1);
-                cmdx.Parameters.Add("PercentDayCount", int.Parse("0"));
-                cmdx.Parameters.Add("PercentCounted", int.Parse("0"));
-                cmdx.Parameters.Add("PercentDebt", int.Parse("0"));
-                cmdx.Parameters.Add("PaymentDocument", "");
-                cmdx.ExecuteNonQuery();
+            cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
+            cmdx.Parameters.Add("TaxesPaymentID", 15);
+            cmdx.Parameters.Add("Operation", 11);
+            cmdx.Parameters.Add("RemainingDebt", int.Parse("0"));
+            cmdx.Parameters.Add("MorePayment", int.Parse("0"));
+            cmdx.Parameters.Add("Sanction", payment1);
+            cmdx.Parameters.Add("Amount", payment1);
+            cmdx.Parameters.Add("PercentDayCount", int.Parse("0"));
+            cmdx.Parameters.Add("PercentCounted", int.Parse("0"));
+            cmdx.Parameters.Add("PercentDebt", int.Parse("0"));
+            cmdx.Parameters.Add("PaymentDocument", "");
+            cmdx.ExecuteNonQuery();
         }
         else
         {
-            string id = klas.getdatacell("Select PaymentID from Payments where TaxesPaymentID=15 and TaxpayerID=" + TaxpayerID + " order by NowTime desc,PaymentID desc");
-            
-        SqlCommand cmdx = new SqlCommand(@"update Payments set TaxpayerID=@TaxpayerID,TaxesPaymentID=@TaxesPaymentID,
+            string id = klas.getdatacell("Select PaymentID from Payments where TaxesPaymentID=15 and TaxpayerID=" + TaxpayerID + " and operation<>10 order by NowTime desc,PaymentID desc");
+
+            if (id != "" && id != null)
+            {
+                SqlCommand cmdx = new SqlCommand(@"update Payments set TaxpayerID=@TaxpayerID,TaxesPaymentID=@TaxesPaymentID,
                                            Operation=@Operation,Sanction=@Sanction,Amount=@Amount where PaymentID=" + id, baglanx);
                 cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
                 cmdx.Parameters.Add("TaxesPaymentID", 15);
@@ -422,10 +429,11 @@ getdate(),@MorePayment,@Sanction)", baglanx);
                 cmdx.Parameters.Add("Sanction", txtsanksiya.Text);
                 cmdx.Parameters.Add("Amount", txtsanksiya.Text);
                 cmdx.ExecuteNonQuery();
+            }
         }
 
-        Response.Redirect("~/users/PaymentNotice.aspx?TaxpayerID="+TaxpayerID+"&islem=PaymentNotice&IndividualLegal=1");
-        
+        Response.Redirect("~/users/PaymentNotice.aspx?TaxpayerID=" + TaxpayerID + "&islem=PaymentNotice&IndividualLegal=1");
+
     }
 
 }

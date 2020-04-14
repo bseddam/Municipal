@@ -56,7 +56,9 @@ inner join List_classification_Municipal as lm on st.MunicipalID=lm.MunicipalID 
                 }
 
                 DataRow drtediyye = klas.GetDataRow(@"select case when tx.Individual_Legal=1 then N'fiziki'
-when tx.Individual_Legal=2 then N'hüquqi' end Individual_Legal,lm.MunicipalName,lm.Municipalphone,tx.Mobiltel,tx.ActualAdress,tx.YVOK,lm.MunicipalAdress,
+when tx.Individual_Legal=2 then N'hüquqi' end Individual_Legal,lm.MunicipalName,
+lm.Municipalphone,tx.Mobiltel,case when tx.Individual_Legal=1 then tx.ActualAdress
+when tx.Individual_Legal=2 then tx.RegistrationAdress end ActualAdress,tx.YVOK,lm.MunicipalAdress,
 Name,SName,FName  from Taxpayer as tx
 inner join List_classification_Municipal as lm
 on tx.MunicipalID=lm.MunicipalID  where tx.TaxpayerID =" + TaxpayerID);

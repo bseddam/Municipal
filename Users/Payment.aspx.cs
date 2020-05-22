@@ -11,8 +11,7 @@ using System.Drawing;
 
 public partial class Users_Payment : System.Web.UI.Page
 {
-    Class2 klas = new Class2(); static string prevPage = String.Empty; 
-     string TaxpayerID;
+    Class2 klas = new Class2(); static string prevPage = String.Empty; string TaxpayerID;
     Hesablanmalar hesabla = new Hesablanmalar(); 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -124,10 +123,14 @@ public partial class Users_Payment : System.Web.UI.Page
 
     protected void btnsave_Click(object sender, EventArgs e)
     {
-        string icaze = "1";
+        string icaze = "0";
         bool mesage = true;
+
         DataRow icazever = klas.GetDataRow(@"Select Icaze from Users u inner join List_classification_Municipal lm 
-on u.MunicipalID=lm.MunicipalID Where year(getdate())>" + odemetrx.Date.Year + " and UserID=" + Session["UserID"].ToString());
+on u.MunicipalID=lm.MunicipalID Where UserID=" + Session["UserID"].ToString());
+
+        //        DataRow icazever = klas.GetDataRow(@"Select Icaze from Users u inner join List_classification_Municipal lm 
+        //on u.MunicipalID=lm.MunicipalID Where year(getdate())>" + odemetrx.Date.Year + " and UserID=" + Session["UserID"].ToString());
 
         if (icazever != null)
         {

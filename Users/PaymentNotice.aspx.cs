@@ -111,8 +111,8 @@ from Taxpayer as tx inner join List_classification_Municipal as lm on tx.Municip
                     lbladsoyad.Text = drtediyye["Name"].ToString();
                     lblbeltel.Text = drtediyye["Municipalphone"].ToString();
                     lblodtel.Text = stel;
-                    lblodunvan.Text = drtediyye["ActualAdress"].ToString();
-                    lblyvok.Text = drtediyye["YVOK"].ToString();
+                    lblodunvan.Text= lblodunvan1.Text = drtediyye["ActualAdress"].ToString();
+                    lblyvok.Text = lblyvok1.Text= drtediyye["YVOK"].ToString();
                     lblbelediyyeadi.Text = drtediyye["MunicipalName"].ToString();
                     lblbelunvani.Text = drtediyye["MunicipalAdress"].ToString();
                     lblmen.Text = drtediyye["Name"].ToString();

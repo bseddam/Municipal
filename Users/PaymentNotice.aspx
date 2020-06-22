@@ -181,7 +181,7 @@
         </div>
 
 
-        <div style="clear: both; width: 1009px;"></div>
+        
         <div class="MsoNormal">
             <div lang="AZ-CYR" style="width: 1004px">
                 <div style="float: left; width: 242px; font-weight: bold;">&nbsp;</div>
@@ -269,9 +269,9 @@
 
 
 
-        <div style="clear: both; width: 1016px;"></div>
+        <div style="clear: both; width: 1014px;"></div>
         <div>&nbsp;</div>
-        <p class="MsoNormal" style="margin-right: -.25pt; line-height: 115%">
+        <p class="MsoNormal">
             <b><span lang="AZ-CYR" style="font-weight: bold;">5</span><span lang="AZ-LATIN">.</span></b><span lang="AZ-LATIN"> <b><span>&nbsp;</span>Sizə<span>&nbsp;&nbsp; </span>
                 <asp:Label ID="trxili" runat="server"></asp:Label>
                 &nbsp;&nbsp;ili üçün</b><span>&nbsp;&nbsp; </span><b><span>&nbsp;</span>Azərbaycan Respublikasının Vergi Məcəlləsinin</b></span>
@@ -509,7 +509,7 @@
         <div style="clear: both;"></div>
         
 
-         <div>&nbsp;</div>
+         
         <p class="MsoNormal" style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">
             &nbsp;<span lang="AZ-CYR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;M. Y.<o:p></o:p></span>
         </p>
@@ -538,12 +538,12 @@
             <div lang="AZ-CYR">
                 <div style="float: left; width: 27px; font-weight: bold;">&nbsp;</div>
                 <div style="float: left; width: 120px;"><b>Bələdiyyənin adı:</b></div>
-                <div style="text-align: center; float: left; width: 150px; border-bottom: 1px solid #000;">
+                <div style="text-align: center; float: left; width: 200px; border-bottom: 1px solid #000;">
                     <span>
                         <asp:Label ID="lblbelediyyeadi" runat="server"></asp:Label>
                         &nbsp;</span>
                 </div>
-                <div style="float: left; width: 37px; font-weight: bold;">&nbsp;</div>
+                <div style="float: left; width: 10px; font-weight: bold;">&nbsp;</div>
                 <div style="float: left; width: 160px;"><b>Bələdiyyənin ünvanı:</b></div>
                   <div style="text-align: center; float: left; width:350px; border-bottom: 1px solid #000;">
                     <span>
@@ -567,7 +567,7 @@
                 </div>
                 <div style="float: left; width: 37px; font-weight: bold;">&nbsp;</div>
                 <div style="float: left; width: 140px;"><b>Ödəyicinin ünvanı:</b></div>
-                  <div style="text-align: center; float: left; width:410px; border-bottom: 1px solid #000;">
+                  <div style="text-align: center; float: left; width:433px; border-bottom: 1px solid #000;">
                     <span>
                         <asp:Label ID="lblodunvan1" runat="server"></asp:Label>
                         &nbsp;</span>

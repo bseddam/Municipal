@@ -570,92 +570,10 @@ and p.TaxesPaymentID=7) is null then 0 else
             {
                 qaliqborc.Text = drborc["borc"].ToString();
             }
-        }
-        else if (cmbvergi.Value.ToString() == "14")
-        {
-            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
-case when 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=14) is null then 0 else 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=14) end   AS numeric(18,2)) borc
-  from ProfitsTax mt inner join CalcProfits ct on mt.IncomeTaxID=ct.ProfitsID where mt.TaxpayerID=" + TaxpayerID +
-        "  and ExitDate is null group by mt.TaxpayerId");
-            if (drborc != null)
+            else
             {
-                qaliqborc.Text = drborc["borc"].ToString();
+                qaliqborc.Text = "0";
             }
-        }
-        else if (cmbvergi.Value.ToString() == "9")
-        {
-            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when mebleg is null then 0 else mebleg end )-
-case when 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=9) is null then 0 else 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=9) end   AS numeric(18,2)) borc
-  from ViewAdvertisement mt where mt.TaxpayerID=" + TaxpayerID + " and ExitDate is null group by mt.TaxpayerId");
-            if (drborc != null)
-            {
-                qaliqborc.Text = drborc["borc"].ToString();
-            }
-        }
-        else if (cmbvergi.Value.ToString() == "10")
-        {
-            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
-case when 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=10) is null then 0 else 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=10) end   AS numeric(18,2)) borc
-  from CarStop mt inner join CalcCarStop ct on mt.CarID=ct.CarStopID where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null group by mt.TaxpayerId");
-            if (drborc != null)
-            {
-                qaliqborc.Text = drborc["borc"].ToString();
-            }
-        }
-        else if (cmbvergi.Value.ToString() == "11")
-        {
-            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
-case when 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=11) is null then 0 else 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=11) end   AS numeric(18,2)) borc
-  from Hotel mt inner join CalcHotel ct on mt.HotelID=ct.HotelID where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null  group by mt.TaxpayerId");
-            if (drborc != null)
-            {
-                qaliqborc.Text = drborc["borc"].ToString();
-            }
-        }
-        else if (cmbvergi.Value.ToString() == "12")
-        {
-            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when mebleg is null then 0 else mebleg end )-
-case when 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=12) is null then 0 else 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=12) end   AS numeric(18,2)) borc
-  from viewTradeService mt  where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null group by mt.TaxpayerId");
-            if (drborc != null)
-            {
-                qaliqborc.Text = drborc["borc"].ToString();
-            }
-        }
-        else if (cmbvergi.Value.ToString() == "13")
-        {
-            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when AmountOnContract is null then 0 else AmountOnContract end )-
-case when 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=13) is null then 0 else 
-(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
-and p.TaxesPaymentID=13) end  AS numeric(18,2)) borc
-  from Alienation mt  where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null  group by mt.TaxpayerId");
-            if (drborc != null)
-            {
-                qaliqborc.Text = drborc["borc"].ToString();
-            }
-
         }
         else if (cmbvergi.Value.ToString() == "8")
         {
@@ -675,31 +593,135 @@ and p.TaxesPaymentID=8) end AS numeric(18,2)) borc
                 qaliqborc.Text = "0";
             }
         }
+        else if (cmbvergi.Value.ToString() == "9")
+        {
+            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when mebleg is null then 0 else mebleg end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=9) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=9) end   AS numeric(18,2)) borc
+  from ViewAdvertisement mt where mt.TaxpayerID=" + TaxpayerID + " and ExitDate is null group by mt.TaxpayerId");
+            if (drborc != null)
+            {
+                qaliqborc.Text = drborc["borc"].ToString();
+            }
+            else
+            {
+                qaliqborc.Text = "0";
+            }
+        }
+        else if (cmbvergi.Value.ToString() == "10")
+        {
+            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=10) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=10) end   AS numeric(18,2)) borc
+  from CarStop mt inner join CalcCarStop ct on mt.CarID=ct.CarStopID where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null group by mt.TaxpayerId");
+            if (drborc != null)
+            {
+                qaliqborc.Text = drborc["borc"].ToString();
+            }
+            else
+            {
+                qaliqborc.Text = "0";
+            }
+        }
+        else if (cmbvergi.Value.ToString() == "11")
+        {
+            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=11) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=11) end   AS numeric(18,2)) borc
+  from Hotel mt inner join CalcHotel ct on mt.HotelID=ct.HotelID where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null  group by mt.TaxpayerId");
+            if (drborc != null)
+            {
+                qaliqborc.Text = drborc["borc"].ToString();
+            }
+            else
+            {
+                qaliqborc.Text = "0";
+            }
+        }
+        else if (cmbvergi.Value.ToString() == "12")
+        {
+            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when mebleg is null then 0 else mebleg end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=12) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=12) end   AS numeric(18,2)) borc
+  from viewTradeService mt  where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null group by mt.TaxpayerId");
+            if (drborc != null)
+            {
+                qaliqborc.Text = drborc["borc"].ToString();
+            }
+            else
+            {
+                qaliqborc.Text = "0";
+            }
+        }
+        else if (cmbvergi.Value.ToString() == "13")
+        {
+            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when AmountOnContract is null then 0 else AmountOnContract end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=13) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=13) end  AS numeric(18,2)) borc
+  from Alienation mt  where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null  group by mt.TaxpayerId");
+            if (drborc != null)
+            {
+                qaliqborc.Text = drborc["borc"].ToString();
+            }
+            else
+            {
+                qaliqborc.Text = "0";
+            }
+
+        }
+        else if (cmbvergi.Value.ToString() == "14")
+        {
+            DataRow drborc = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=14) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=14) end   AS numeric(18,2)) borc
+  from ProfitsTax mt inner join CalcProfits ct on mt.IncomeTaxID=ct.ProfitsID where mt.TaxpayerID=" + TaxpayerID +
+        "  and ExitDate is null group by mt.TaxpayerId");
+            if (drborc != null)
+            {
+                qaliqborc.Text = drborc["borc"].ToString();
+            }
+            else
+            {
+                qaliqborc.Text = "0";
+            }
+        }
+
         else if (cmbvergi.Value.ToString() == "15")
         {
-
-
-            string payment = klas.getdatacell(@"  select 
+            string payment = klas.getdatacell(@"select 
   (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
-" and p.TaxesPaymentID=15 and p.Operation<>10 ) - ( case when 	(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
+" and p.TaxesPaymentID=15 and p.Operation<>10) - (case when 	(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
 " and p.TaxesPaymentID=15 and p.Operation=10) is null then 0 else  (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
 " and p.TaxesPaymentID=15 and p.Operation=10)  end ) as sanctionborc");
-
-
             if (payment != null && payment != "")
             {
                 qaliqborc.Text = Math.Round(float.Parse(payment), 2).ToString();
-
+            }
+            else
+            {
+                qaliqborc.Text = "0";
             }
         }
 
         else { qaliqborc.Text = ""; }
-
-
-
-
-
-
 
 
 
@@ -717,12 +739,16 @@ and p.TaxesPaymentID=8) end AS numeric(18,2)) borc
 
         string aa = cmbvergi.Value.ToString();
 
-        DataTable region2 = klas.getdatatable(@"select  PaymentID,CAST(Sanction as numeric(18,2)) Sanction, TaxpayerID, TaxesPaymentID, TaxesPaymentName, Operation,CAST(Amount as numeric(18,2)) Amount,CAST(RemainingDebt as numeric(18,2)) RemainingDebt,
-CAST(MorePayment as numeric(18,2)) MorePayment , PercentDayCount,  CAST(PercentCounted as numeric(18,2)) PercentCounted ,
+        DataTable region2 = klas.getdatatable(@"select  PaymentID,CAST(Sanction as numeric(18,2)) Sanction, 
+TaxpayerID, TaxesPaymentID, TaxesPaymentName, Operation,CAST(Amount as numeric(18,2)) Amount,
+CAST(RemainingDebt as numeric(18,2)) RemainingDebt,
+CAST(MorePayment as numeric(18,2)) MorePayment , PercentDayCount,  
+CAST(PercentCounted as numeric(18,2)) PercentCounted ,
 CAST(PercentDebt as numeric(18,2)) PercentDebt, PaymentDocument, NowTime,
 case 
-when  Operation=10 then N'Ödəmə' else N'Hesablanma' end Operation1,cast(RemainingDebt+Sanction+PercentDebt as numeric(18,2)) umumiborc  from Payments where  TaxpayerID=" + TaxpayerID +
-   " and TaxesPaymentID in (" + aa + ") order by PaymentID");
+when  Operation=10 then N'Ödəmə' else N'Hesablanma' end Operation1,cast
+(RemainingDebt+Sanction+PercentDebt as numeric(18,2)) umumiborc  from Payments where  
+TaxpayerID=" + TaxpayerID + " and TaxesPaymentID in (" + aa + ") order by PaymentID");
         Repeater1.DataSource = region2;
         Repeater1.DataBind();
 

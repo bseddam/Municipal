@@ -100,55 +100,211 @@ inner join Structure st on lm.MunicipalID=st.MunicipalID
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=7 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+                DataRow drborc7 = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
+case when (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=7) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID and p.TaxesPaymentID=7) end AS numeric(18,2)) borc
+  from MineTax mt inner join CalcMine ct on mt.MineId=ct.MineID where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null group by mt.TaxpayerId");
+                if (drborc7 != null)
+                {
+                    payment = drborc7["borc"].ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
+
+                //payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=7 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
 
                 if (payment != "" && payment != null)
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=8 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+
+
+                DataRow drborc8 = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when mebleg is null then 0 else mebleg end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=8) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=8) end AS numeric(18,2)) borc
+  from ViewLivingAreaLisee mt  where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null  group by mt.TaxpayerId");
+                if (drborc8 != null)
+                {
+                    payment = drborc8["borc"].ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
+
+
+                //payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=8 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
 
                 if (payment != "" && payment != null)
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=9 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+
+
+                DataRow drborc9 = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when mebleg is null then 0 else mebleg end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=9) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=9) end   AS numeric(18,2)) borc
+  from ViewAdvertisement mt where mt.TaxpayerID=" + TaxpayerID + " and ExitDate is null group by mt.TaxpayerId");
+                if (drborc9 != null)
+                {
+                    payment = drborc9["borc"].ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
+                //payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=9 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
 
                 if (payment != "" && payment != null)
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=10 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+
+
+                DataRow drborc10 = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=10) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=10) end   AS numeric(18,2)) borc
+  from CarStop mt inner join CalcCarStop ct on mt.CarID=ct.CarStopID where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null group by mt.TaxpayerId");
+                if (drborc10 != null)
+                {
+                    payment = drborc10["borc"].ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
+
+
+                //payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=10 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
 
                 if (payment != "" && payment != null)
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=11 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+
+
+
+                DataRow drborc11 = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=11) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=11) end   AS numeric(18,2)) borc
+  from Hotel mt inner join CalcHotel ct on mt.HotelID=ct.HotelID where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null  group by mt.TaxpayerId");
+                if (drborc11 != null)
+                {
+                    payment = drborc11["borc"].ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
+
+                //payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=11 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
 
                 if (payment != "" && payment != null)
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=12 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+
+
+                DataRow drborc12 = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when mebleg is null then 0 else mebleg end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=12) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=12) end   AS numeric(18,2)) borc
+  from viewTradeService mt  where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null group by mt.TaxpayerId");
+                if (drborc12 != null)
+                {
+                    payment = drborc12["borc"].ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
+
+                //payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=12 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
 
                 if (payment != "" && payment != null)
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=13 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+
+
+
+                DataRow drborc13 = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when AmountOnContract is null then 0 else AmountOnContract end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=13) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=13) end  AS numeric(18,2)) borc
+  from Alienation mt  where mt.TaxpayerID=" + TaxpayerID + "  and ExitDate is null  group by mt.TaxpayerId");
+                if (drborc13 != null)
+                {
+                    payment = drborc13["borc"].ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
+                //payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=13 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
 
                 if (payment != "" && payment != null)
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=14 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+
+
+
+                DataRow drborc14 = klas.GetDataRow(@"select mt.TaxpayerId,cast( sum(case when Amount is null then 0 else Amount end )-
+case when 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=14) is null then 0 else 
+(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=mt.TaxpayerID
+and p.TaxesPaymentID=14) end   AS numeric(18,2)) borc
+  from ProfitsTax mt inner join CalcProfits ct on mt.IncomeTaxID=ct.ProfitsID where mt.TaxpayerID=" + TaxpayerID +
+       "  and ExitDate is null group by mt.TaxpayerId");
+                if (drborc14 != null)
+                {
+                    payment = drborc14["borc"].ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
+                //payment = klas.getdatacell("Select top 1 RemainingDebt from Payments where TaxesPaymentID=14 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
 
                 if (payment != "" && payment != null)
                 {
                     payment1 = payment1 + float.Parse(payment);
                 }
-                payment = klas.getdatacell("Select top 1 Amount from Payments where TaxesPaymentID=15 and TaxpayerID=" + TaxpayerID + " order by PaymentID desc");
+
+                payment = klas.getdatacell(@"select 
+  (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
+" and p.TaxesPaymentID=15 and p.Operation<>10) - (case when 	(select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
+" and p.TaxesPaymentID=15 and p.Operation=10) is null then 0 else  (select sum(case when Amount is null then 0 else Amount end) from Payments p where p.TaxpayerID=" + TaxpayerID +
+" and p.TaxesPaymentID=15 and p.Operation=10)  end ) as sanctionborc");
+                if (payment != null && payment != "")
+                {
+                    payment = Math.Round(float.Parse(payment), 2).ToString();
+                }
+                else
+                {
+                    payment = "0";
+                }
 
                 if (payment != "" && payment != null)
                 {
@@ -182,16 +338,16 @@ inner join TaxesPaymentList txl on txl.TaxesPaymentID=p.TaxesPaymentID where  Ta
 
         DataTable region3 = klas.getdatatable(@"select fullname,kkk.YVOK,Mobiltel,kkk.TaxpayerID,case when kkk.Operation=10 then N'Ödəmə' else 'Hesablama' end Operation,kkk.Amount,kkk.RemainingDebt,kkk.MorePayment,
 kkk.PaymentDocument,kkk.NowTime,TaxesPaymentTypeName,kkk.TaxesPaymentID from (
-select t.SName+' '+t.Name+' '+FName as fullname,t.YVOK,Mobiltel,p.TaxpayerID,p.Operation,p.Amount,p.RemainingDebt,p.MorePayment,p.PaymentDocument,p.NowTime,TaxesPaymentTypeName,p.TaxesPaymentID
+select t.SName+' '+t.Name+' '+FName as fullname,t.YVOK,Mobiltel,p.TaxpayerID,p.Operation,p.Amount,p.RemainingDebt,p.MorePayment,p.PaymentDocument,p.NowTime,TaxesPaymentTypeName,p.TaxesPaymentID,PaymentID
 from Payments p 
 inner join Taxpayer t on t.TaxpayerID=p.TaxpayerID
-inner join TaxesPaymentList tpl on tpl.TaxesPaymentID=p.TaxesPaymentID
-where p.TaxesPaymentID not in (1,2,15)
+inner join (select * from TaxesPaymentList union select 15,'Sanksiya','0','2020-10-15 00:00:00.000') tpl on tpl.TaxesPaymentID=p.TaxesPaymentID
+where p.TaxesPaymentID not in (1,2)
 
 union
-select fullname,YVOK,Mobiltel,TaxpayerID,'' Operation,'' Amount,v.Payment RemainingDebt,'' MorePayment,'' PaymentDocument,GETDATE() NowTime,TaxesPaymentTypeName,TaxesPaymentID 
-from  viewdepts  v where TaxesPaymentID not in (1,2,15)
-) kkk where TaxpayerID=" + TaxpayerID +" order by NowTime");
+select fullname,YVOK,Mobiltel,TaxpayerID,'' Operation,'' Amount,v.Payment RemainingDebt,'' MorePayment,'' PaymentDocument,GETDATE() NowTime,TaxesPaymentTypeName,TaxesPaymentID,0 PaymentID
+from  viewdepts  v where TaxesPaymentID not in (1,2)
+) kkk where TaxpayerID=" + TaxpayerID + " order by PaymentID");
         Repeater2.DataSource = region3;
         Repeater2.DataBind();
         if (region3 == null)
@@ -204,14 +360,5 @@ from  viewdepts  v where TaxesPaymentID not in (1,2,15)
       
 
     }
-
-
-
-  
-
- 
-    
-
-   
 
 }

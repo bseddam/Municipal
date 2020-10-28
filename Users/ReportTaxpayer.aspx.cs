@@ -114,9 +114,9 @@ on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
                 }
                 else
                 {
-                    unvan = " and t1.ActualAdress like '%" + txtunvan.Text + "%'";
-                    unvan1 = " and t2.ActualAdress like '%" + txtunvan.Text + "%'";
-                    unvan2 = " and t.ActualAdress like '%" + txtunvan.Text+"%'";
+                    unvan = " and t1.ActualAdress like N'%" + txtunvan.Text + "%'";
+                    unvan1 = " and t2.ActualAdress like N'%" + txtunvan.Text + "%'";
+                    unvan2 = " and t.ActualAdress like N'%" + txtunvan.Text+"%'";
                 }
 
                 DataTable dt = klas.getdatatable(@"Select '' TaxpayerID,'0' sn,'' RegionName ,'' MunicipalName,convert(nvarchar(50),count(TaxpayerID)) fullname,N'Yox: '+Convert(nvarchar(50),(Select count(TaxpayerID) cem from Taxpayer t1 inner join List_classification_Municipal lcm 

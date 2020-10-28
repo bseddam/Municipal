@@ -277,10 +277,8 @@
         <div>&nbsp;</div>
         <div id="pnlodeniw" runat="server">
             <div align="center">
-                <b><span lang="AZ-CYR" style="font-size: 15px;">Mədən, mənfəət vergisi və ödənişlər üzrə</span></b>
+                <b><span lang="AZ-CYR" style="font-size: 15px;">Mədən, mənfəət vergisi</span><span style="font-size: 15px;">, </span><span lang="AZ-CYR" style="font-size: 15px;">ödənişlər</span><span style="font-size: 15px;"> və sanksiya</span><span lang="AZ-CYR" style="font-size: 15px;"> üzrə</span></b>
             </div>
-
-
             <table border="1" cellpadding="0" cellspacing="0" class="auto-style47" style="mso-table-layout-alt: fixed; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0in 5.4pt 0in 5.4pt; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext; width: 1012px;">
                 <tr>
                     <td valign="top" class="auto-style50" style="width: 28px">
@@ -396,13 +394,17 @@
                                     </span>
                                 </p>
                             </td>
-
-
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </table>
         </div>
+
+
+
+
+
+
 
         <div style="width:100%; height:50px; padding-top:20px;">
             <table style="width:100%; height:100%;">

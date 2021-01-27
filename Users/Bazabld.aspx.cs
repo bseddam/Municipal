@@ -11,7 +11,6 @@ public partial class Users_Homepage : System.Web.UI.Page
     Class2 klas = new Class2();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //
         if (!Page.IsPostBack)
         {
             if (Session["UserID"] != null)

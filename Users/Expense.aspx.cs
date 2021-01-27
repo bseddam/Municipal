@@ -35,7 +35,7 @@ public partial class Users_Expense : System.Web.UI.Page
           
             int k = 0;
             string vaxt = klas.getdatacell("select year(getdate()) vaxt ");
-            for (var i = int.Parse(vaxt) ; i >= int.Parse(vaxt) - 3; i--)
+            for (var i = int.Parse(vaxt) ; i >= int.Parse(vaxt) - 4; i--)
             {
                 cmbil.Items.Insert(k, new ListEditItem("" + i + ""));
                 k++;

@@ -139,7 +139,7 @@ on u.MunicipalID=lm.MunicipalID Where UserID=" + Session["UserID"].ToString());
 
 
         string dt = klas.getdatacell("select year(getdate())");
-        if (dt == "2020" && icaze == "1")
+        if (dt == "2021" && icaze == "1")
         {
             if (txtsened.Text.Trim().ToUpper().Replace("İ", "I") != "Online".ToUpper())
             {

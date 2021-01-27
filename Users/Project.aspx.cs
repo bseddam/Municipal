@@ -27,8 +27,8 @@ public partial class Users_Project : System.Web.UI.Page
             prevPage = Request.Url.AbsoluteUri.ToString();
             TaxpayerID.Value = "";
             int k = 0;
-            string vaxt = klas.getdatacell("select year(getdate()) vaxt ");
-            for (var i = int.Parse(vaxt); i >= int.Parse(vaxt) - 3; i--)
+            int vaxt =int.Parse(klas.getdatacell("select year(getdate()) vaxt "));
+            for (var i = vaxt; i >= vaxt - 4; i--)
             {
                 cmbil.Items.Insert(k, new ListEditItem("" + i + ""));
                 k++;
@@ -134,18 +134,22 @@ on u.MunicipalID=lm.MunicipalID Where year(getdate())>(select ExpensesYear from 
             Response.Redirect("~/Default.aspx");
         }
         string MunicipalId = ""; 
-        DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from Users u inner join List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
+        DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from 
+Users u inner join List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID 
+Where  UserID=" + Session["UserID"].ToString());
         if (Municipal != null)
         {
             MunicipalId = Municipal["MunicipalID"].ToString();
         }
-        DataTable region2 = klas.getdatatable(@"select * from ExpensesProject where  MunicipalID=" + MunicipalId + " and ExpensesType=2 order by NowTime desc");
+        DataTable region2 = klas.getdatatable(@"select * from ExpensesProject where 
+MunicipalID=" + MunicipalId + " and ExpensesType=2 order by NowTime desc");
         Repeater1.DataSource = region2;
         Repeater1.DataBind();
     }
     void sahe()
     {
-        DataTable region2 = klas.getdatatable("select ClassifID,ClassifName from List_classifications where ListID=9  order by sort");
+        DataTable region2 = klas.getdatatable(@"select ClassifID,ClassifName from 
+List_classifications where ListID=9  order by sort");
         cmbsahe.TextField = "ClassifName";
         cmbsahe.ValueField = "ClassifID";
         cmbsahe.DataSource = region2;
@@ -173,7 +177,9 @@ on u.MunicipalID=lm.MunicipalID Where year(getdate())>(select ExpensesYear from 
             Response.Redirect("~/Default.aspx");
         }
         string MunicipalId = "";
-        DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from Users u inner join List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
+        DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID 
+from Users u inner join List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID 
+Where  UserID=" + Session["UserID"].ToString());
         if (Municipal != null)
         {
             MunicipalId = Municipal["MunicipalID"].ToString();
@@ -181,8 +187,9 @@ on u.MunicipalID=lm.MunicipalID Where year(getdate())>(select ExpensesYear from 
 
 
         string icaze = "1";
-        DataRow icazever = klas.GetDataRow(@"Select Icaze from Users u inner join List_classification_Municipal lm 
-on u.MunicipalID=lm.MunicipalID Where year(getdate())>" + cmbil.SelectedItem.Value.ToString() + " and UserID=" + Session["UserID"].ToString());
+        DataRow icazever = klas.GetDataRow(@"Select Icaze from Users u inner join 
+List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID Where year(getdate())>" 
++ cmbil.SelectedItem.Value.ToString() + " and UserID=" + Session["UserID"].ToString());
 
         if (icazever != null)
         {

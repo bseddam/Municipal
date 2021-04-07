@@ -52,27 +52,37 @@ public partial class adminpanel_AdminMasterPage : System.Web.UI.MasterPage
     protected bool controlLink(string urls)
     {
         List<string> s = new List<string>();
-        s.Add("Home.aspx");
-        s.Add("Expencere.aspx");
-        s.Add("MunicipalGeneraldebt.aspx");
-        s.Add("Statistiks.aspx");
+        //s.Add("Home.aspx");
+        //s.Add("Expencere.aspx");
+        //s.Add("MunicipalGeneraldebt.aspx");
+        //s.Add("Statistiks.aspx");
+        //s.Add("RepPayment.aspx");
+        //s.Add("ReportTaxpayer.aspx");
+        //s.Add("ReportlivingArea.aspx");
+        //s.Add("ReportNoLivingArea.aspx");
+        //s.Add("ReportTransport.aspx");
+        //s.Add("ReportLivingLand.aspx");
+        //s.Add("ReportNoLivingLand.aspx");
+        //s.Add("ReportVillageLand.aspx");
+        //s.Add("ReportMine.aspx");
+        //s.Add("ReportProfits.aspx");
+        //s.Add("ReportPayments.aspx");
         s.Add("RepPayment.aspx");
-        s.Add("ReportTaxpayer.aspx");
-        s.Add("ReportlivingArea.aspx");
-        s.Add("ReportNoLivingArea.aspx");
-        s.Add("ReportTransport.aspx");
-        s.Add("ReportLivingLand.aspx");
-        s.Add("ReportNoLivingLand.aspx");
-        s.Add("ReportVillageLand.aspx");
-        s.Add("ReportMine.aspx");
-        s.Add("ReportProfits.aspx");
-        s.Add("ReportPayments.aspx");
-        bool b = false;
+        s.Add("Calclastyears.aspx");
+        s.Add("Calctodayadmin.aspx");
+        s.Add("Passwords.aspx");
+        s.Add("Users.aspx");
+        s.Add("UsedSystem.aspx");
+        s.Add("Icaze.aspx");
+        s.Add("IndividualArxiv.aspx");
+        s.Add("LegalArxiv.aspx");
+
+        bool b = true;
         foreach (string urls1 in s)
         {
             if (urls == urls1)
             {
-                b = true;
+                b = false;
                 break;
             }
         }

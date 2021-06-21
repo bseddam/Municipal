@@ -74,7 +74,7 @@ public partial class Users_MunicipalIncome : System.Web.UI.Page
     {
         if (Session["UserID"] != null)
         {
-            string MunicipalId = ""; string MunicipalName = ""; string vergiid = ""; string tarix1 = ""; string tarix2 = "";
+            string MunicipalId = ""; string MunicipalName = ""; 
             DataRow Municipal = klas.GetDataRow(@"Select lm.MunicipalName,lm.MunicipalID from Users u inner join List_classification_Municipal lm 
 on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
             if (Municipal != null)

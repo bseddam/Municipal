@@ -35,7 +35,7 @@ public partial class Users_Homepagegjv : System.Web.UI.Page
     protected void selectpeymants()
     {
 
-        string MunicipalId = " "; string MunicipalId1 = " "; string ray = " "; string ray1 = " "; string odeniw = " ";
+        string MunicipalId = " "; string MunicipalId1 = " "; string ray = " "; string ray1 = " "; 
         string Shesabatili = DDLHesabatILI.SelectedItem.ToString();
         if (ddlbelediyye.SelectedValue == "-1" || ddlbelediyye.SelectedValue == "" || ddlbelediyye.SelectedValue == null)
         {

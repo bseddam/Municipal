@@ -334,16 +334,16 @@ on u.MunicipalID=lm.MunicipalID Where year(getdate())>" + cmbil.SelectedItem.Val
 ExpensesSubAreaName,NoteText,Amount,ExpensesYear,ExpensesHalfYear,ExpensesType) values 
 (@MunicipalID,@ExpensesAreaID,@ExpensesAreaName,@ExpensesSubAreaID,@ExpensesSubAreaName,@NoteText,@Amount,@ExpensesYear,@ExpensesHalfYear,
 @ExpensesType)", baglan);
-                    cmd.Parameters.Add("MunicipalID", MunicipalId);
-                    cmd.Parameters.Add("ExpensesAreaID", sa);
-                    cmd.Parameters.Add("ExpensesAreaName", cmbsahe.Text);
-                    cmd.Parameters.Add("ExpensesSubAreaID", sa1);
-                    cmd.Parameters.Add("ExpensesSubAreaName", cmbxerc.Text);
-                    cmd.Parameters.Add("NoteText", tesviri.Text);
-                    cmd.Parameters.Add("Amount", mebleg.Text);
-                    cmd.Parameters.Add("ExpensesYear", cmbil.Text);
-                    cmd.Parameters.Add("ExpensesHalfYear", sa2);
-                    cmd.Parameters.Add("ExpensesType", 1);
+                    cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                    cmd.Parameters.AddWithValue("ExpensesAreaID", sa);
+                    cmd.Parameters.AddWithValue("ExpensesAreaName", cmbsahe.Text);
+                    cmd.Parameters.AddWithValue("ExpensesSubAreaID", sa1);
+                    cmd.Parameters.AddWithValue("ExpensesSubAreaName", cmbxerc.Text);
+                    cmd.Parameters.AddWithValue("NoteText", tesviri.Text);
+                    cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                    cmd.Parameters.AddWithValue("ExpensesYear", cmbil.Text);
+                    cmd.Parameters.AddWithValue("ExpensesHalfYear", sa2);
+                    cmd.Parameters.AddWithValue("ExpensesType", 1);
 
                     cmd.ExecuteNonQuery();
 
@@ -355,23 +355,23 @@ ExpensesSubAreaName,NoteText,Amount,ExpensesYear,ExpensesHalfYear,ExpensesType) 
 ExpensesSubAreaName,NoteText,Amount,ExpensesYear,ExpensesHalfYear,ExpensesType,CountWorker, DFMF22, DSMF3, IncomeTaxes14, Trades, Diger, ExpensesTypeSub) values 
 (@MunicipalID,@ExpensesAreaID,@ExpensesAreaName,@ExpensesSubAreaID,@ExpensesSubAreaName,@NoteText,@Amount,@ExpensesYear,@ExpensesHalfYear,@ExpensesType,
 @CountWorker, @DFMF22, @DSMF3, @IncomeTaxes14, @Trades, @Diger, @ExpensesTypeSub)", baglan);
-                    cmd.Parameters.Add("MunicipalID", MunicipalId);
-                    cmd.Parameters.Add("ExpensesAreaID", sa);
-                    cmd.Parameters.Add("ExpensesAreaName", cmbsahe.Text);
-                    cmd.Parameters.Add("ExpensesSubAreaID", sa1);
-                    cmd.Parameters.Add("ExpensesSubAreaName", cmbxerc.Text);
-                    cmd.Parameters.Add("NoteText", tesviri.Text);
-                    cmd.Parameters.Add("Amount", txthesemekhaqqi.Text);
-                    cmd.Parameters.Add("CountWorker", txtishcisay.Text);
-                    cmd.Parameters.Add("DFMF22", txtdsmf.Text);
-                    cmd.Parameters.Add("DSMF3", txtdsmf3.Text);
-                    cmd.Parameters.Add("IncomeTaxes14", txtgelirvergisi.Text);
-                    cmd.Parameters.Add("Trades", txthemkarlar.Text);
-                    cmd.Parameters.Add("Diger", txtdiger.Text);
-                    cmd.Parameters.Add("ExpensesTypeSub", 1);
-                    cmd.Parameters.Add("ExpensesYear", cmbil.Text);
-                    cmd.Parameters.Add("ExpensesHalfYear", sa2);
-                    cmd.Parameters.Add("ExpensesType", 1);
+                    cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                    cmd.Parameters.AddWithValue("ExpensesAreaID", sa);
+                    cmd.Parameters.AddWithValue("ExpensesAreaName", cmbsahe.Text);
+                    cmd.Parameters.AddWithValue("ExpensesSubAreaID", sa1);
+                    cmd.Parameters.AddWithValue("ExpensesSubAreaName", cmbxerc.Text);
+                    cmd.Parameters.AddWithValue("NoteText", tesviri.Text);
+                    cmd.Parameters.AddWithValue("Amount", txthesemekhaqqi.Text);
+                    cmd.Parameters.AddWithValue("CountWorker", txtishcisay.Text);
+                    cmd.Parameters.AddWithValue("DFMF22", txtdsmf.Text);
+                    cmd.Parameters.AddWithValue("DSMF3", txtdsmf3.Text);
+                    cmd.Parameters.AddWithValue("IncomeTaxes14", txtgelirvergisi.Text);
+                    cmd.Parameters.AddWithValue("Trades", txthemkarlar.Text);
+                    cmd.Parameters.AddWithValue("Diger", txtdiger.Text);
+                    cmd.Parameters.AddWithValue("ExpensesTypeSub", 1);
+                    cmd.Parameters.AddWithValue("ExpensesYear", cmbil.Text);
+                    cmd.Parameters.AddWithValue("ExpensesHalfYear", sa2);
+                    cmd.Parameters.AddWithValue("ExpensesType", 1);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -395,24 +395,24 @@ ExpensesSubAreaID=@ExpensesSubAreaID,ExpensesSubAreaName=@ExpensesSubAreaName,
 NoteText=@NoteText,Amount=@Amount,ExpensesYear=@ExpensesYear,ExpensesHalfYear=@ExpensesHalfYear,
 UpdateDate=@UpdateDate,CountWorker=@CountWorker, DFMF22=@DFMF22, DSMF3=@DSMF3, IncomeTaxes14=@IncomeTaxes14, Trades=@Trades, Diger=@Diger, ExpensesTypeSub=@ExpensesTypeSub 
 where ExpensesID=" + TaxpayerID.Value, baglan);
-                    cmd.Parameters.Add("MunicipalID", MunicipalId);
-                    cmd.Parameters.Add("ExpensesAreaID", sa);
-                    cmd.Parameters.Add("ExpensesAreaName", cmbsahe.Text);
-                    cmd.Parameters.Add("ExpensesSubAreaID", sa1);
-                    cmd.Parameters.Add("ExpensesSubAreaName", cmbxerc.Text);
-                    cmd.Parameters.Add("NoteText", tesviri.Text);
-                    cmd.Parameters.Add("Amount", txthesemekhaqqi.Text);
-                    cmd.Parameters.Add("CountWorker", txtishcisay.Text);
-                    cmd.Parameters.Add("DFMF22", txtdsmf.Text);
-                    cmd.Parameters.Add("DSMF3", txtdsmf3.Text);
-                    cmd.Parameters.Add("IncomeTaxes14", txtgelirvergisi.Text);
-                    cmd.Parameters.Add("Trades", txthemkarlar.Text);
-                    cmd.Parameters.Add("Diger", txtdiger.Text);
-                    cmd.Parameters.Add("ExpensesTypeSub", 1);
-                    cmd.Parameters.Add("ExpensesYear", cmbil.Text);
-                    cmd.Parameters.Add("ExpensesHalfYear", sa2);
+                    cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                    cmd.Parameters.AddWithValue("ExpensesAreaID", sa);
+                    cmd.Parameters.AddWithValue("ExpensesAreaName", cmbsahe.Text);
+                    cmd.Parameters.AddWithValue("ExpensesSubAreaID", sa1);
+                    cmd.Parameters.AddWithValue("ExpensesSubAreaName", cmbxerc.Text);
+                    cmd.Parameters.AddWithValue("NoteText", tesviri.Text);
+                    cmd.Parameters.AddWithValue("Amount", txthesemekhaqqi.Text);
+                    cmd.Parameters.AddWithValue("CountWorker", txtishcisay.Text);
+                    cmd.Parameters.AddWithValue("DFMF22", txtdsmf.Text);
+                    cmd.Parameters.AddWithValue("DSMF3", txtdsmf3.Text);
+                    cmd.Parameters.AddWithValue("IncomeTaxes14", txtgelirvergisi.Text);
+                    cmd.Parameters.AddWithValue("Trades", txthemkarlar.Text);
+                    cmd.Parameters.AddWithValue("Diger", txtdiger.Text);
+                    cmd.Parameters.AddWithValue("ExpensesTypeSub", 1);
+                    cmd.Parameters.AddWithValue("ExpensesYear", cmbil.Text);
+                    cmd.Parameters.AddWithValue("ExpensesHalfYear", sa2);
                     string vaxt = klas.getdatacell("select getdate() as indikivaxt");
-                    cmd.Parameters.Add("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
                     cmd.ExecuteNonQuery();
 
 
@@ -429,17 +429,17 @@ where ExpensesID=" + TaxpayerID.Value, baglan);
 ExpensesSubAreaID=@ExpensesSubAreaID,ExpensesSubAreaName=@ExpensesSubAreaName,
 NoteText=@NoteText,Amount=@Amount,ExpensesYear=@ExpensesYear,ExpensesHalfYear=@ExpensesHalfYear,UpdateDate=@UpdateDate 
 where ExpensesID=" + TaxpayerID.Value, baglan);
-                    cmd.Parameters.Add("MunicipalID", MunicipalId);
-                    cmd.Parameters.Add("ExpensesAreaID", sa);
-                    cmd.Parameters.Add("ExpensesAreaName", cmbsahe.Text);
-                    cmd.Parameters.Add("ExpensesSubAreaID", sa1);
-                    cmd.Parameters.Add("ExpensesSubAreaName", cmbxerc.Text);
-                    cmd.Parameters.Add("NoteText", tesviri.Text);
-                    cmd.Parameters.Add("Amount", mebleg.Text);
-                    cmd.Parameters.Add("ExpensesYear", cmbil.Text);
-                    cmd.Parameters.Add("ExpensesHalfYear", sa2);
+                    cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                    cmd.Parameters.AddWithValue("ExpensesAreaID", sa);
+                    cmd.Parameters.AddWithValue("ExpensesAreaName", cmbsahe.Text);
+                    cmd.Parameters.AddWithValue("ExpensesSubAreaID", sa1);
+                    cmd.Parameters.AddWithValue("ExpensesSubAreaName", cmbxerc.Text);
+                    cmd.Parameters.AddWithValue("NoteText", tesviri.Text);
+                    cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                    cmd.Parameters.AddWithValue("ExpensesYear", cmbil.Text);
+                    cmd.Parameters.AddWithValue("ExpensesHalfYear", sa2);
                     string vaxt = klas.getdatacell("select getdate() as indikivaxt");
-                    cmd.Parameters.Add("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
                     cmd.ExecuteNonQuery();
 
 

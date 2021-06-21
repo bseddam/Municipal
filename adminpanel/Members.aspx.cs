@@ -13,7 +13,7 @@ using System.Drawing;
 public partial class adminpanel_Members : System.Web.UI.Page
 {
     static string prevPage = String.Empty;
-    Class2 klas = new Class2(); string islem; string TaxpayerID;
+    Class2 klas = new Class2();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)

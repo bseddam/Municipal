@@ -21,11 +21,17 @@ public partial class Users_Juridical : System.Web.UI.Page
         try
         {
             islem = Request.QueryString["islem"];
-            if (string.IsNullOrEmpty(TaxpayerID))
+            if (TaxpayerID == "")
             {
-                TaxpayerID = Session["TaxpayerID"].ToString();
+                if (Session["TaxpayerID"] != null)
+                    TaxpayerID = Session["TaxpayerID"].ToString();
 
             }
+            //if (string.IsNullOrEmpty(TaxpayerID))
+            //{
+            //    TaxpayerID = Session["TaxpayerID"].ToString();
+
+            //}
             //TaxpayerID = Request.QueryString["TaxpayerID"];
 
 
@@ -239,30 +245,30 @@ public partial class Users_Juridical : System.Web.UI.Page
 RegistrationAdress=@RegistrationAdress,PostIndex=@PostIndex,RegistrLegaldate=@RegistrLegaldate,VOEN=@VOEN,SName=@SName,Name=@Name,FName=@FName,YVOK=@YVOK,
 Email=@Email,Mobiltel=@Mobiltel,Workltel=@Workltel,Hometel=@Hometel,Fax=@Fax,UpdateDate=@UpdateDate,Concession=1 where TaxpayerID=" + TaxpayerID, baglan);
 
-                cmd.Parameters.Add("CompanyName", txtvergiod.Text);
-                cmd.Parameters.Add("RegistrationAdress", huquqiunvan.Text);
-                cmd.Parameters.Add("PostIndex", poctindex.Text);
+                cmd.Parameters.AddWithValue("CompanyName", txtvergiod.Text);
+                cmd.Parameters.AddWithValue("RegistrationAdress", huquqiunvan.Text);
+                cmd.Parameters.AddWithValue("PostIndex", poctindex.Text);
                 if (dovletqeydtarix.Text == "")
                 {
-                    cmd.Parameters.Add("RegistrLegaldate", dovletqeydtarix.Text);
+                    cmd.Parameters.AddWithValue("RegistrLegaldate", dovletqeydtarix.Text);
                 }
                 else
                 {
-                    cmd.Parameters.Add("RegistrLegaldate", dovletqeydtarix.Date);
+                    cmd.Parameters.AddWithValue("RegistrLegaldate", dovletqeydtarix.Date);
                 }
-                cmd.Parameters.Add("VOEN", voen.Text);
-                cmd.Parameters.Add("Gender", cins);
-                cmd.Parameters.Add("SName", soyadi.Text);
-                cmd.Parameters.Add("Name", adi.Text);
-                cmd.Parameters.Add("FName", ataadi.Text);
-                cmd.Parameters.Add("YVOK", YVOK);
-                cmd.Parameters.Add("Email", email.Text);
-                cmd.Parameters.Add("Mobiltel", mobiltel.Text);
-                cmd.Parameters.Add("Workltel", iwtel.Text);
-                cmd.Parameters.Add("Hometel", evtel.Text);
-                cmd.Parameters.Add("Fax", fax.Text);
+                cmd.Parameters.AddWithValue("VOEN", voen.Text);
+                cmd.Parameters.AddWithValue("Gender", cins);
+                cmd.Parameters.AddWithValue("SName", soyadi.Text);
+                cmd.Parameters.AddWithValue("Name", adi.Text);
+                cmd.Parameters.AddWithValue("FName", ataadi.Text);
+                cmd.Parameters.AddWithValue("YVOK", YVOK);
+                cmd.Parameters.AddWithValue("Email", email.Text);
+                cmd.Parameters.AddWithValue("Mobiltel", mobiltel.Text);
+                cmd.Parameters.AddWithValue("Workltel", iwtel.Text);
+                cmd.Parameters.AddWithValue("Hometel", evtel.Text);
+                cmd.Parameters.AddWithValue("Fax", fax.Text);
                 string vaxt1 = klas.getdatacell("select getdate() as indikivaxt");
-                cmd.Parameters.Add("UpdateDate", Convert.ToDateTime(vaxt1).ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("UpdateDate", Convert.ToDateTime(vaxt1).ToString("yyyy-MM-dd"));
                 cmd.ExecuteNonQuery();
                 Response.Redirect("LegalUpdate.aspx?IndividualLegal=2");
             }
@@ -283,42 +289,42 @@ CompanyName,RegistrationAdress,PostIndex,RegistrLegaldate,VOEN,SName,Name,FName,
 Mobiltel,Workltel,Hometel,Fax,Individual_Legal,Concession) 
 values(@Gender,@MunicipalID,getdate(),@CompanyName,@RegistrationAdress,@PostIndex,@RegistrLegaldate,
 @VOEN,@SName,@Name,@FName,@YVOK,@Email,@Mobiltel,@Workltel,@Hometel,@Fax,@Individual_Legal,1)", baglan);
-               cmd.Parameters.Add("MunicipalID", MunicipalId);
+               cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
    
 
 
                if (erizeqeydtarixi.Text == "")
                {
                    string vaxt = klas.getdatacell("select getdate()  vaxt");
-                   cmd.Parameters.Add("RegistrPetitondate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
+                   cmd.Parameters.AddWithValue("RegistrPetitondate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
                }
                else
                {
-                   cmd.Parameters.Add("RegistrPetitondate", erizeqeydtarixi.Text);
+                   cmd.Parameters.AddWithValue("RegistrPetitondate", erizeqeydtarixi.Text);
                }
-               cmd.Parameters.Add("CompanyName", txtvergiod.Text);
-               cmd.Parameters.Add("RegistrationAdress", huquqiunvan.Text);
-               cmd.Parameters.Add("PostIndex", poctindex.Text);
+               cmd.Parameters.AddWithValue("CompanyName", txtvergiod.Text);
+               cmd.Parameters.AddWithValue("RegistrationAdress", huquqiunvan.Text);
+               cmd.Parameters.AddWithValue("PostIndex", poctindex.Text);
                if (dovletqeydtarix.Text == "")
                {
-                   cmd.Parameters.Add("RegistrLegaldate", dovletqeydtarix.Text);
+                   cmd.Parameters.AddWithValue("RegistrLegaldate", dovletqeydtarix.Text);
                }
                else
                {
-                   cmd.Parameters.Add("RegistrLegaldate", dovletqeydtarix.Date);
+                   cmd.Parameters.AddWithValue("RegistrLegaldate", dovletqeydtarix.Date);
                }
-               cmd.Parameters.Add("VOEN", voen.Text);
-               cmd.Parameters.Add("Gender", cins);
-               cmd.Parameters.Add("SName", soyadi.Text);
-               cmd.Parameters.Add("Name", adi.Text);
-               cmd.Parameters.Add("FName", ataadi.Text);
-               cmd.Parameters.Add("YVOK", YVOK);
-               cmd.Parameters.Add("Email", email.Text);
-               cmd.Parameters.Add("Mobiltel", mobiltel.Text);
-               cmd.Parameters.Add("Workltel", iwtel.Text);
-               cmd.Parameters.Add("Hometel", evtel.Text);
-               cmd.Parameters.Add("Fax", fax.Text);
-               cmd.Parameters.Add("Individual_Legal", 2);
+               cmd.Parameters.AddWithValue("VOEN", voen.Text);
+               cmd.Parameters.AddWithValue("Gender", cins);
+               cmd.Parameters.AddWithValue("SName", soyadi.Text);
+               cmd.Parameters.AddWithValue("Name", adi.Text);
+               cmd.Parameters.AddWithValue("FName", ataadi.Text);
+               cmd.Parameters.AddWithValue("YVOK", YVOK);
+               cmd.Parameters.AddWithValue("Email", email.Text);
+               cmd.Parameters.AddWithValue("Mobiltel", mobiltel.Text);
+               cmd.Parameters.AddWithValue("Workltel", iwtel.Text);
+               cmd.Parameters.AddWithValue("Hometel", evtel.Text);
+               cmd.Parameters.AddWithValue("Fax", fax.Text);
+               cmd.Parameters.AddWithValue("Individual_Legal", 2);
                cmd.ExecuteNonQuery();
                Response.Redirect(prevPage + "&islem=1");
            }

@@ -11,7 +11,6 @@ using DevExpress.Web;
 public partial class Users_LivingLandTax : System.Web.UI.Page
 {
     Class2 connsql = new Class2();  string TaxpayerID,RegionID;
-    int itemLivVisible = 1;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -57,7 +56,7 @@ public partial class Users_LivingLandTax : System.Web.UI.Page
             Pnltourism.Visible = false;
             PnlVillageLand.Visible = false;
             PnlTransport.Visible = false;
-           
+
             /*
             SqlDataAdapter dap = new SqlDataAdapter(@"select ClassifID,ClassifName from List_classifications where ListId>=5", connsql.baglan());
             DataTable dt = new DataTable();
@@ -65,8 +64,8 @@ public partial class Users_LivingLandTax : System.Web.UI.Page
             CbTaxes.TextField = "ClassifName";
             CbTaxes.ValueField = "ClassifID";
             CbTaxes.DataSource = dt;
-            CbTaxes.DataBind();*/
-            string sqlregion = "case when CityID=1 then Name+N' şəhəri' else Name+N' rayonu'  end as  ";
+            CbTaxes.DataBind();
+            string sqlregion = "case when CityID=1 then Name+N' şəhəri' else Name+N' rayonu'  end as  ";*/
             FillComboBox(CbTaxes, "TaxesPaymentList", "", "TaxesPaymentID", "", "TaxesPaymentTypeName", "");
             
             
@@ -1130,7 +1129,7 @@ case when l.AlienationType=1 then N'Torpaq'
     }
     protected void BtnLivingLandEdit_Click(object sender, EventArgs e)
     {
-        int regionid = 0, qkid = 0, taxbayerid = int.Parse(TaxpayerID), zonaid = 0, consessionid = 0, TypeUseLandid = 0, Livingtypeid = 2, Typeofdocumentid = 1, LivingAreaID = int.Parse(LbIdLivingAreaLivingLand.Text);
+        int regionid = 0, qkid = 0, taxbayerid = int.Parse(TaxpayerID),  consessionid = 0, TypeUseLandid = 0, Livingtypeid = 2, Typeofdocumentid = 1, LivingAreaID = int.Parse(LbIdLivingAreaLivingLand.Text);
         string msg = "";
         bool isnum = false;
         if ((CbLivLandregion.Text.Trim() != "") && (CbLivLandregion.Text.Trim() != "Seçin") && (CbLivLandregion.Value != null))
@@ -1696,7 +1695,7 @@ case when l.AlienationType=1 then N'Torpaq'
     }
     protected void BtnQlivProNew_Click(object sender, EventArgs e)
     {
-        int regionid = 0, qkid = 0, taxbayerid = int.Parse(TaxpayerID), zonaid = 0, consessionid = 0, Livingtypeid = 3, Typeofdocumentid = 1;
+        int regionid = 0, qkid = 0, taxbayerid = int.Parse(TaxpayerID), zonaid = 0, Livingtypeid = 3, Typeofdocumentid = 1;
         string msg = "";
         bool isnum = false;
         if ((CbQlivProRegion.Text.Trim() != "") && (CbQlivProRegion.Text.Trim() != "Seçin") && (CbQlivProRegion.Value != null))
@@ -1802,7 +1801,7 @@ case when l.AlienationType=1 then N'Torpaq'
     }
     protected void BtnQlivProEdit_Click(object sender, EventArgs e)
     {
-        int regionid = 0, qkid = 0, taxbayerid = int.Parse(TaxpayerID), zonaid = 0, consessionid = 0, Livingtypeid = 3, Typeofdocumentid = 1, LivingAreaID = int.Parse(LbQLivPro.Text);
+        int regionid = 0, qkid = 0, taxbayerid = int.Parse(TaxpayerID), zonaid = 0,  Livingtypeid = 3, Typeofdocumentid = 1, LivingAreaID = int.Parse(LbQLivPro.Text);
         string msg = "";
         bool isnum = false;
         if ((CbQlivProRegion.Text.Trim() != "") && (CbQlivProRegion.Text.Trim() != "Seçin") && (CbQlivProRegion.Value != null))
@@ -3418,7 +3417,7 @@ values (@MotorType,@TransportType,@TaxpayerID,  @Registrdate, @DocumentNumber, @
     }
     protected void BtnHotelNew_Click(object sender, EventArgs e)
     {
-        int regionid = 0, qkid = 0, taxbayerid = int.Parse(TaxpayerID), rbzona = 0;
+        int  qkid = 0, taxbayerid = int.Parse(TaxpayerID);
         string msg = "";
 
         if (DeHotelRegisterDate.Text.Trim() == "")
@@ -3502,7 +3501,7 @@ values (@MotorType,@TransportType,@TaxpayerID,  @Registrdate, @DocumentNumber, @
     }
     protected void BtnHotelEdit_Click(object sender, EventArgs e)
     {
-        int regionid = 0, qkid = 0, taxbayerid = int.Parse(TaxpayerID), rbzona = 0, HotelID = int.Parse(LbHotelID.Text.ToString());
+        int  qkid = 0, taxbayerid = int.Parse(TaxpayerID),  HotelID = int.Parse(LbHotelID.Text.ToString());
         string msg = "";
         if (DeHotelRegisterDate.Text.Trim() == "")
         {
@@ -4699,36 +4698,36 @@ from ProfitsTax where IncomeTaxID=" + e.CommandArgument.ToString());
     }
     protected void RBAdvertisementA_CheckedChanged(object sender, EventArgs e)
     {
-        if (CBAdvertisementKateqoriya.Value != "0" && RBAdvertisementA.Checked == true)
+        if (CBAdvertisementKateqoriya.Value.ToString() != "0" && RBAdvertisementA.Checked == true)
         {
             LBAdvertisementFactor.Text = getAdvertisemenFactor(CBAdvertisementKateqoriya.Value.ToString(),"ColA");
         }
     }
     protected void RBAdvertisementB_CheckedChanged(object sender, EventArgs e)
     {
-        if (CBAdvertisementKateqoriya.Value != "0" && RBAdvertisementB.Checked == true)
+        if (CBAdvertisementKateqoriya.Value.ToString() != "0" && RBAdvertisementB.Checked == true)
         {
             LBAdvertisementFactor.Text = getAdvertisemenFactor(CBAdvertisementKateqoriya.Value.ToString(), "ColB");
         }
     }
     protected void RBAdvertisementC_CheckedChanged(object sender, EventArgs e)
     {
-        if (CBAdvertisementKateqoriya.Value != "0" && RBAdvertisementC.Checked == true)
+        if (CBAdvertisementKateqoriya.Value.ToString() != "0" && RBAdvertisementC.Checked == true)
         {
             LBAdvertisementFactor.Text = getAdvertisemenFactor(CBAdvertisementKateqoriya.Value.ToString(), "ColC");
         }
     }
     protected void CBAdvertisementKateqoriya_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (CBAdvertisementKateqoriya.Value != "0" && RBAdvertisementA.Checked == true)
+        if (CBAdvertisementKateqoriya.Value.ToString() != "0" && RBAdvertisementA.Checked == true)
         {
             LBAdvertisementFactor.Text = getAdvertisemenFactor(CBAdvertisementKateqoriya.Value.ToString(), "ColA");
         }
-        if (CBAdvertisementKateqoriya.Value != "0" && RBAdvertisementB.Checked == true)
+        if (CBAdvertisementKateqoriya.Value.ToString() != "0" && RBAdvertisementB.Checked == true)
         {
             LBAdvertisementFactor.Text = getAdvertisemenFactor(CBAdvertisementKateqoriya.Value.ToString(), "ColB");
         }
-        if (CBAdvertisementKateqoriya.Value != "0" && RBAdvertisementC.Checked == true)
+        if (CBAdvertisementKateqoriya.Value.ToString() != "0" && RBAdvertisementC.Checked == true)
         {
             LBAdvertisementFactor.Text = getAdvertisemenFactor(CBAdvertisementKateqoriya.Value.ToString(), "ColC");
         }

@@ -64,7 +64,7 @@ public partial class _Default : System.Web.UI.Page
 
         SqlConnection baglan = klas.baglan();
         DataTable dt1 = new DataTable();
-        SqlCommand cmd2 = new SqlCommand(@"Select * from Users Where passvord=@p2 and Uname=@p1  and status_users=0", baglan);
+        SqlCommand cmd2 = new SqlCommand(@"Select * from Users Where passvord=@p2 and Uname=@p1 ", baglan);
         cmd2.Parameters.AddWithValue("p1", txtlogin.Text);
         cmd2.Parameters.AddWithValue("p2", txtparol.Text);
         SqlDataAdapter dap1 = new SqlDataAdapter(cmd2);
@@ -77,6 +77,7 @@ public partial class _Default : System.Web.UI.Page
 
             Session["UserID"] = dt1.Rows[0]["UserID"].ToString();
             Session["passvord"] = dt1.Rows[0]["passvord"].ToString();
+            Session["Status_Users"]= dt1.Rows[0]["Status_Users"].ToString();
             baglan.Close();
             baglan.Dispose();
             Response.Redirect("Users/Homepage.aspx", true);

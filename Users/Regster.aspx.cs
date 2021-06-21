@@ -84,17 +84,17 @@ public partial class Regster : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand(@"Insert into Users (Fname,MunicipalID,Name,Sname,Gender,UName,Passvord,Contactmobile,Email,VPN_IP,Comp_MAC) 
 values(@Fname,@MunicipalID,@Name,@Sname,@Gender,@UName,@Passvord,@Contactmobile,@Email,@VPN_IP,@Comp_MAC)", baglan);
-            cmd.Parameters.Add("MunicipalID", ddlbelediyye.SelectedValue);
-            cmd.Parameters.Add("VPN_IP", useraddress);
-            cmd.Parameters.Add("Comp_MAC", macAddresses);
-            cmd.Parameters.Add("UName", txtlogin.Text);
-            cmd.Parameters.Add("Name", txtname.Text);
-            cmd.Parameters.Add("Sname", txtsname.Text);
-            cmd.Parameters.Add("Fname", txtfname.Text);
-            cmd.Parameters.Add("Contactmobile", txtcontact.Text);
-            cmd.Parameters.Add("Email", txtemail.Text);
-            cmd.Parameters.Add("Passvord", txtpassvord.Text);
-            cmd.Parameters.Add("Gender", cins);
+            cmd.Parameters.AddWithValue("MunicipalID", ddlbelediyye.SelectedValue);
+            cmd.Parameters.AddWithValue("VPN_IP", useraddress);
+            cmd.Parameters.AddWithValue("Comp_MAC", macAddresses);
+            cmd.Parameters.AddWithValue("UName", txtlogin.Text);
+            cmd.Parameters.AddWithValue("Name", txtname.Text);
+            cmd.Parameters.AddWithValue("Sname", txtsname.Text);
+            cmd.Parameters.AddWithValue("Fname", txtfname.Text);
+            cmd.Parameters.AddWithValue("Contactmobile", txtcontact.Text);
+            cmd.Parameters.AddWithValue("Email", txtemail.Text);
+            cmd.Parameters.AddWithValue("Passvord", txtpassvord.Text);
+            cmd.Parameters.AddWithValue("Gender", cins);
             cmd.ExecuteNonQuery();
 
 
@@ -103,12 +103,12 @@ values(@Fname,@MunicipalID,@Name,@Sname,@Gender,@UName,@Passvord,@Contactmobile,
             SqlCommand cmd1 = new SqlCommand(@"Update List_classification_Municipal set  Municipalphone=@Municipalphone,
 MunicipalAdress=@MunicipalAdress,VOEN=@VOEN,AccountNumber=@AccountNumber,Bank=@Bank,Status=@Status 
 where MunicipalID=" + ddlbelediyye.SelectedValue, baglan);
-            cmd1.Parameters.Add("Municipalphone", txtiw.Text);
-            cmd1.Parameters.Add("MunicipalAdress", txtbldunvan.Text);
-            cmd1.Parameters.Add("VOEN", txtvoen.Text);
-            cmd1.Parameters.Add("AccountNumber", txthesabn.Text);
-            cmd1.Parameters.Add("Bank", txtbank.Text);
-            cmd1.Parameters.Add("Status", ddlstatus.SelectedValue);
+            cmd1.Parameters.AddWithValue("Municipalphone", txtiw.Text);
+            cmd1.Parameters.AddWithValue("MunicipalAdress", txtbldunvan.Text);
+            cmd1.Parameters.AddWithValue("VOEN", txtvoen.Text);
+            cmd1.Parameters.AddWithValue("AccountNumber", txthesabn.Text);
+            cmd1.Parameters.AddWithValue("Bank", txtbank.Text);
+            cmd1.Parameters.AddWithValue("Status", ddlstatus.SelectedValue);
             cmd1.ExecuteNonQuery();
             Response.Redirect("Regster.aspx?qeyd=1");
         }

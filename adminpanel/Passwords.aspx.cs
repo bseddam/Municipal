@@ -79,7 +79,7 @@ else Name+' '+Sname end as Name,Fname,status_users from Users where (status_user
             {
                 SqlConnection baglanti = klas.baglan();
                 SqlCommand cmd = new SqlCommand("Update Users Set passvord=@passvord Where UserID=" + ddlistifadeci.SelectedValue, baglanti);
-                cmd.Parameters.Add("passvord", txtyeniparol.Text);
+                cmd.Parameters.AddWithValue("passvord", txtyeniparol.Text);
                 cmd.ExecuteNonQuery();
                 lblmessage.Text = "Parol dəyişikliyi qeydə alındı.   Yeni parol: " + txtyeniparol.Text;
                 lblmessage.ForeColor = Color.Green;

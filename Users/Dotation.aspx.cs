@@ -12,7 +12,7 @@ using System.Drawing;
 
 public partial class Users_Dotation : System.Web.UI.Page
 {
-    Class2 klas = new Class2(); static string prevPage = String.Empty; string islem; string DotationType;
+    Class2 klas = new Class2(); static string prevPage = String.Empty; string DotationType;
    
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -128,18 +128,18 @@ on u.MunicipalID=lm.MunicipalID Where year(getdate())>" + dotvertarix.Date.Year 
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Insert into Dotation (MunicipalID,DotationName,Amount,Dotationtype,DotationGiveDate) values 
 (@MunicipalID,@DotationName,@Amount,@Dotationtype,@DotationGiveDate)", baglan);
-                cmd.Parameters.Add("MunicipalID", MunicipalId);
-                cmd.Parameters.Add("DotationName", tesviri.Text);
-                cmd.Parameters.Add("Amount", mebleg.Text);
-                cmd.Parameters.Add("Dotationtype", DotationType);
+                cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                cmd.Parameters.AddWithValue("DotationName", tesviri.Text);
+                cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                cmd.Parameters.AddWithValue("Dotationtype", DotationType);
 
                 if (dotvertarix.Text == "")
                 {
-                    cmd.Parameters.Add("DotationGiveDate", dotvertarix.Text);
+                    cmd.Parameters.AddWithValue("DotationGiveDate", dotvertarix.Text);
                 }
                 else
                 {
-                    cmd.Parameters.Add("DotationGiveDate", dotvertarix.Date);
+                    cmd.Parameters.AddWithValue("DotationGiveDate", dotvertarix.Date);
                 }
 
                 cmd.ExecuteNonQuery();
@@ -153,15 +153,15 @@ on u.MunicipalID=lm.MunicipalID Where year(getdate())>" + dotvertarix.Date.Year 
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Update Dotation set  DotationName=@DotationName,Amount=@Amount,
 DotationGiveDate=@DotationGiveDate where DotationID=" + TaxpayerID.Value, baglan);
-                cmd.Parameters.Add("DotationName", tesviri.Text);
-                cmd.Parameters.Add("Amount", mebleg.Text);
+                cmd.Parameters.AddWithValue("DotationName", tesviri.Text);
+                cmd.Parameters.AddWithValue("Amount", mebleg.Text);
                 if (dotvertarix.Text == "")
                 {
-                    cmd.Parameters.Add("DotationGiveDate", dotvertarix.Text);
+                    cmd.Parameters.AddWithValue("DotationGiveDate", dotvertarix.Text);
                 }
                 else
                 {
-                    cmd.Parameters.Add("DotationGiveDate", dotvertarix.Date);
+                    cmd.Parameters.AddWithValue("DotationGiveDate", dotvertarix.Date);
                 }
 
                 cmd.ExecuteNonQuery();

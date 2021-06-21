@@ -47,7 +47,7 @@ when CityID = 1 THEN Name + ' ' + N'şəhəri' end as Name from List_classificat
         ddlrayon.SelectedValue.ToString();
         ddlbelediyye.SelectedValue.ToString();
 
-        string rayon, belediyye,icaze;
+        string rayon, belediyye;
         if (ddlrayon.SelectedValue == "-1")
         {
             rayon = " ";
@@ -68,7 +68,7 @@ when CityID = 1 THEN Name + ' ' + N'şəhəri' end as Name from List_classificat
 
         SqlConnection baglan = klas.baglan();
         SqlCommand cmd = new SqlCommand(@"Update List_classification_Municipal set  Icaze=@Icaze where 1=1 "+rayon+belediyye, baglan);
-        cmd.Parameters.Add("Icaze",ddlicaze.SelectedValue);
+        cmd.Parameters.AddWithValue("Icaze",ddlicaze.SelectedValue);
         cmd.ExecuteNonQuery();
         Class2.MsgBox("Əməliyyat yerinə yetirildi.", Page);
     }

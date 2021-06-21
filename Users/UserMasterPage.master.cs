@@ -28,7 +28,7 @@ public partial class Users_UserMasterPage : System.Web.UI.MasterPage
 
                 SqlConnection baglan = klas.baglan();
                 DataTable dt1 = new DataTable();
-                SqlCommand cmd2 = new SqlCommand(@"Select * from Users Where passvord=@p2 and UserID=@p1  and status_users=0", baglan);
+                SqlCommand cmd2 = new SqlCommand(@"Select * from Users Where passvord=@p2 and UserID=@p1", baglan);
                 cmd2.Parameters.AddWithValue("p1", Session["UserID"].ToString());
                 cmd2.Parameters.AddWithValue("p2", Session["passvord"].ToString());
                 SqlDataAdapter dap1 = new SqlDataAdapter(cmd2);
@@ -43,7 +43,8 @@ public partial class Users_UserMasterPage : System.Web.UI.MasterPage
                     Response.Redirect("~/Default.aspx");
                 }
 
-                DataRow drGiris = klas.GetDataRow(@"Select MunicipalName from Users u inner join List_classification_Municipal lm 
+                DataRow drGiris = klas.GetDataRow(@"Select MunicipalName from Users u 
+inner join List_classification_Municipal lm 
  on u.MunicipalID=lm.MunicipalID Where  UserID=" + Session["UserID"].ToString());
                 if (drGiris != null)
                 {

@@ -204,14 +204,14 @@ List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID Where year(getd
                 SqlCommand cmd = new SqlCommand(@"Insert into ExpensesProject (MunicipalID,ExpensesAreaID,ExpensesAreaName,
 NoteText,Amount,ExpensesYear,ExpensesHalfYear,ExpensesType) values 
 (@MunicipalID,@ExpensesAreaID,@ExpensesAreaName,@NoteText,@Amount,@ExpensesYear,@ExpensesHalfYear,@ExpensesType)", baglan);
-                cmd.Parameters.Add("MunicipalID", MunicipalId);
-                cmd.Parameters.Add("ExpensesAreaID", sa);
-                cmd.Parameters.Add("ExpensesAreaName", cmbsahe.Text);
-                cmd.Parameters.Add("NoteText", tesviri.Text);
-                cmd.Parameters.Add("Amount", mebleg.Text);
-                cmd.Parameters.Add("ExpensesYear", cmbil.Text);
-                cmd.Parameters.Add("ExpensesHalfYear", sa2);
-                cmd.Parameters.Add("ExpensesType", 2);
+                cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                cmd.Parameters.AddWithValue("ExpensesAreaID", sa);
+                cmd.Parameters.AddWithValue("ExpensesAreaName", cmbsahe.Text);
+                cmd.Parameters.AddWithValue("NoteText", tesviri.Text);
+                cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                cmd.Parameters.AddWithValue("ExpensesYear", cmbil.Text);
+                cmd.Parameters.AddWithValue("ExpensesHalfYear", sa2);
+                cmd.Parameters.AddWithValue("ExpensesType", 2);
                 cmd.ExecuteNonQuery();
 
                 vizual();
@@ -231,14 +231,14 @@ NoteText,Amount,ExpensesYear,ExpensesHalfYear,ExpensesType) values
 NoteText=@NoteText,Amount=@Amount,ExpensesYear=@ExpensesYear,ExpensesHalfYear=@ExpensesHalfYear,UpdateDate=@UpdateDate 
 where ExpensesID=" + TaxpayerID.Value, baglan);
 
-                cmd.Parameters.Add("ExpensesAreaID", sa);
-                cmd.Parameters.Add("ExpensesAreaName", cmbsahe.Text);
-                cmd.Parameters.Add("NoteText", tesviri.Text);
-                cmd.Parameters.Add("Amount", mebleg.Text);
-                cmd.Parameters.Add("ExpensesYear", cmbil.Text);
-                cmd.Parameters.Add("ExpensesHalfYear", sa2);
+                cmd.Parameters.AddWithValue("ExpensesAreaID", sa);
+                cmd.Parameters.AddWithValue("ExpensesAreaName", cmbsahe.Text);
+                cmd.Parameters.AddWithValue("NoteText", tesviri.Text);
+                cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                cmd.Parameters.AddWithValue("ExpensesYear", cmbil.Text);
+                cmd.Parameters.AddWithValue("ExpensesHalfYear", sa2);
                 string vaxt = klas.getdatacell("select getdate() as indikivaxt");
-                cmd.Parameters.Add("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
                 cmd.ExecuteNonQuery();
                 vizual();
                 TaxpayerID.Value = "";

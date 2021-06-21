@@ -116,7 +116,7 @@ inner join List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID Wher
         {
             MunicipalId = Municipal["MunicipalID"].ToString();
         }
-        if (cmbil.SelectedItem.Value != "-1" && cmbxerc.SelectedItem.Value != "-1" && cmbsahe.SelectedItem.Value != "-1")
+        if (cmbil.SelectedItem.Value.ToString() != "-1" && cmbxerc.SelectedItem.Value.ToString() != "-1" && cmbsahe.SelectedItem.Value.ToString() != "-1")
         {
             DataRow dr = klas.GetDataRow("Select * from ExpensesFundsAllocated where SubId="
                    + cmbxerc.SelectedItem.Value.ToString() + " and ReportYear=" + cmbil.Text + " and MunicipalID=" + MunicipalId);
@@ -259,19 +259,19 @@ inner join List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID Wher
             {
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Update ExpensesFundsAllocated set FundsAllocated=@FundsAllocated where SubId=@SubId and ReportYear=@ReportYear and MunicipalID="+MunicipalId, baglan);
-                cmd.Parameters.Add("SubId", sa1);
-                cmd.Parameters.Add("FundsAllocated", txtAyrilmishVesait.Text);
-                cmd.Parameters.Add("ReportYear", cmbil.Text);
+                cmd.Parameters.AddWithValue("SubId", sa1);
+                cmd.Parameters.AddWithValue("FundsAllocated", txtAyrilmishVesait.Text);
+                cmd.Parameters.AddWithValue("ReportYear", cmbil.Text);
                 cmd.ExecuteNonQuery();
             }
             else
             {
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Insert Into ExpensesFundsAllocated (MunicipalID,SubId,ReportYear,FundsAllocated) Values(@MunicipalID,@SubId,@ReportYear,@FundsAllocated)", baglan);
-                cmd.Parameters.Add("MunicipalID", MunicipalId);
-                cmd.Parameters.Add("SubId", sa1);
-                cmd.Parameters.Add("FundsAllocated", txtAyrilmishVesait.Text);
-                cmd.Parameters.Add("ReportYear", cmbil.Text);
+                cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                cmd.Parameters.AddWithValue("SubId", sa1);
+                cmd.Parameters.AddWithValue("FundsAllocated", txtAyrilmishVesait.Text);
+                cmd.Parameters.AddWithValue("ReportYear", cmbil.Text);
                 cmd.ExecuteNonQuery();
             }
 
@@ -279,15 +279,15 @@ inner join List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID Wher
                 SqlCommand cmd1 = new SqlCommand(@"Insert into ExpensesProjectIllik (MunicipalID,ExpensesAreaID,ExpensesAreaName,ExpensesSubAreaID,
 ExpensesSubAreaName,NoteText,Amount,ExpensesYear,ExpensesType) values 
 (@MunicipalID,@ExpensesAreaID,@ExpensesAreaName,@ExpensesSubAreaID,@ExpensesSubAreaName,@NoteText,@Amount,@ExpensesYear,@ExpensesType)", baglan1);
-                cmd1.Parameters.Add("MunicipalID", MunicipalId);
-                cmd1.Parameters.Add("ExpensesAreaID", sa);
-                cmd1.Parameters.Add("ExpensesAreaName", cmbsahe.Text);
-                cmd1.Parameters.Add("ExpensesSubAreaID", sa1);
-                cmd1.Parameters.Add("ExpensesSubAreaName", cmbxerc.Text);
-                cmd1.Parameters.Add("NoteText", tesviri.Text);
-                cmd1.Parameters.Add("Amount", mebleg.Text);
-                cmd1.Parameters.Add("ExpensesYear", cmbil.Text);
-                cmd1.Parameters.Add("ExpensesType", 1);
+                cmd1.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                cmd1.Parameters.AddWithValue("ExpensesAreaID", sa);
+                cmd1.Parameters.AddWithValue("ExpensesAreaName", cmbsahe.Text);
+                cmd1.Parameters.AddWithValue("ExpensesSubAreaID", sa1);
+                cmd1.Parameters.AddWithValue("ExpensesSubAreaName", cmbxerc.Text);
+                cmd1.Parameters.AddWithValue("NoteText", tesviri.Text);
+                cmd1.Parameters.AddWithValue("Amount", mebleg.Text);
+                cmd1.Parameters.AddWithValue("ExpensesYear", cmbil.Text);
+                cmd1.Parameters.AddWithValue("ExpensesType", 1);
                 cmd1.ExecuteNonQuery();       
               
                  vizual();
@@ -301,19 +301,19 @@ ExpensesSubAreaName,NoteText,Amount,ExpensesYear,ExpensesType) values
             {
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Update ExpensesFundsAllocated set FundsAllocated=@FundsAllocated where SubId=@SubId and ReportYear=@ReportYear and MunicipalID="+MunicipalId, baglan);
-                cmd.Parameters.Add("SubId", sa1);
-                cmd.Parameters.Add("FundsAllocated", txtAyrilmishVesait.Text);
-                cmd.Parameters.Add("ReportYear", cmbil.Text);
+                cmd.Parameters.AddWithValue("SubId", sa1);
+                cmd.Parameters.AddWithValue("FundsAllocated", txtAyrilmishVesait.Text);
+                cmd.Parameters.AddWithValue("ReportYear", cmbil.Text);
                 cmd.ExecuteNonQuery();
             }
             else
             {
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Insert Into ExpensesFundsAllocated (MunicipalID,SubId,ReportYear,FundsAllocated) Values(@MunicipalID,@SubId,@ReportYear,@FundsAllocated)", baglan);
-                cmd.Parameters.Add("MunicipalID", MunicipalId);
-                cmd.Parameters.Add("SubId", sa1);
-                cmd.Parameters.Add("FundsAllocated", txtAyrilmishVesait.Text);
-                cmd.Parameters.Add("ReportYear", cmbil.Text);
+                cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                cmd.Parameters.AddWithValue("SubId", sa1);
+                cmd.Parameters.AddWithValue("FundsAllocated", txtAyrilmishVesait.Text);
+                cmd.Parameters.AddWithValue("ReportYear", cmbil.Text);
                 cmd.ExecuteNonQuery();
             }
                 SqlConnection baglan2 = klas.baglan();
@@ -321,15 +321,15 @@ ExpensesSubAreaName,NoteText,Amount,ExpensesYear,ExpensesType) values
 ExpensesSubAreaID=@ExpensesSubAreaID,ExpensesSubAreaName=@ExpensesSubAreaName,
 NoteText=@NoteText,Amount=@Amount,ExpensesYear=@ExpensesYear,UpdateDate=@UpdateDate 
 where ExpensesID=" + TaxpayerID, baglan2);
-                cmd2.Parameters.Add("ExpensesAreaID", sa);
-                cmd2.Parameters.Add("ExpensesAreaName", cmbsahe.Text);
-                cmd2.Parameters.Add("ExpensesSubAreaID", sa1);
-                cmd2.Parameters.Add("ExpensesSubAreaName", cmbxerc.Text);
-                cmd2.Parameters.Add("NoteText", tesviri.Text);
-                cmd2.Parameters.Add("Amount", mebleg.Text);
-                cmd2.Parameters.Add("ExpensesYear", cmbil.Text);
+                cmd2.Parameters.AddWithValue("ExpensesAreaID", sa);
+                cmd2.Parameters.AddWithValue("ExpensesAreaName", cmbsahe.Text);
+                cmd2.Parameters.AddWithValue("ExpensesSubAreaID", sa1);
+                cmd2.Parameters.AddWithValue("ExpensesSubAreaName", cmbxerc.Text);
+                cmd2.Parameters.AddWithValue("NoteText", tesviri.Text);
+                cmd2.Parameters.AddWithValue("Amount", mebleg.Text);
+                cmd2.Parameters.AddWithValue("ExpensesYear", cmbil.Text);
                 string vaxt = klas.getdatacell("select getdate() as indikivaxt");
-                cmd2.Parameters.Add("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
+                cmd2.Parameters.AddWithValue("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
                 cmd2.ExecuteNonQuery();
                 vizual();
                 //clearcomponenet();

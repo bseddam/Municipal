@@ -460,7 +460,7 @@ public class Class2
         if (dt1.Rows.Count > 0)
             dt1.Rows[0][sn] = index + ".";
 
-        int m = 0; int m1 = 0;
+      
         for (int i = 0; i < dt1.Rows.Count - 1; i++)
         {
             for (int j = 1; j < dt1.Rows.Count - i; j++)

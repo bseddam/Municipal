@@ -21,7 +21,8 @@
     </asp:ContentPlaceHolder>
 
     <style type="text/css">
-        .auto-style1ggg {
+        .auto-style1ggg 
+        {
             width: 50px;
         }
 
@@ -30,53 +31,7 @@
             font-size: 20px;
             text-align: center;
         }
-   /*
-        .auto-style6 {
-            width: 236px;
-        }
-
-        .auto-style9 {
-            width: 236px;
-            height: 58px;
-        }
-
-
-      
-        .auto-style1ggg8 {
-            width: 161px;
-            height: 58px;
-        }
-
-       .auto-style2ggg0 {
-            height: 58px;
-            font-size: 30px;
-            width: 35px;
-        }
-
-        p.MsoNormal {
-            margin-top: 0in;
-            margin-right: 0in;
-            margin-bottom: 10.0pt;
-            margin-left: 0in;
-            line-height: 115%;
-            font-size: 10.0pt;
-            font-family: Arial,"sans-serif";
-        }
-
-        .auto-style2ggg3 {
-            border-collapse: collapse;
-            line-height: 115%;
-            font-size: 10.0pt;
-            font-family: Arial, sans-serif;
-            border-style: none;
-            border-color: inherit;
-            border-width: medium;
-        }
-
-        .auto-style2ggg4 {
-            height: 28px;
-        }*/
-
+  +
         .modalBackground {
             background-color: Black;
             filter: alpha(opacity=40);
@@ -117,19 +72,15 @@
                 font-weight: bold;
                 cursor: pointer;
             }
-
             .modalPopup .yes {
                 background-color: #2FBDF1;
                 border: 1px solid #0DA9D0;
             }
-
             .modalPopup .no {
                 background-color: #9F9F9F;
                 border: 1px solid #5C5C5C;
             }
     </style>
-
-
 </head>
 
 
@@ -145,15 +96,13 @@
                         <td class="auto-style2ggg">
                             <asp:Label ID="lbladsoy" runat="server" ForeColor="White" Font-Bold="true" Font-Size="Large"></asp:Label>
                         </td>
-                        <td>
-                            <asp:LinkButton ID="btncixis" runat="server" Text="Çıxış" OnClick="btncixis_Click" ForeColor="White"></asp:LinkButton></td>
+                        <td><asp:LinkButton ID="btncixis" runat="server" Text="Çıxış" OnClick="btncixis_Click" ForeColor="White"></asp:LinkButton></td>
                     </tr>
                 </table>
             </div>
             <div style="background-color: Background; width: 1024px;">
                 <div class="menu_parent">
                     <ul class="sf-menu">
-                        <%--   <li class="last"><a href="Homepage.aspx"><span>Ana səhifə</span></a></li>--%>
                         <li class="menu-i">
                             <a class="menu-i-link" href="Homepage.aspx">BAŞ SƏHİFƏ</a>
                         </li>
@@ -237,7 +186,9 @@
                             <ul class="submenu" style="width: auto;">
                                 <li class="submenu-i"><a class="menu-i-link" href="Member.aspx"><span>TƏRKİB</span></a>
                                 </li>
-                                <li class="submenu-i"><a class="menu-i-link" href="Information.aspx"><span>İSTİFADƏÇİ</span></a>
+                                <li class="submenu-i"><a class="menu-i-link" href="Information.aspx"><span>Bələdİyyə məlumatları</span></a>
+                                </li>
+                                <li class="submenu-i"><a class="menu-i-link" href="Users.aspx"><span>İstİfadəçİ məlumatları</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -259,12 +210,10 @@
                                 </li>
                                <li class="submenu-i"><a class="menu-i-link" href="ExpenseIllik.aspx"><span>BƏLƏDİYYƏNİN XƏRCLƏRİ</span></a>
                                 </li>
-<%--                                 <li class="submenu-i"><a class="menu-i-link" href="Municipincome.aspx"><span>ÜMUMİ HESABAT</span></a>
-                                </li>--%>
+
                             </ul>
                         </li>
                         
-                        <%--      <li class="last"><a href="#"><span>Axtarış</span></a></li>--%>
                     </ul>
                 </div>
 

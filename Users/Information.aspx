@@ -114,56 +114,6 @@
             </tr>
             <tr>
                 <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">Soyadı:</td>
-                <td class="auto-style44">
-                    <asp:TextBox ID="txtsname" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-                <td class="auto-style38">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtsname" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RequiredFieldValidator>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">Adı:</td>
-                <td class="auto-style44">
-                    <asp:TextBox ID="txtname" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-                <td class="auto-style38">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtname" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RequiredFieldValidator>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style43"></td>
-                <td class="auto-style40">Ata adı:</td>
-                <td class="auto-style44">
-                    <asp:TextBox ID="txtfname" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-                <td class="auto-style38">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtfname" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RequiredFieldValidator>
-                    &nbsp;</td>
-            </tr>
-
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">Cinsi:</td>
-                <td class="auto-style44">
-                    <asp:RadioButton ID="rdman" runat="server" Text="Kişi" Checked="True" GroupName="A" />
-                    <asp:RadioButton ID="rdwoman" runat="server" Text="Qadın" GroupName="A" />
-                </td>
-                <td class="auto-style38">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">Mobil telefonu:</td>
-                <td class="auto-style44">
-                    <asp:TextBox ID="txtcontact" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-                <td class="auto-style38">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtcontact" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RequiredFieldValidator>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
                 <td class="auto-style40">Bələdiyyənin telefonu:</td>
                 <td class="auto-style44">
                     <asp:TextBox ID="txtiw" runat="server" CssClass="form-control"></asp:TextBox>
@@ -212,28 +162,6 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtbank" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RequiredFieldValidator>
                     &nbsp;</td>
             </tr>
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">Elektron ünvanı:</td>
-                <td class="auto-style44">
-                    <asp:TextBox ID="txtemail" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-                <td class="auto-style38">
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtemail" CssClass="hata_mesaj" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtemail" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RequiredFieldValidator>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">İstifadəçi adı: (6 - 12 simvol)</td>
-                <td class="auto-style44">
-                    <asp:TextBox ID="txtlogin" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-                <td class="auto-style38">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtlogin" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtlogin" ErrorMessage="*" ValidationGroup="Group1" ValidationExpression="^[\s\S]{6,12}$" Display="Dynamic"></asp:RegularExpressionValidator>
-                    &nbsp;</td>
-            </tr>
             <%--  <tr  style="display:none;">
                         <td class="auto-style5">&nbsp;</td>
                         <td class="auto-style40">Kateqoriya:</td>
@@ -254,27 +182,6 @@
                             &nbsp;</td>
                     </tr>--%>
 
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">Şifrə: (6 - 12 simvol)</td>
-                <td class="auto-style44">
-                    <asp:TextBox ID="txtpassvord" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-                <td class="auto-style38">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtpassvord" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtpassvord" ErrorMessage="*" ValidationGroup="Group1" ValidationExpression="^[\s\S]{6,12}$" Display="Dynamic"></asp:RegularExpressionValidator>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">Şifrə (təkrar):</td>
-                <td class="auto-style44">
-                    <asp:TextBox ID="txtpassvord2" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-                <td class="auto-style38">
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtpassvord" ControlToValidate="txtpassvord2" CssClass="hata_mesaj" Display="Dynamic" ErrorMessage="*" ValidationGroup="Group1"></asp:CompareValidator>
-                    &nbsp;</td>
-            </tr>
             <%--  <tr  style="display:none;">
                         <td class="auto-style5">&nbsp;</td>
                         <td class="auto-style40">Kateqoriya:</td>
@@ -285,12 +192,6 @@
                         <td>
                             &nbsp;</td>
                     </tr>--%>
-            <tr>
-                <td class="auto-style43">&nbsp;</td>
-                <td class="auto-style40">&nbsp;</td>
-                <td class="auto-style44">&nbsp;</td>
-                <td class="auto-style38">&nbsp;</td>
-            </tr>
             <tr>
                 <td class="auto-style43">&nbsp;</td>
                 <td class="auto-style40">&nbsp;</td>

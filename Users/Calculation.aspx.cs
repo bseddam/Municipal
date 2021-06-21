@@ -11,7 +11,7 @@ using System.Drawing;
 public partial class Users_Calculation : System.Web.UI.Page
 {
     //static string prevPage = String.Empty;
-    Class2 klas = new Class2(); string islem; string TaxpayerID; string MineID, MineInsertUpdate = "0"; 
+    Class2 klas = new Class2();  string TaxpayerID; string MineID, MineInsertUpdate = "0"; 
     Hesablanmalar hesabla = new Hesablanmalar(); 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -237,10 +237,10 @@ values (@ProfitsID,@CalcYear,@Income,@Expense,@Amount)", baglan);
             SqlCommand cmd1 = new SqlCommand(@"Update CalcProfits set  CalcYear=@CalcYear,
 Amount=@Amount,Income=@Income,Expense=@Expense where CalcProfitsID=" + lblmenfgizle.Text, baglan1);
 
-            cmd1.Parameters.Add("CalcYear", ddlmenfeetil.SelectedItem.ToString());
-            cmd1.Parameters.Add("Income", txtmenfeetgelir.Text);
-            cmd1.Parameters.Add("Expense", txtmenfeetxerc.Text);
-            cmd1.Parameters.Add("Amount", mebleg1);
+            cmd1.Parameters.AddWithValue("CalcYear", ddlmenfeetil.SelectedItem.ToString());
+            cmd1.Parameters.AddWithValue("Income", txtmenfeetgelir.Text);
+            cmd1.Parameters.AddWithValue("Expense", txtmenfeetxerc.Text);
+            cmd1.Parameters.AddWithValue("Amount", mebleg1);
             cmd1.ExecuteNonQuery();
             lblmenfeet.Text = "Məlumat daxil edildi";
             lblmenfeet.ForeColor = Color.Green;
@@ -732,10 +732,10 @@ from  CarStop l left join CarstopType c on c.CarstopTypeID=l.CarStopType left jo
 //PercentDayCount,PercentCounted,PercentDebt,PaymentDocument,NowTime,MorePayment,Sanction) 
 //values (@TaxpayerID,@TaxesPaymentID,@Operation,@Amount,@RemainingDebt,@PercentDayCount,@PercentCounted,@PercentDebt,@PaymentDocument,
 //CONVERT(datetime, CONVERT(nvarchar(100)," + ddltediyyetarix.SelectedItem.ToString() + ")+'-08-15 00:00:00.000'), @MorePayment,@Sanction)", baglanx);
-//            cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
-//            cmdx.Parameters.Add("TaxesPaymentID", ddlvergi.SelectedValue.ToString());
+//            cmdx.Parameters.AddWithValue("TaxpayerID", TaxpayerID);
+//            cmdx.Parameters.AddWithValue("TaxesPaymentID", ddlvergi.SelectedValue.ToString());
 
-//            cmdx.Parameters.Add("Operation", 11);
+//            cmdx.Parameters.AddWithValue("Operation", 11);
 //            float a = 0, art = 0;
 //            float f = 0;
 //            float s = 0;
@@ -810,21 +810,21 @@ from  CarStop l left join CarstopType c on c.CarstopTypeID=l.CarStopType left jo
 //            if (0 >= q)
 //            {
 
-//                cmdx.Parameters.Add("RemainingDebt", int.Parse("0"));
-//                cmdx.Parameters.Add("MorePayment", art);
+//                cmdx.Parameters.AddWithValue("RemainingDebt", int.Parse("0"));
+//                cmdx.Parameters.AddWithValue("MorePayment", art);
 //            }
 //            else
 //            {
 //                a = q;
-//                cmdx.Parameters.Add("RemainingDebt", a);
-//                cmdx.Parameters.Add("MorePayment", int.Parse("0"));
+//                cmdx.Parameters.AddWithValue("RemainingDebt", a);
+//                cmdx.Parameters.AddWithValue("MorePayment", int.Parse("0"));
 //            }
-//            cmdx.Parameters.Add("Sanction", s);
-//            cmdx.Parameters.Add("Amount", mebleq);
-//            cmdx.Parameters.Add("PercentDayCount", d);
-//            cmdx.Parameters.Add("PercentCounted", yf);
-//            cmdx.Parameters.Add("PercentDebt", f);
-//            cmdx.Parameters.Add("PaymentDocument", "");
+//            cmdx.Parameters.AddWithValue("Sanction", s);
+//            cmdx.Parameters.AddWithValue("Amount", mebleq);
+//            cmdx.Parameters.AddWithValue("PercentDayCount", d);
+//            cmdx.Parameters.AddWithValue("PercentCounted", yf);
+//            cmdx.Parameters.AddWithValue("PercentDebt", f);
+//            cmdx.Parameters.AddWithValue("PaymentDocument", "");
 //            cmdx.ExecuteNonQuery();
 //    }
 
@@ -864,10 +864,10 @@ from  CarStop l left join CarstopType c on c.CarstopTypeID=l.CarStopType left jo
 //PercentDayCount,PercentCounted,PercentDebt,PaymentDocument,NowTime,MorePayment,Sanction) 
 //values (@TaxpayerID,@TaxesPaymentID,@Operation,@Amount,@RemainingDebt,@PercentDayCount,@PercentCounted,@PercentDebt,@PaymentDocument,
 //CONVERT(datetime, CONVERT(nvarchar(100)," + ddltediyyetarix.SelectedItem.ToString() + ")+'-11-15 00:00:00.000'), @MorePayment,@Sanction)", baglanx);
-//            cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
-//            cmdx.Parameters.Add("TaxesPaymentID", ddlvergi.SelectedValue.ToString());
+//            cmdx.Parameters.AddWithValue("TaxpayerID", TaxpayerID);
+//            cmdx.Parameters.AddWithValue("TaxesPaymentID", ddlvergi.SelectedValue.ToString());
 
-//            cmdx.Parameters.Add("Operation", 11);
+//            cmdx.Parameters.AddWithValue("Operation", 11);
 //            float a = 0, art = 0;
 //            float f = 0;
 //            float s = 0;
@@ -984,21 +984,21 @@ from  CarStop l left join CarstopType c on c.CarstopTypeID=l.CarStopType left jo
 //            if (0 >= q)
 //            {
 
-//                cmdx.Parameters.Add("RemainingDebt", int.Parse("0"));
-//                cmdx.Parameters.Add("MorePayment", art);
+//                cmdx.Parameters.AddWithValue("RemainingDebt", int.Parse("0"));
+//                cmdx.Parameters.AddWithValue("MorePayment", art);
 //            }
 //            else
 //            {
 //                a = q;
-//                cmdx.Parameters.Add("RemainingDebt", a);
-//                cmdx.Parameters.Add("MorePayment", int.Parse("0"));
+//                cmdx.Parameters.AddWithValue("RemainingDebt", a);
+//                cmdx.Parameters.AddWithValue("MorePayment", int.Parse("0"));
 //            }
-//            cmdx.Parameters.Add("Sanction", s);
-//            cmdx.Parameters.Add("Amount", mebleq);
-//            cmdx.Parameters.Add("PercentDayCount", d);
-//            cmdx.Parameters.Add("PercentCounted", yf);
-//            cmdx.Parameters.Add("PercentDebt", f);
-//            cmdx.Parameters.Add("PaymentDocument", "");
+//            cmdx.Parameters.AddWithValue("Sanction", s);
+//            cmdx.Parameters.AddWithValue("Amount", mebleq);
+//            cmdx.Parameters.AddWithValue("PercentDayCount", d);
+//            cmdx.Parameters.AddWithValue("PercentCounted", yf);
+//            cmdx.Parameters.AddWithValue("PercentDebt", f);
+//            cmdx.Parameters.AddWithValue("PaymentDocument", "");
 //            cmdx.ExecuteNonQuery();
 //        }
 //        Label3.Text = ddltediyyetarix.SelectedItem.ToString() + " üçun hesablama yerinə yetrildi!";

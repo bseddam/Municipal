@@ -14,7 +14,7 @@ using System.IO;
 public partial class Users_Individual : System.Web.UI.Page
 {
     static string prevPage = String.Empty;
-    Class2 klas = new Class2(); string islem; string TaxpayerID;
+    Class2 klas = new Class2(); string islem; string TaxpayerID="";
     protected void Page_Load(object sender, EventArgs e)
     {
        
@@ -22,10 +22,11 @@ public partial class Users_Individual : System.Web.UI.Page
         try
         {
             islem = Request.QueryString["islem"];
-            if (string.IsNullOrEmpty(TaxpayerID))
+            if (TaxpayerID == "")
             {
-                TaxpayerID = Session["TaxpayerID"].ToString();
-                
+                if (Session["TaxpayerID"] != null)
+                    TaxpayerID = Session["TaxpayerID"].ToString();
+
             }
             //TaxpayerID = Request.QueryString["TaxpayerID"];
           
@@ -376,72 +377,72 @@ ConcessionSeries=@ConcessionSeries,ConcessionNumber=@ConcessionNumber,Concession
 UpdateDate=@UpdateDate where TaxpayerID=" + TaxpayerID, baglan);
 
 
-            cmd.Parameters.Add("SName", soyadi.Text);
-            cmd.Parameters.Add("Name", adi.Text);
-            cmd.Parameters.Add("FName", ataadi.Text);
-            cmd.Parameters.Add("IDcardsNumber", vesnomre.Text);
-            cmd.Parameters.Add("Pincode", vespinkod.Text);
-            cmd.Parameters.Add("IDcardsIssuing", vesverorqan.Text);
+            cmd.Parameters.AddWithValue("SName", soyadi.Text);
+            cmd.Parameters.AddWithValue("Name", adi.Text);
+            cmd.Parameters.AddWithValue("FName", ataadi.Text);
+            cmd.Parameters.AddWithValue("IDcardsNumber", vesnomre.Text);
+            cmd.Parameters.AddWithValue("Pincode", vespinkod.Text);
+            cmd.Parameters.AddWithValue("IDcardsIssuing", vesverorqan.Text);
 
 
             if (vesvertarix.Text == "")
             {
-                cmd.Parameters.Add("IDcardsGiveDate", vesvertarix.Text);
+                cmd.Parameters.AddWithValue("IDcardsGiveDate", vesvertarix.Text);
             }
             else
             {
-                cmd.Parameters.Add("IDcardsGiveDate", vesvertarix.Date);
+                cmd.Parameters.AddWithValue("IDcardsGiveDate", vesvertarix.Date);
             }
 
 
-            cmd.Parameters.Add("Birthplace", dogumyeri.Text);
+            cmd.Parameters.AddWithValue("Birthplace", dogumyeri.Text);
             if (dogumtarixi.Text == "")
             {
-                cmd.Parameters.Add("BirthDate", dogumtarixi.Text);
+                cmd.Parameters.AddWithValue("BirthDate", dogumtarixi.Text);
             }
             else
             {
-                cmd.Parameters.Add("BirthDate", dogumtarixi.Date);
+                cmd.Parameters.AddWithValue("BirthDate", dogumtarixi.Date);
             }
-            cmd.Parameters.Add("Nationality", milliyeti.Text);
-            cmd.Parameters.Add("Citizenship", vetendasligi.Text);
-            cmd.Parameters.Add("Gender", cins);
-            cmd.Parameters.Add("YVOK", YVOK);
-            cmd.Parameters.Add("PostIndex", poctindex.Text);
-            cmd.Parameters.Add("RegistrationAdress", qeydiyyatadres.Text);
-            cmd.Parameters.Add("ActualAdress", faktikiadres.Text);
-            cmd.Parameters.Add("Email", email.Text);
-            cmd.Parameters.Add("Mobiltel", mobiltel.Text);
-            cmd.Parameters.Add("Workltel", iwtel.Text);
-            cmd.Parameters.Add("Hometel", evtel.Text);
-            cmd.Parameters.Add("Fax", fax.Text);
-            cmd.Parameters.Add("Concession", guzewt);
+            cmd.Parameters.AddWithValue("Nationality", milliyeti.Text);
+            cmd.Parameters.AddWithValue("Citizenship", vetendasligi.Text);
+            cmd.Parameters.AddWithValue("Gender", cins);
+            cmd.Parameters.AddWithValue("YVOK", YVOK);
+            cmd.Parameters.AddWithValue("PostIndex", poctindex.Text);
+            cmd.Parameters.AddWithValue("RegistrationAdress", qeydiyyatadres.Text);
+            cmd.Parameters.AddWithValue("ActualAdress", faktikiadres.Text);
+            cmd.Parameters.AddWithValue("Email", email.Text);
+            cmd.Parameters.AddWithValue("Mobiltel", mobiltel.Text);
+            cmd.Parameters.AddWithValue("Workltel", iwtel.Text);
+            cmd.Parameters.AddWithValue("Hometel", evtel.Text);
+            cmd.Parameters.AddWithValue("Fax", fax.Text);
+            cmd.Parameters.AddWithValue("Concession", guzewt);
             if (guzewt == 2)
             {
-                cmd.Parameters.Add("ConcessionCauseID", guzsebeb.Value);
-                cmd.Parameters.Add("ConcessionCause", guzsebeb.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("ConcessionCauseID", guzsebeb.Value);
+                cmd.Parameters.AddWithValue("ConcessionCause", guzsebeb.SelectedItem.ToString());
             }
             else
             {
-                cmd.Parameters.Add("ConcessionCauseID", "0");
-                cmd.Parameters.Add("ConcessionCause", "");
+                cmd.Parameters.AddWithValue("ConcessionCauseID", "0");
+                cmd.Parameters.AddWithValue("ConcessionCause", "");
             }
-            cmd.Parameters.Add("ConcessionGiveOrgan", guzvertewkilat.Text);
+            cmd.Parameters.AddWithValue("ConcessionGiveOrgan", guzvertewkilat.Text);
 
 
-            cmd.Parameters.Add("ConcessionSeries", guzseriya.Text);
-            cmd.Parameters.Add("ConcessionNumber", guznomre.Text);
+            cmd.Parameters.AddWithValue("ConcessionSeries", guzseriya.Text);
+            cmd.Parameters.AddWithValue("ConcessionNumber", guznomre.Text);
             if (guzverilme.Text == "")
             {
-                cmd.Parameters.Add("ConcessionGiveDate", guzverilme.Text);
+                cmd.Parameters.AddWithValue("ConcessionGiveDate", guzverilme.Text);
             }
             else
             {
-                cmd.Parameters.Add("ConcessionGiveDate", guzverilme.Date);
+                cmd.Parameters.AddWithValue("ConcessionGiveDate", guzverilme.Date);
             }
            
             string vaxt1 = klas.getdatacell("select getdate() as indikivaxt");
-            cmd.Parameters.Add("UpdateDate", Convert.ToDateTime(vaxt1).ToString("yyyy-MM-dd"));
+            cmd.Parameters.AddWithValue("UpdateDate", Convert.ToDateTime(vaxt1).ToString("yyyy-MM-dd"));
             cmd.ExecuteNonQuery();
             Response.Redirect("IndividualUpdate.aspx?IndividualLegal=1");
             }
@@ -471,78 +472,78 @@ values(@MunicipalID,@RegistrPetitondate,@SName,@Name,@FName,@IDcardsNumber,@Pinc
 @IDcardsIssuing,@IDcardsGiveDate,@Birthplace,@BirthDate,@Nationality,@Citizenship,@Gender,@YVOK,@PostIndex,@RegistrationAdress,@ActualAdress,
 @Email,@Mobiltel,@Workltel,@Hometel,@Fax,@Concession,@ConcessionGiveOrgan,@ConcessionCauseID,@ConcessionCause,@ConcessionSeries,@ConcessionNumber,
 @ConcessionGiveDate,@Individual_Legal)", baglan);
-                cmd.Parameters.Add("MunicipalID", MunicipalId);
+                cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
 
                 string vaxt = klas.getdatacell("select getdate()  vaxt");
 
-                cmd.Parameters.Add("RegistrPetitondate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("RegistrPetitondate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
 
 
-                cmd.Parameters.Add("SName", soyadi.Text);
-                cmd.Parameters.Add("Name", adi.Text);
-                cmd.Parameters.Add("FName", ataadi.Text);
-                cmd.Parameters.Add("IDcardsNumber", vesnomre.Text);
-                cmd.Parameters.Add("Pincode", vespinkod.Text);
-                cmd.Parameters.Add("IDcardsIssuing", vesverorqan.Text);
+                cmd.Parameters.AddWithValue("SName", soyadi.Text);
+                cmd.Parameters.AddWithValue("Name", adi.Text);
+                cmd.Parameters.AddWithValue("FName", ataadi.Text);
+                cmd.Parameters.AddWithValue("IDcardsNumber", vesnomre.Text);
+                cmd.Parameters.AddWithValue("Pincode", vespinkod.Text);
+                cmd.Parameters.AddWithValue("IDcardsIssuing", vesverorqan.Text);
 
 
                 if (vesvertarix.Text == "")
                 {
-                    cmd.Parameters.Add("IDcardsGiveDate", vesvertarix.Text);
+                    cmd.Parameters.AddWithValue("IDcardsGiveDate", vesvertarix.Text);
                 }
                 else
                 {
-                    cmd.Parameters.Add("IDcardsGiveDate", vesvertarix.Date);
+                    cmd.Parameters.AddWithValue("IDcardsGiveDate", vesvertarix.Date);
                 }
 
 
-                cmd.Parameters.Add("Birthplace", dogumyeri.Text);
+                cmd.Parameters.AddWithValue("Birthplace", dogumyeri.Text);
                 if (dogumtarixi.Text == "")
                 {
-                    cmd.Parameters.Add("BirthDate", dogumtarixi.Text);
+                    cmd.Parameters.AddWithValue("BirthDate", dogumtarixi.Text);
                 }
                 else
                 {
-                    cmd.Parameters.Add("BirthDate", dogumtarixi.Date);
+                    cmd.Parameters.AddWithValue("BirthDate", dogumtarixi.Date);
                 }
-                cmd.Parameters.Add("Nationality", milliyeti.Text);
-                cmd.Parameters.Add("Citizenship", vetendasligi.Text);
-                cmd.Parameters.Add("Gender", cins);
-                cmd.Parameters.Add("YVOK", YVOK);
-                cmd.Parameters.Add("PostIndex", poctindex.Text);
-                cmd.Parameters.Add("RegistrationAdress", qeydiyyatadres.Text);
-                cmd.Parameters.Add("ActualAdress", faktikiadres.Text);
-                cmd.Parameters.Add("Email", email.Text);
-                cmd.Parameters.Add("Mobiltel", mobiltel.Text);
-                cmd.Parameters.Add("Workltel", iwtel.Text);
-                cmd.Parameters.Add("Hometel", evtel.Text);
-                cmd.Parameters.Add("Fax", fax.Text);
-                cmd.Parameters.Add("Concession", guzewt);
+                cmd.Parameters.AddWithValue("Nationality", milliyeti.Text);
+                cmd.Parameters.AddWithValue("Citizenship", vetendasligi.Text);
+                cmd.Parameters.AddWithValue("Gender", cins);
+                cmd.Parameters.AddWithValue("YVOK", YVOK);
+                cmd.Parameters.AddWithValue("PostIndex", poctindex.Text);
+                cmd.Parameters.AddWithValue("RegistrationAdress", qeydiyyatadres.Text);
+                cmd.Parameters.AddWithValue("ActualAdress", faktikiadres.Text);
+                cmd.Parameters.AddWithValue("Email", email.Text);
+                cmd.Parameters.AddWithValue("Mobiltel", mobiltel.Text);
+                cmd.Parameters.AddWithValue("Workltel", iwtel.Text);
+                cmd.Parameters.AddWithValue("Hometel", evtel.Text);
+                cmd.Parameters.AddWithValue("Fax", fax.Text);
+                cmd.Parameters.AddWithValue("Concession", guzewt);
                 if (guzewt == 2)
                 {
-                    cmd.Parameters.Add("ConcessionCauseID", guzsebeb.Value);
-                    cmd.Parameters.Add("ConcessionCause", guzsebeb.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("ConcessionCauseID", guzsebeb.Value);
+                    cmd.Parameters.AddWithValue("ConcessionCause", guzsebeb.SelectedItem.ToString());
                 }
                 else
                 {
-                    cmd.Parameters.Add("ConcessionCauseID", "0");
-                    cmd.Parameters.Add("ConcessionCause", "");
+                    cmd.Parameters.AddWithValue("ConcessionCauseID", "0");
+                    cmd.Parameters.AddWithValue("ConcessionCause", "");
                 }
-                cmd.Parameters.Add("ConcessionGiveOrgan", guzvertewkilat.Text);
+                cmd.Parameters.AddWithValue("ConcessionGiveOrgan", guzvertewkilat.Text);
 
 
-                cmd.Parameters.Add("ConcessionSeries", guzseriya.Text);
-                cmd.Parameters.Add("ConcessionNumber", guznomre.Text);
+                cmd.Parameters.AddWithValue("ConcessionSeries", guzseriya.Text);
+                cmd.Parameters.AddWithValue("ConcessionNumber", guznomre.Text);
                 if (guzverilme.Text == "")
                 {
-                    cmd.Parameters.Add("ConcessionGiveDate", guzverilme.Text);
+                    cmd.Parameters.AddWithValue("ConcessionGiveDate", guzverilme.Text);
                 }
                 else
                 {
-                    cmd.Parameters.Add("ConcessionGiveDate", guzverilme.Date);
+                    cmd.Parameters.AddWithValue("ConcessionGiveDate", guzverilme.Date);
                 }
 
-                cmd.Parameters.Add("Individual_Legal", 1);
+                cmd.Parameters.AddWithValue("Individual_Legal", 1);
                 cmd.ExecuteNonQuery();
                 Response.Redirect(prevPage + "&islem=1");
             }

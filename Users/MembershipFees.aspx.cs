@@ -103,10 +103,10 @@ inner join List_classification_Municipal lm on u.MunicipalID=lm.MunicipalID Wher
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Insert into MembershipFees (MunicipalID,RemainingDebt,Amount,MembershipFeesYear) 
 values (@MunicipalID,@RemainingDebt,@Amount,@MembershipFeesYear)", baglan);
-                cmd.Parameters.Add("MunicipalID", MunicipalId);
-                cmd.Parameters.Add("RemainingDebt", ehalininsayi.Text);
-                cmd.Parameters.Add("Amount", mebleg.Text);
-                cmd.Parameters.Add("MembershipFeesYear", cmbil.Text);
+                cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                cmd.Parameters.AddWithValue("RemainingDebt", ehalininsayi.Text);
+                cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                cmd.Parameters.AddWithValue("MembershipFeesYear", cmbil.Text);
                 cmd.ExecuteNonQuery();
 
 
@@ -120,9 +120,9 @@ values (@MunicipalID,@RemainingDebt,@Amount,@MembershipFeesYear)", baglan);
                 SqlConnection baglan = klas.baglan();
                 SqlCommand cmd = new SqlCommand(@"Update MembershipFees set  RemainingDebt=@RemainingDebt,Amount=@Amount,
 MembershipFeesYear=@MembershipFeesYear,UpdateDate=getdate()   where MembershipFeesID=" + TaxpayerID, baglan);
-                cmd.Parameters.Add("RemainingDebt", ehalininsayi.Text);
-                cmd.Parameters.Add("Amount", mebleg.Text);
-                cmd.Parameters.Add("MembershipFeesYear", cmbil.Text);
+                cmd.Parameters.AddWithValue("RemainingDebt", ehalininsayi.Text);
+                cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                cmd.Parameters.AddWithValue("MembershipFeesYear", cmbil.Text);
                 cmd.ExecuteNonQuery();
                 vizual();
                 //clearcomponenet();

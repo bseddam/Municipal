@@ -12,7 +12,7 @@ public partial class Users_PaymentNotice : System.Web.UI.Page
 {
     Class2 klas = new Class2(); Hesablanmalar hesabla = new Hesablanmalar(); 
     string TaxpayerID; static string prevPage = String.Empty;
-    float umumiborc=0,cem08=0,cem11=0,cemtq=0,cemfaiz=0,cemsanksiya=0,cemArt=0;
+    float umumiborc = 0, cem08 = 0, cem11 = 0, cemtq = 0, cemfaiz = 0, cemsanksiya=0;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(TaxpayerID))
@@ -401,17 +401,17 @@ from CalcTaxes where TaxpayerID=" + TaxpayerID + " and CalcYear<=Year(getdate())
 PercentDayCount,PercentCounted,PercentDebt,PaymentDocument,NowTime,MorePayment,Sanction) 
 values (@TaxpayerID,@TaxesPaymentID,@Operation,@Amount,@RemainingDebt,@PercentDayCount,@PercentCounted,@PercentDebt,@PaymentDocument,
 getdate(),@MorePayment,@Sanction)", baglanx);
-            cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
-            cmdx.Parameters.Add("TaxesPaymentID", 15);
-            cmdx.Parameters.Add("Operation", 11);
-            cmdx.Parameters.Add("RemainingDebt", int.Parse("0"));
-            cmdx.Parameters.Add("MorePayment", int.Parse("0"));
-            cmdx.Parameters.Add("Sanction", payment1);
-            cmdx.Parameters.Add("Amount", payment1);
-            cmdx.Parameters.Add("PercentDayCount", int.Parse("0"));
-            cmdx.Parameters.Add("PercentCounted", int.Parse("0"));
-            cmdx.Parameters.Add("PercentDebt", int.Parse("0"));
-            cmdx.Parameters.Add("PaymentDocument", "");
+            cmdx.Parameters.AddWithValue("TaxpayerID", TaxpayerID);
+            cmdx.Parameters.AddWithValue("TaxesPaymentID", 15);
+            cmdx.Parameters.AddWithValue("Operation", 11);
+            cmdx.Parameters.AddWithValue("RemainingDebt", int.Parse("0"));
+            cmdx.Parameters.AddWithValue("MorePayment", int.Parse("0"));
+            cmdx.Parameters.AddWithValue("Sanction", payment1);
+            cmdx.Parameters.AddWithValue("Amount", payment1);
+            cmdx.Parameters.AddWithValue("PercentDayCount", int.Parse("0"));
+            cmdx.Parameters.AddWithValue("PercentCounted", int.Parse("0"));
+            cmdx.Parameters.AddWithValue("PercentDebt", int.Parse("0"));
+            cmdx.Parameters.AddWithValue("PaymentDocument", "");
             cmdx.ExecuteNonQuery();
         //}
         //else
@@ -422,11 +422,11 @@ getdate(),@MorePayment,@Sanction)", baglanx);
         //    {
         //        SqlCommand cmdx = new SqlCommand(@"update Payments set TaxpayerID=@TaxpayerID,TaxesPaymentID=@TaxesPaymentID,
         //                                   Operation=@Operation,Sanction=@Sanction,Amount=@Amount where PaymentID=" + id, baglanx);
-        //        cmdx.Parameters.Add("TaxpayerID", TaxpayerID);
-        //        cmdx.Parameters.Add("TaxesPaymentID", 15);
-        //        cmdx.Parameters.Add("Operation", 11);
-        //        cmdx.Parameters.Add("Sanction", txtsanksiya.Text);
-        //        cmdx.Parameters.Add("Amount", txtsanksiya.Text);
+        //        cmdx.Parameters.AddWithValue("TaxpayerID", TaxpayerID);
+        //        cmdx.Parameters.AddWithValue("TaxesPaymentID", 15);
+        //        cmdx.Parameters.AddWithValue("Operation", 11);
+        //        cmdx.Parameters.AddWithValue("Sanction", txtsanksiya.Text);
+        //        cmdx.Parameters.AddWithValue("Amount", txtsanksiya.Text);
         //        cmdx.ExecuteNonQuery();
         //    }
         //}

@@ -192,9 +192,9 @@ DATEDIFF(DAY,(select top 1 NowTime from Payments p where p.TaxpayerID=mt.Taxpaye
 PercentDayCount,PercentCounted,PercentDebt,PaymentDocument,NowTime,MorePayment,Sanction) 
 values (@TaxpayerID,@TaxesPaymentID,@Operation,@Amount,@RemainingDebt,@PercentDayCount,@PercentCounted,@PercentDebt,@PaymentDocument,
 @NowTime,@MorePayment,@Sanction)", baglan);
-                        cmd.Parameters.Add("TaxpayerID", TaxpayerID);
-                        cmd.Parameters.Add("TaxesPaymentID", cmbvergi.SelectedItem.Value);
-                        cmd.Parameters.Add("Operation", 10);
+                        cmd.Parameters.AddWithValue("TaxpayerID", TaxpayerID);
+                        cmd.Parameters.AddWithValue("TaxesPaymentID", cmbvergi.SelectedItem.Value);
+                        cmd.Parameters.AddWithValue("Operation", 10);
 
 
                         float a = 0, art = 0; ;
@@ -266,22 +266,22 @@ values (@TaxpayerID,@TaxesPaymentID,@Operation,@Amount,@RemainingDebt,@PercentDa
                         if (float.Parse(mebleg.Text) >= kohneqaliq)
                         {
 
-                            cmd.Parameters.Add("RemainingDebt", int.Parse("0"));
-                            cmd.Parameters.Add("MorePayment", art);
+                            cmd.Parameters.AddWithValue("RemainingDebt", int.Parse("0"));
+                            cmd.Parameters.AddWithValue("MorePayment", art);
                         }
                         else
                         {
                             a = kohneqaliq - float.Parse(mebleg.Text);
-                            cmd.Parameters.Add("RemainingDebt", a);
-                            cmd.Parameters.Add("MorePayment", int.Parse("0"));
+                            cmd.Parameters.AddWithValue("RemainingDebt", a);
+                            cmd.Parameters.AddWithValue("MorePayment", int.Parse("0"));
                         }
-                        cmd.Parameters.Add("Sanction", s);
-                        cmd.Parameters.Add("Amount", mebleg.Text);
-                        cmd.Parameters.Add("PercentDayCount", yenigund);
-                        cmd.Parameters.Add("PercentCounted", yenifaiz);
-                        cmd.Parameters.Add("PercentDebt", f);
-                        cmd.Parameters.Add("PaymentDocument", txtsened.Text);
-                        cmd.Parameters.Add("NowTime", odemetrx.Date);
+                        cmd.Parameters.AddWithValue("Sanction", s);
+                        cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                        cmd.Parameters.AddWithValue("PercentDayCount", yenigund);
+                        cmd.Parameters.AddWithValue("PercentCounted", yenifaiz);
+                        cmd.Parameters.AddWithValue("PercentDebt", f);
+                        cmd.Parameters.AddWithValue("PaymentDocument", txtsened.Text);
+                        cmd.Parameters.AddWithValue("NowTime", odemetrx.Date);
                         cmd.ExecuteNonQuery();
                         mebleg.Text = "";
                         txtsened.Text = "";
@@ -328,14 +328,14 @@ values (@TaxpayerID,@TaxesPaymentID,@Operation,@Amount,@RemainingDebt,@PercentDa
                     SqlConnection baglan = klas.baglan();
                     SqlCommand cmd = new SqlCommand(@"Insert into Payments (TaxpayerID,TaxesPaymentID,Amount,PaymentDocument,NowTime,Operation,RemainingDebt,MorePayment) 
 values (@TaxpayerID,@TaxesPaymentID,@Amount,@PaymentDocument,@NowTime,@Operation,@RemainingDebt,@MorePayment)", baglan);
-                    cmd.Parameters.Add("TaxpayerID", TaxpayerID);
-                    cmd.Parameters.Add("TaxesPaymentID", cmbvergi.SelectedItem.Value);
-                    cmd.Parameters.Add("Operation", int.Parse("10"));
-                    cmd.Parameters.Add("RemainingDebt", b);
-                    cmd.Parameters.Add("Amount", mebleg.Text);
-                    cmd.Parameters.Add("MorePayment", art);
-                    cmd.Parameters.Add("PaymentDocument", txtsened.Text);
-                    cmd.Parameters.Add("NowTime", odemetrx.Date);
+                    cmd.Parameters.AddWithValue("TaxpayerID", TaxpayerID);
+                    cmd.Parameters.AddWithValue("TaxesPaymentID", cmbvergi.SelectedItem.Value);
+                    cmd.Parameters.AddWithValue("Operation", int.Parse("10"));
+                    cmd.Parameters.AddWithValue("RemainingDebt", b);
+                    cmd.Parameters.AddWithValue("Amount", mebleg.Text);
+                    cmd.Parameters.AddWithValue("MorePayment", art);
+                    cmd.Parameters.AddWithValue("PaymentDocument", txtsened.Text);
+                    cmd.Parameters.AddWithValue("NowTime", odemetrx.Date);
                     cmd.ExecuteNonQuery();
 
                     mebleg.Text = "";

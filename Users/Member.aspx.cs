@@ -200,23 +200,23 @@ from Structure where ForDelete=1 and MunicipalID=" + MunicipalId);
 StatusPositionName,Gender,Adress,Mobiltel,Email,PartyID,Party,BirthDate,Nationality,EducationID,Education) 
 values(@StatusPositionID,@MunicipalID,@MunicipalName,@SName,@Name,@FName,@StatusPositionName,@Gender,@Adress,@Mobiltel,@Email,@PartyID,@Party,
 @BirthDate,@Nationality,@EducationID,@Education)", baglan);
-                    cmd.Parameters.Add("MunicipalID", MunicipalId);
-                    cmd.Parameters.Add("MunicipalName", MunicipalName);
-                    cmd.Parameters.Add("StatusPositionID", ddlvezife.Value);
-                    cmd.Parameters.Add("SName", soyadi.Text);
-                    cmd.Parameters.Add("Name", adi.Text);
-                    cmd.Parameters.Add("FName", ataadi.Text);
-                    cmd.Parameters.Add("StatusPositionName", ddlvezife.SelectedItem.ToString());
-                    cmd.Parameters.Add("Gender", cins);
-                    cmd.Parameters.Add("Adress", qeydiyyatadres.Text);
-                    cmd.Parameters.Add("Mobiltel", mobiltel.Text);
-                    cmd.Parameters.Add("Email", email.Text);
-                    cmd.Parameters.Add("PartyID", ddlpartiya.Value);
-                    cmd.Parameters.Add("Party", ddlpartiya.SelectedItem.ToString());
-                    cmd.Parameters.Add("BirthDate", cmbtevellud.Date);
-                    cmd.Parameters.Add("Nationality", txtmilliyyet.Text);
-                    cmd.Parameters.Add("EducationID", ddltehsil.Value);
-                    cmd.Parameters.Add("Education", ddltehsil.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("MunicipalID", MunicipalId);
+                    cmd.Parameters.AddWithValue("MunicipalName", MunicipalName);
+                    cmd.Parameters.AddWithValue("StatusPositionID", ddlvezife.Value);
+                    cmd.Parameters.AddWithValue("SName", soyadi.Text);
+                    cmd.Parameters.AddWithValue("Name", adi.Text);
+                    cmd.Parameters.AddWithValue("FName", ataadi.Text);
+                    cmd.Parameters.AddWithValue("StatusPositionName", ddlvezife.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("Gender", cins);
+                    cmd.Parameters.AddWithValue("Adress", qeydiyyatadres.Text);
+                    cmd.Parameters.AddWithValue("Mobiltel", mobiltel.Text);
+                    cmd.Parameters.AddWithValue("Email", email.Text);
+                    cmd.Parameters.AddWithValue("PartyID", ddlpartiya.Value);
+                    cmd.Parameters.AddWithValue("Party", ddlpartiya.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("BirthDate", cmbtevellud.Date);
+                    cmd.Parameters.AddWithValue("Nationality", txtmilliyyet.Text);
+                    cmd.Parameters.AddWithValue("EducationID", ddltehsil.Value);
+                    cmd.Parameters.AddWithValue("Education", ddltehsil.SelectedItem.ToString());
                     cmd.ExecuteNonQuery();
 
 
@@ -232,7 +232,7 @@ values(@StatusPositionID,@MunicipalID,@MunicipalName,@SName,@Name,@FName,@Status
                     fufoto.SaveAs(Server.MapPath(resimadi));
 
                     SqlCommand cmd1 = new SqlCommand(@"Update   Structure set Photo=@Photo where MunicipalID=" + MunicipalId + " and StructureID=" + drxerc["StructureID"].ToString(), baglan);
-                    cmd1.Parameters.Add("Photo", resimadi);
+                    cmd1.Parameters.AddWithValue("Photo", resimadi);
                     cmd1.ExecuteNonQuery();
 
                     //vizual();
@@ -275,24 +275,24 @@ values(@StatusPositionID,@MunicipalID,@MunicipalName,@SName,@Name,@FName,@Status
 Gender=@Gender,Adress=@Adress,Email=@Email,Mobiltel=@Mobiltel,StatusPositionName=@StatusPositionName,
 StatusPositionID=@StatusPositionID,PartyID=@PartyID,Party=@Party,BirthDate=@BirthDate,Nationality=@Nationality,EducationID=@EducationID,
 Education=@Education,Photo=@Photo,UpdateDate=@UpdateDate where StructureID=" + TaxpayerID.Value, baglan);
-                    cmd.Parameters.Add("StatusPositionID", ddlvezife.Value);
-                    cmd.Parameters.Add("SName", soyadi.Text);
-                    cmd.Parameters.Add("Name", adi.Text);
-                    cmd.Parameters.Add("FName", ataadi.Text);
-                    cmd.Parameters.Add("StatusPositionName", ddlvezife.SelectedItem.ToString());
-                    cmd.Parameters.Add("Gender", cins);
-                    cmd.Parameters.Add("Adress", qeydiyyatadres.Text);
-                    cmd.Parameters.Add("Mobiltel", mobiltel.Text);
-                    cmd.Parameters.Add("Email", email.Text);
-                    cmd.Parameters.Add("PartyID", ddlpartiya.Value);
-                    cmd.Parameters.Add("Party", ddlpartiya.SelectedItem.ToString());
-                    cmd.Parameters.Add("BirthDate", cmbtevellud.Date);
-                    cmd.Parameters.Add("Nationality", txtmilliyyet.Text);
-                    cmd.Parameters.Add("EducationID", ddltehsil.Value);
-                    cmd.Parameters.Add("Education", ddltehsil.SelectedItem.ToString());
-                    cmd.Parameters.Add("Photo", resimadi1);
+                    cmd.Parameters.AddWithValue("StatusPositionID", ddlvezife.Value);
+                    cmd.Parameters.AddWithValue("SName", soyadi.Text);
+                    cmd.Parameters.AddWithValue("Name", adi.Text);
+                    cmd.Parameters.AddWithValue("FName", ataadi.Text);
+                    cmd.Parameters.AddWithValue("StatusPositionName", ddlvezife.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("Gender", cins);
+                    cmd.Parameters.AddWithValue("Adress", qeydiyyatadres.Text);
+                    cmd.Parameters.AddWithValue("Mobiltel", mobiltel.Text);
+                    cmd.Parameters.AddWithValue("Email", email.Text);
+                    cmd.Parameters.AddWithValue("PartyID", ddlpartiya.Value);
+                    cmd.Parameters.AddWithValue("Party", ddlpartiya.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("BirthDate", cmbtevellud.Date);
+                    cmd.Parameters.AddWithValue("Nationality", txtmilliyyet.Text);
+                    cmd.Parameters.AddWithValue("EducationID", ddltehsil.Value);
+                    cmd.Parameters.AddWithValue("Education", ddltehsil.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("Photo", resimadi1);
                     string vaxt = klas.getdatacell("select getdate() as indikivaxt");
-                    cmd.Parameters.Add("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("UpdateDate", Convert.ToDateTime(vaxt).ToString("yyyy-MM-dd"));
                     cmd.ExecuteNonQuery();
                     TaxpayerID.Value = "";
                     Response.Redirect("Member.aspx");
@@ -318,11 +318,11 @@ Education=@Education,Photo=@Photo,UpdateDate=@UpdateDate where StructureID=" + T
         
         SqlConnection baglan = klas.baglan();
         SqlCommand cmd1 = new SqlCommand(@"Update Structure set  Charge=@Charge where MunicipalID=" + MunicipalId, baglan);
-        cmd1.Parameters.Add("Charge", int.Parse("0"));
+        cmd1.Parameters.AddWithValue("Charge", int.Parse("0"));
         cmd1.ExecuteNonQuery();
 
         SqlCommand cmd = new SqlCommand(@"Update Structure set  Charge=@Charge where StructureID=" + ddlmehsul.Value, baglan);
-        cmd.Parameters.Add("Charge", int.Parse("1"));
+        cmd.Parameters.AddWithValue("Charge", int.Parse("1"));
         cmd.ExecuteNonQuery();
         vizual();
         Response.Redirect(prevPage);

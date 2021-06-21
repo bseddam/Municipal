@@ -13,8 +13,8 @@ public class Class2
 
     public SqlConnection baglan()
     {
-        //SqlConnection baglan = new SqlConnection(@"Data Source=(local);Initial Catalog=Municipal_db;User ID=sa; Password=Bld123456;Connect Timeout=180;Max Pool Size=1024;Pooling=true;");
-        SqlConnection baglan = new SqlConnection(@"Data Source=(local);Initial Catalog=Municipal_db;Integrated Security=true;Connect Timeout=180;Max Pool Size=1024;Pooling=true;");
+        SqlConnection baglan = new SqlConnection(@"Data Source=(local);Initial Catalog=Municipal_db;User ID=sa; Password=Bld123456;Connect Timeout=180;Max Pool Size=1024;Pooling=true;");
+        //SqlConnection baglan = new SqlConnection(@"Data Source=(local);Initial Catalog=Municipal_db;Integrated Security=true;Connect Timeout=180;Max Pool Size=1024;Pooling=true;");
         baglan.Open();
         return baglan;
     }

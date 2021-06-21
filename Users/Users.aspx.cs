@@ -83,7 +83,7 @@ public partial class Users_UsersForm : System.Web.UI.Page
 
         btnsave.CommandName = "update";
         btnsave.CommandArgument = id.ToString();
-
+   
     }
     protected void lnkDelete_Click(object sender, EventArgs e)
     {
@@ -143,7 +143,7 @@ Where  UserID=" + Session["UserID"].ToString());
 
         DataTable region2 = klas.getdatatable(@"
 select  UserID,MunicipalID,Name+' '+Sname+' '+Fname+ case when Gender=1 then N' oğlu' 
-	  when Gender=2 then N' qızı' else ' qeyd edilməyib' end fullname
+	  when Gender=2 then N' qızı' else N' qeyd edilməyib' end fullname
 	  ,Contactmobile,Uname,Passvord,Contacthome,Email,Status_users,MenuActive 
   FROM Users where MunicipalID=" + MunicipalId + Status_users + "  order by NowTime desc");
         Repeater1.DataSource = region2;
@@ -278,6 +278,7 @@ where Status_users<>1 and p.userid=" + btnsave.CommandArgument.ToString());
                         cmd1.ExecuteNonQuery();
                     }
                 }
+                Response.Redirect("Users.aspx?qeyd=1");
             }
             else
             {

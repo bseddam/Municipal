@@ -40,7 +40,7 @@ public partial class adminpanel_Users : System.Web.UI.Page
     void users()
     {
         DataTable region2 = klas.getdatatable(@"select UserID, case when Sname is null then Name 
-else Name+' '+Sname end as Name,Fname,status_users from Users where (status_users=1 or status_users=0) and MunicipalID=" + ddlbelediyye.SelectedValue);
+else Name+' '+Sname end as Name,Fname,status_users from Users where (status_users=1 or status_users=2) and MunicipalID=" + ddlbelediyye.SelectedValue);
         ddlistifadeci.DataTextField = "Name";
         ddlistifadeci.DataValueField = "UserID";
         ddlistifadeci.DataSource = region2;

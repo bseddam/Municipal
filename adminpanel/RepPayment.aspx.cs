@@ -132,7 +132,7 @@ inner join List_classification_Regions lr on lcm.RegionID=lr.RegionsID  where 1=
 select '1' sn, t.SName+' '+t.Name+' '+t.FName as fullname, t.YVOK, CAST(p.Amount as numeric(18,2)) mebleg, 
 cast(p.Amount*3/100 as numeric(18,2)) faizmebleg,
 cast(p.Amount-p.Amount*3/100 as numeric(18,2)) qaliq,
-convert(varchar,p.NowTime,104) Tarix,case when p.TaxesPaymentOnline=1 then 'Online' else N'Nəğd' end odenisnovu,
+convert(varchar,p.NowTime,104) Tarix,case when p.TaxesPaymentOnline=1 then 'Online' else N'Nağd' end odenisnovu,
 case when p.TaxesPaymentID=1 then N'Əmlak vergisi' 
 when p.TaxesPaymentID=2 then N'Torpaq vergisi' else TaxesPaymentTypeName end TaxesPaymentName,lcm.MunicipalName,
 case when lr.CityID=2 then lr.Name+N' rayonu' when CityID=1 then lr.Name+N' şəhəri' end Name

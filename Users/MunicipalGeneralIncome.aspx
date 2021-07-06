@@ -43,7 +43,7 @@
                  <td style="width:150px;">                    
                     Ödəniş növü:<asp:DropDownList ID="ddlodenisnovu" runat="server" Width="120px">
                             <asp:ListItem Value="-1">Ümumi</asp:ListItem>
-                            <asp:ListItem Value="0">Nəğd</asp:ListItem>
+                            <asp:ListItem Value="0">Nağd</asp:ListItem>
                             <asp:ListItem Value="1">Online</asp:ListItem>
                         </asp:DropDownList>
                  </td>

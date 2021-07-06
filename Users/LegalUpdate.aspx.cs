@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 public partial class Users_Juridical : System.Web.UI.Page
 {
     static string prevPage = String.Empty;
-    Class2 klas = new Class2(); string islem; string TaxpayerID;
+    Class2 klas = new Class2(); string islem; string TaxpayerID="";
     protected void Page_Load(object sender, EventArgs e)
     {
         //Response.Write("<script LANGUAGE='JavaScript' >alert('Login Successful')</script>");
@@ -235,7 +235,8 @@ public partial class Users_Juridical : System.Web.UI.Page
         }
         string YVOK = BLDkodu + "2" + voen.Text;
 
-       if(islem=="duzelis"){
+       if(islem=="duzelis")
+       {
             DataRow drform = klas.GetDataRow(@"SELECT TaxpayerID from Taxpayer where TaxpayerID <>" + TaxpayerID + " and ForDelete=1 and VOEN='" + voen.Text + "' and MunicipalID="
                 + MunicipalId);
             if (drform == null)
